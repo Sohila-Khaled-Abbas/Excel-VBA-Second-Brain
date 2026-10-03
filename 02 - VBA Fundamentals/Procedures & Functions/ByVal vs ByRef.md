@@ -59,33 +59,35 @@ You make a photocopy and hand it to them. They can write notes, scribble with hi
 ## 🔬 Memory Architecture Diagram
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart TD
-    subgraph CallerRAM["Caller Memory Frame (Main Sub)"]
-        OrigVal["Variable: totalSales<br/>Address: <b>0x00FF4A</b><br/>Value: <b>1,000</b>"]
+    subgraph CallerRAM["📦 Caller Stack Frame (Main Sub)"]
+        OrigVal["<b>Variable: totalSales</b><br/>RAM Address: <code>0x00FF4A</code><br/>Current Value: <b>1,000</b>"]:::callerNode
     end
 
-    subgraph ByRefScenario["ByRef Execution: Direct Pointer"]
-        direction TB
-        Ptr["Param: x<br/>Address: Points to 0x00FF4A"]
-        Action1["x = x * 1.20"]
-        Result1["OrigVal updated directly in 0x00FF4A!<br/>New totalSales = <b>1,200</b>"]
+    subgraph ByRefScenario["🔗 ByRef Execution (Shared Pointer)"]
+        Ptr["<b>Param: ByRef x</b><br/>Points to Address: <code>0x00FF4A</code>"]:::byrefNode
+        Action1["<code>x = x * 1.20</code>"]:::actionNode
+        Result1["💥 <b>MUTATION!</b><br/>Value in 0x00FF4A becomes <b>1,200</b><br/>Caller's variable is altered!"]:::dangerNode
         Ptr --> Action1 --> Result1
     end
 
-    subgraph ByValScenario["ByVal Execution: Cloned Copy"]
-        direction TB
-        Clone["Param: x<br/>Address: <b>0x00A110</b> (New)<br/>Cloned Value: 1,000"]
-        Action2["x = x * 1.20"]
-        Result2["Only 0x00A110 changes to 1,200.<br/>Original 0x00FF4A remains <b>1,000</b>!"]
+    subgraph ByValScenario["📋 ByVal Execution (Cloned Value)"]
+        Clone["<b>Param: ByVal x</b><br/>Allocated New Address: <code>0x00A110</code><br/>Cloned Value: 1,000"]:::byvalNode
+        Action2["<code>x = x * 1.20</code>"]:::actionNode
+        Result2["🔒 <b>SAFE!</b><br/>Only 0x00A110 becomes 1,200<br/>Caller's 0x00FF4A stays <b>1,000</b>"]:::safeNode
         Clone --> Action2 --> Result2
     end
 
-    OrigVal -.->|ByRef passes address| Ptr
-    OrigVal -.->|ByVal allocates new copy| Clone
+    OrigVal -.->|ByRef passes address directly| Ptr
+    OrigVal -.->|ByVal copies bytes to new address| Clone
 
-    style CallerRAM fill:#181a24,stroke:#38bdf8,stroke-width:2px
-    style ByRefScenario fill:#12141c,stroke:#ef4444,stroke-width:2px
-    style ByValScenario fill:#12141c,stroke:#10b981,stroke-width:2px
+    classDef callerNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
+    classDef byrefNode fill:#451a03,stroke:#f59e0b,stroke-width:2px,color:#fef3c7;
+    classDef byvalNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+    classDef actionNode fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#ede9fe;
+    classDef dangerNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#fef2f2;
+    classDef safeNode fill:#092e20,stroke:#10b981,stroke-width:2px,color:#d1fae5;
 ```
 
 ---
@@ -157,14 +159,17 @@ End Function
 What happens when you pass an **Object** using `ByVal`?
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart LR
-    CallerObj["Caller: Set ws = Sheet1"] -->|ByVal wsTarget As Worksheet| Worker["Worker Sub"]
-    Worker -->|Can modify contents!| Cell["wsTarget.Range('A1').Value = 99 (UPDATED!)"]
-    Worker -->|Cannot change caller reference!| Reassign["Set wsTarget = Sheet2 (IGNORED by caller!)"]
+    CallerObj["📦 <b>Caller Scope</b><br/><code>Set ws = Sheet1</code>"]:::callerNode -->|<code>ByVal wsTarget As Worksheet</code>| Worker["⚙️ <b>Worker Procedure</b>"]:::actionNode
+    
+    Worker -->|✅ Can modify sheet content!| Cell["🎯 <code>wsTarget.Range('A1').Value = 99</code><br/><i>(Alters worksheet cell in workbook)</i>"]:::safeNode
+    Worker -->|❌ Cannot rebind caller variable!| Reassign["🚫 <code>Set wsTarget = Sheet2</code><br/><i>(Local copy re-bound; caller untouched)</i>"]:::dangerNode
 
-    style CallerObj fill:#181a24,stroke:#38bdf8
-    style Cell fill:#12141c,stroke:#10b981
-    style Reassign fill:#12141c,stroke:#ef4444
+    classDef callerNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
+    classDef actionNode fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#ede9fe;
+    classDef safeNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+    classDef dangerNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#fef2f2;
 ```
 
 > [!warning]

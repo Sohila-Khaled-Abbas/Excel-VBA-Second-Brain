@@ -32,22 +32,23 @@ updated: 2026-10-03
 ## 🗺️ Architectural Concept Map
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart TD
-    subgraph Declarations["1. Declaration & Compiler Directives"]
-        OE["[[Option Explicit]]<br/><i>Mandatory compiler rule</i>"]
-        DIM["[[Dim Statement]]<br/><i>Dimension memory in RAM</i>"]
-        CST["[[Constants]]<br/><i>Compile-time immutable values</i>"]
+    subgraph Declarations["🛡️ 1. Declaration Directives"]
+        OE["<b>[[Option Explicit]]</b><br/><i>Mandatory compiler lock</i>"]:::declNode
+        DIM["<b>[[Dim Statement]]</b><br/><i>Dimensions stack memory</i>"]:::declNode
+        CST["<b>[[Constants]]</b><br/><i>Immutable compile-time token</i>"]:::declNode
     end
 
-    subgraph MemoryTypes["2. Memory Containers & Types"]
-        VAR["[[Variables]]<br/><i>Dynamic named memory boxes</i>"]
-        DT["[[Data Types]]<br/><i>Long, Double, String, Boolean, Variant</i>"]
+    subgraph MemoryTypes["📦 2. Memory Containers & Types"]
+        VAR["<b>[[Variables]]</b><br/><i>Named mutable memory storage</i>"]:::memNode
+        DT["<b>[[Data Types]]</b><br/><i>Long, Double, String, Variant</i>"]:::memNode
     end
 
-    subgraph Architecture["3. Visibility & Parameter Passing"]
-        SCP["[[Scope]]<br/><i>Local vs Module vs Global</i>"]
-        STC["[[Static Variables]]<br/><i>Persistent local state</i>"]
-        PAR["[[ByVal vs ByRef]]<br/><i>Clone value vs pass pointer</i>"]
+    subgraph Architecture["👁️ 3. Scope & Parameter Passing"]
+        SCP["<b>[[Scope]]</b><br/><i>Local vs Module vs Global</i>"]:::archNode
+        STC["<b>[[Static Variables]]</b><br/><i>Persistent local state</i>"]:::archNode
+        PAR["<b>[[ByVal vs ByRef]]</b><br/><i>Clone value vs pass pointer</i>"]:::archNode
     end
 
     OE --> DIM
@@ -58,9 +59,9 @@ flowchart TD
     SCP --> STC
     SCP --> PAR
 
-    style Declarations fill:#181a24,stroke:#38bdf8,stroke-width:2px
-    style MemoryTypes fill:#12141c,stroke:#10b981,stroke-width:2px
-    style Architecture fill:#10121a,stroke:#f59e0b,stroke-width:2px
+    classDef declNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
+    classDef memNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+    classDef archNode fill:#1e1b4b,stroke:#8b5cf6,stroke-width:2px,color:#ede9fe;
 ```
 
 ---

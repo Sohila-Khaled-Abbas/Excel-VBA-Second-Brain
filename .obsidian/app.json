@@ -7,7 +7,7 @@
   "openBehavior": "daily",
   "promptDelete": false,
   "readableLineLength": false,
-  "showLineNumber": true,
+  "showLineNumber": false,
   "showUnsupportedFiles": true,
   "smartIndentList": true,
   "strictLineBreaks": false,

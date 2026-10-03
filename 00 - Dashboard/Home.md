@@ -102,21 +102,17 @@ Time Invested     [████░░░░░░░░░░░░░░░░]
 ## ⚡ Core Mental Model Flow
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart LR
-    A["Macros & VBA Syntax<br/><i>[[VBA Syntax]]</i>"] --> B["Object Model<br/><i>[[03 - Excel Object Model/Excel Object Model]]</i>"]
-    B --> C["Range & Cells<br/><i>[[Range & Cells]]</i>"]
-    C --> D["Memory & Types<br/><i>[[Variables & Data Types]]</i>"]
-    D --> E["Loops & Logic<br/><i>[[04 - Control Flow & Logic/Control Flow & Logic]]</i>"]
-    E --> F["Arrays & Speed<br/><i>[[05 - Data & Automation/Data & Automation]]</i>"]
-    F --> G["Defensive Reliability<br/><i>[[06 - Debugging & Reliability/Debugging & Reliability]]</i>"]
+    A["⚙️ <b>VBA Syntax</b><br/><i>[[VBA Syntax]]</i>"]:::stepNode --> B["🏛️ <b>Object Model</b><br/><i>[[03 - Excel Object Model/Excel Object Model|Object Model]]</i>"]:::stepNode
+    B --> C["🎯 <b>Range & Cells</b><br/><i>[[Range & Cells]]</i>"]:::stepNode
+    C --> D["📦 <b>Data & Types</b><br/><i>[[Variables & Data Types]]</i>"]:::stepNode
+    D --> E["🔀 <b>Loops & Logic</b><br/><i>[[04 - Control Flow & Logic/Control Flow & Logic|Control Flow]]</i>"]:::stepNode
+    E --> F["⚡ <b>Arrays & Speed</b><br/><i>[[05 - Data & Automation/Data & Automation|Data & Speed]]</i>"]:::stepNode
+    F --> G["🛡️ <b>Reliability</b><br/><i>[[06 - Debugging & Reliability/Debugging & Reliability|Debugging]]</i>"]:::finishNode
 
-    style A fill:#181a24,stroke:#38bdf8
-    style B fill:#181a24,stroke:#38bdf8
-    style C fill:#181a24,stroke:#10b981
-    style D fill:#181a24,stroke:#10b981
-    style E fill:#181a24,stroke:#f59e0b
-    style F fill:#181a24,stroke:#a855f7
-    style G fill:#181a24,stroke:#ef4444
+    classDef stepNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
+    classDef finishNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
 ```
 
 ---

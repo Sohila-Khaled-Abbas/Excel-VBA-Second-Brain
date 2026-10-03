@@ -35,20 +35,30 @@ updated: 2026-10-03
 ## ⚖️ Architectural Comparison: `Sub` vs. `Function`
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart TD
-    subgraph SubFlow["Sub Procedure (Action Engine)"]
-        S_In["Caller triggers Sub"] --> S_Do["Performs Actions in Excel:<br/>Formats Cells, Exports PDFs, Sends Emails"]
-        S_Do --> S_End["Exits (Returns nothing to assignment)"]
+    subgraph SubFlow["⚙️ Sub Procedure: Orchestration & Action Engine"]
+        S_In["⚡ <b>Caller Invokes Sub</b><br/><code>Call FormatMonthlySheet(ws)</code>"]:::subInput
+        S_Do["🎯 <b>Mutates Application State</b><br/>Formats Borders, Inserts Columns, Generates Workbooks"]:::subAction
+        S_End(["🏁 <b>Exits Routine</b><br/><i>Returns no value to caller</i>"]):::subEnd
+        S_In --> S_Do --> S_End
     end
 
-    subgraph FuncFlow["Function Procedure (Calculation Engine)"]
-        F_In["Caller calls Function with Inputs"] --> F_Calc["Computes Result in Memory"]
-        F_Calc --> F_Ret["Assigns result to Function Name:<br/><b>MyFunc = CalculatedValue</b>"]
-        F_Ret --> F_Out["Returns value directly to caller / Excel Cell"]
+    subgraph FuncFlow["🧮 Function Procedure: Computation Engine"]
+        F_In["📥 <b>Caller Supplies Arguments</b><br/><code>net = CalcNet(revenue, cost)</code>"]:::funcInput
+        F_Calc["🧠 <b>Computes in Memory (RAM)</b><br/>Pure mathematical / string transformation"]:::funcAction
+        F_Ret["📤 <b>Assigns to Function Name:</b><br/><code>CalcNet = revenue - cost</code>"]:::funcReturn
+        F_Out(["🎯 <b>Yields Value to Expression / Cell</b>"]):::funcEnd
+        F_In --> F_Calc --> F_Ret --> F_Out
     end
 
-    style SubFlow fill:#181a24,stroke:#38bdf8,stroke-width:2px
-    style FuncFlow fill:#12141c,stroke:#10b981,stroke-width:2px
+    classDef subInput fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
+    classDef subAction fill:#1e293b,stroke:#0284c7,stroke-width:2px,color:#f8fafc;
+    classDef subEnd fill:#0f172a,stroke:#64748b,stroke-width:1.5px,color:#94a3b8;
+    classDef funcInput fill:#1e1b4b,stroke:#8b5cf6,stroke-width:2px,color:#f8fafc;
+    classDef funcAction fill:#1e293b,stroke:#a855f7,stroke-width:2px,color:#f8fafc;
+    classDef funcReturn fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+    classDef funcEnd fill:#092e20,stroke:#34d399,stroke-width:2px,color:#d1fae5;
 ```
 
 | Feature | `Sub` Procedure | `Function` Procedure |

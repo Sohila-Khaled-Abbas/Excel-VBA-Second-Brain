@@ -32,25 +32,50 @@ updated: 2026-10-03
 
 ## 🧭 Visual Mental Model: Navigation, Offset & Resize
 
+<div class="vba-grid-3">
+
+<div class="vba-card" style="border-top: 3px solid #38bdf8;">
+<div class="vba-card-header" style="color: #38bdf8;">📍 1. Initial Anchor</div>
+<code>ws.Range("B2")</code>
+
+- **Coordinates**: Row 2, Column 2
+- **Address**: Single cell `$B$2`
+- **Role**: Reference origin for movement
+</div>
+
+<div class="vba-card" style="border-top: 3px solid #f59e0b;">
+<div class="vba-card-header" style="color: #f59e0b;">🚀 2. Navigate: <code>.Offset</code></div>
+<code>.Offset(2, 3)</code>
+
+- **Vector**: `+2` Rows Down, `+3` Cols Right
+- **Lands On**: Cell `$E$4`
+- **Shape**: Still a single cell, relocated
+</div>
+
+<div class="vba-card" style="border-top: 3px solid #10b981;">
+<div class="vba-card-header" style="color: #10b981;">📐 3. Expand: <code>.Resize</code></div>
+<code>.Resize(5, 2)</code>
+
+- **Dimensions**: `5` Rows Tall, `2` Cols Wide
+- **Final Target**: Block **`$E$4:$F$8`**
+- **Count**: 10 cells total in memory
+</div>
+
+</div>
+
 ```mermaid
-flowchart TD
-    subgraph Base["1. Anchor Cell: ws.Range('B2')"]
-        B["Cell B2"]
-    end
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
+flowchart LR
+    A["📍 <b>Anchor Origin</b><br/><code>Range('B2')</code><br/><i>Single cell ($B$2)</i>"] -->|'.Offset(2, 3)'<br/><b>Shift +2 Rows, +3 Cols</b>| B["🚀 <b>Navigated Position</b><br/><code>Cell E4</code><br/><i>Single cell ($E$4)</i>"]
+    B -->|'.Resize(5, 2)'<br/><b>Stretch 5H x 2W</b>| C["📐 <b>Expanded Block</b><br/><code>Range('E4:F8')</code><br/><i>10 Cells Allocated</i>"]
 
-    subgraph Nav["2. Navigation: .Offset(Row, Col)"]
-        direction TB
-        B -->|Offset(2, 3)| OFF["Land on E4<br/><i>(Shift 2 rows DOWN, 3 cols RIGHT)</i>"]
-    end
+    classDef anchorNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
+    classDef shiftNode fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#fef3c7;
+    classDef targetNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
 
-    subgraph Res["3. Expansion: .Resize(NumRows, NumCols)"]
-        direction TB
-        OFF -->|Resize(5, 2)| RES["Block E4:F8<br/><i>(Expand 5 rows tall, 2 cols wide)</i>"]
-    end
-
-    style Base fill:#181a24,stroke:#38bdf8,stroke-width:2px
-    style Nav fill:#12141c,stroke:#f59e0b,stroke-width:2px
-    style Res fill:#10121a,stroke:#10b981,stroke-width:2px
+    class A anchorNode;
+    class B shiftNode;
+    class C targetNode;
 ```
 
 ---
@@ -60,11 +85,19 @@ flowchart TD
 In dynamic reporting pipelines, raw data row counts change on every run. Hardcoding row bounds (`Range("A2:A100")`) is the #1 cause of broken automation.
 
 ```mermaid
-flowchart LR
-    A["Need Last Row"] --> B{"Is there a known reliable anchor column?"}
-    B -->|Yes, e.g. Column A ID| C["Method 1: ws.Cells(ws.Rows.Count, 'A').End(xlUp).Row<br/><b>Gold Standard for Tables</b>"]
-    B -->|No, columns end at different rows| D["Method 2: ws.Cells.Find(What:='*')<br/><b>Scans entire sheet backwards</b>"]
-    B -->|Table is strictly contiguous| E["Method 3: ws.Range('A1').CurrentRegion.Rows.Count<br/><b>Fast block scan</b>"]
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
+flowchart TD
+    Start(["🔍 <b>Need Last Used Row</b>"]):::startNode --> Check{"Anchor column<br/>reliable?"}:::decisionNode
+    
+    Check -->|✅ Yes, e.g. Column A ID| M1["⭐ <b>Method 1: End(xlUp)</b><br/><code>ws.Cells(ws.Rows.Count, 'A').End(xlUp).Row</code><br/><i>Fast, standard, skips internal blanks</i>"]:::greenNode
+    Check -->|❌ No, columns uneven| M2["🔎 <b>Method 2: ws.Cells.Find(*)</b><br/><code>ws.Cells.Find(What:='*', SearchOrder:=xlByRows, ...)</code><br/><i>Scans all columns backwards</i>"]:::cyanNode
+    Check -->|⚡ Contiguous block| M3["📦 <b>Method 3: CurrentRegion</b><br/><code>ws.Range('A1').CurrentRegion.Rows.Count</code><br/><i>Simulates Ctrl+A (broken by blank rows)</i>"]:::amberNode
+
+    classDef startNode fill:#1e1b4b,stroke:#8b5cf6,stroke-width:2px,color:#f8fafc;
+    classDef decisionNode fill:#1e293b,stroke:#94a3b8,stroke-width:2px,color:#f8fafc;
+    classDef greenNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#f8fafc;
+    classDef cyanNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
+    classDef amberNode fill:#78350f,stroke:#f59e0b,stroke-width:2px,color:#f8fafc;
 ```
 
 | Method | Syntax | Strengths | Failure Mode / Caveats |

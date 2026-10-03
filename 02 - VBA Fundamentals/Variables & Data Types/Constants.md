@@ -30,20 +30,58 @@ updated: 2026-10-03
 
 ## 🧠 Mental Model: The Whiteboard vs. The Stone Carving
 
+<div class="vba-grid-2">
+
+<div class="vba-card" style="border-top: 3px solid #f59e0b;">
+<div class="vba-card-header" style="color: #f59e0b;">📝 Variable (Dry-Erase Whiteboard)</div>
+
+```vba
+Dim taxRate As Double
+taxRate = 0.05
+' ... 50 lines later ...
+taxRate = 0.10  ' Value overwritten!
+```
+
+- **Nature**: Mutable RAM address.
+- **Risk**: Any routine can accidentally reassign the value.
+- **Role**: Dynamic counters, loop indices, temporary metrics.
+</div>
+
+<div class="vba-card" style="border-top: 3px solid #10b981;">
+<div class="vba-card-header" style="color: #10b981;">🗿 Constant (Carved in Granite)</div>
+
+```vba
+Const TAX_RATE As Double = 0.0825
+' Attempting reassignment:
+' TAX_RATE = 0.10
+' 💥 Compile Error: Assignment to constant not permitted!
+```
+
+- **Nature**: Immutable compile-time token.
+- **Safety**: Locked by compiler; 100% immune to runtime side-effects.
+- **Role**: Tax rates, server URLs, business rules.
+</div>
+
+</div>
+
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart LR
-    subgraph VarModel["Variable (Whiteboard)"]
-        V1["taxRate = 0.05"] -->|Later in code| V2["taxRate = 0.10"]
-        V2 -->|Overwritten at will| V3["Mutable & Dynamic"]
+    subgraph VarModel["📝 Variable: Mutable RAM Storage"]
+        V1["<code>taxRate = 0.05</code>"]:::amberNode -->|Later in pipeline| V2["<code>taxRate = 0.10</code>"]:::amberNode
+        V2 -->|Overwritten dynamically| V3["⚠️ <b>State Changed in RAM</b>"]:::warningNode
     end
 
-    subgraph ConstModel["Constant (Carved in Stone)"]
-        C1["Const TAX_RATE = 0.0825"] -->|Compiler Lock 🔒| C2["Cannot be reassigned!"]
-        C2 -->|Attempting taxRate = 0.10| C3["💥 Compiler Error: Assignment to constant not permitted"]
+    subgraph ConstModel["🔒 Constant: Compile-Time Lock"]
+        C1["<code>Const TAX_RATE = 0.0825</code>"]:::greenNode -->|Compiler Security Lock| C2["🛡️ <b>Immutable Value</b>"]:::safeNode
+        C2 -.->|Attempting reassignment| C3["💥 <b>Compile Error!</b><br/>Assignment not permitted"]:::dangerNode
     end
 
-    style VarModel fill:#181a24,stroke:#f59e0b,stroke-width:1.5px
-    style ConstModel fill:#12141c,stroke:#10b981,stroke-width:2px
+    classDef amberNode fill:#2d1f0d,stroke:#f59e0b,stroke-width:1.5px,color:#fef3c7;
+    classDef warningNode fill:#451a03,stroke:#d97706,stroke-width:2px,color:#fef3c7;
+    classDef greenNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+    classDef safeNode fill:#092e20,stroke:#34d399,stroke-width:2px,color:#d1fae5;
+    classDef dangerNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#fef2f2;
 ```
 
 ---

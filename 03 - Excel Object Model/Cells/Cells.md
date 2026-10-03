@@ -30,19 +30,126 @@ updated: 2026-10-03
 
 ## 🧭 Visual Mental Model: The Coordinate Plane
 
+<div class="vba-sheet-mockup">
+  <div class="vba-sheet-header">
+    <div class="vba-window-dots">
+      <span class="vba-dot vba-dot-red"></span>
+      <span class="vba-dot vba-dot-yellow"></span>
+      <span class="vba-dot vba-dot-green"></span>
+    </div>
+    <div class="vba-sheet-title">📊 Active Worksheet: <code>ws.Cells(RowIndex, ColumnIndex)</code></div>
+    <div></div>
+  </div>
+  
+  <div class="vba-formula-bar">
+    <div class="vba-name-box">B2</div>
+    <div class="vba-fx-icon">fx</div>
+    <div class="vba-formula-input"><code>=ws.Cells(2, 2).Value</code> &nbsp; <span style="color:#64748b;">(Row 2, Column 2 / Col B)</span></div>
+  </div>
+
+  <table class="vba-sheet-table">
+    <thead>
+      <tr>
+        <th class="vba-row-hdr" style="background:#0f1117 !important;">#</th>
+        <th class="vba-col-hdr">Col A <span class="idx">Index 1</span></th>
+        <th class="vba-col-hdr" style="background:rgba(16,124,65,0.2) !important; color:#6ee7b7 !important;">Col B <span class="idx" style="color:#a7f3d0;">Index 2</span></th>
+        <th class="vba-col-hdr">Col C <span class="idx">Index 3</span></th>
+        <th class="vba-col-hdr">Col D <span class="idx">Index 4</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="vba-row-hdr">Row 1</td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">A1</div>
+          <div class="vba-cell-coord">Cells(1, 1)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">B1</div>
+          <div class="vba-cell-coord">Cells(1, 2)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">C1</div>
+          <div class="vba-cell-coord">Cells(1, 3)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">D1</div>
+          <div class="vba-cell-coord">Cells(1, 4)</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="vba-row-hdr" style="background:rgba(16,124,65,0.2) !important; color:#6ee7b7 !important;">Row 2</td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">A2</div>
+          <div class="vba-cell-coord">Cells(2, 1)</div>
+        </td>
+        <td class="vba-cell active-target">
+          <div class="vba-cell-addr">🎯 B2</div>
+          <div class="vba-cell-coord">Cells(2, 2)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">C2</div>
+          <div class="vba-cell-coord">Cells(2, 3)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">D2</div>
+          <div class="vba-cell-coord">Cells(2, 4)</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="vba-row-hdr">Row 3</td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">A3</div>
+          <div class="vba-cell-coord">Cells(3, 1)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">B3</div>
+          <div class="vba-cell-coord">Cells(3, 2)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">C3</div>
+          <div class="vba-cell-coord">Cells(3, 3)</div>
+        </td>
+        <td class="vba-cell">
+          <div class="vba-cell-addr">D3</div>
+          <div class="vba-cell-coord">Cells(3, 4)</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="vba-axis-bar">
+    <div class="vba-axis-badge"><span>⬇️</span> <b>1st Argument:</b> Row Number (Vertical / Y-Axis)</div>
+    <div class="vba-axis-badge"><span>➡️</span> <b>2nd Argument:</b> Column Number or Letter (Horizontal / X-Axis)</div>
+  </div>
+</div>
+
 ```mermaid
-flowchart TD
-    subgraph Grid["Excel Sheet Grid System: Cells(Row, Column)"]
-        direction TB
-        C11["Cells(1, 1)<br/><b>Cell A1</b>"] --- C12["Cells(1, 2)<br/><b>Cell B1</b>"] --- C13["Cells(1, 3)<br/><b>Cell C1</b>"]
-        C21["Cells(2, 1)<br/><b>Cell A2</b>"] --- C22["Cells(2, 2)<br/><b>Cell B2</b>"] --- C23["Cells(2, 3)<br/><b>Cell C2</b>"]
-        C31["Cells(3, 1)<br/><b>Cell A3</b>"] --- C32["Cells(3, 2)<br/><b>Cell B3</b>"] --- C33["Cells(3, 3)<br/><b>Cell C3</b>"]
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
+flowchart LR
+    subgraph Inputs["1. Coordinate Arguments"]
+        R["<b>Row Index (Y)</b><br/><code>r = 2</code> (Vertical)"]
+        C["<b>Column Index (X)</b><br/><code>c = 2</code> or <code>'B'</code> (Horizontal)"]
     end
 
-    style Grid fill:#181a24,stroke:#38bdf8,stroke-width:2px
-    style C11 fill:#12141c,stroke:#10b981
-    style C22 fill:#12141c,stroke:#f59e0b
-    style C33 fill:#12141c,stroke:#a855f7
+    subgraph Resolution["2. Excel Grid Intersect"]
+        Engine["<b>VBA Engine Resolution</b><br/><code>ws.Cells(r, c)</code>"]
+        R -->|Row offset| Engine
+        C -->|Col offset| Engine
+    end
+
+    subgraph Target["3. Target Range Object"]
+        Cell["🎯 <b>Cell B2 Reference</b><br/>Address: <code>$B$2</code><br/>Type: <code>Range Object</code>"]
+        Engine -->|Points to memory address| Cell
+    end
+
+    classDef inNode fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#f8fafc;
+    classDef procNode fill:#1e1b4b,stroke:#a855f7,stroke-width:2px,color:#f8fafc;
+    classDef outNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#f8fafc;
+    
+    class R,C inNode;
+    class Engine procNode;
+    class Cell outNode;
 ```
 
 Unlike mathematical Cartesian coordinates `(X, Y)`, Excel VBA's `Cells` convention is **Row First, Column Second** `(Y, X)`:

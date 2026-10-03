@@ -33,38 +33,43 @@ updated: 2026-10-03
 ## 🛡️ Production Lifecycle Architecture
 
 ```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart TD
-    subgraph Setup["1. Procedure Entry & Defense"]
-        A["Sub Begins"] --> B["<b>On Error GoTo ErrorHandler</b><br/>Arm the error trap"]
-        B --> C["Disable UI Refresh:<br/>ScreenUpdating = False<br/>EnableEvents = False"]
+    subgraph Setup["🛡️ 1. Defensive Entry & Arm Trap"]
+        A(["⚡ <b>Sub Procedure Begins</b>"]):::startNode --> B["<b>On Error GoTo ErrorHandler</b><br/><i>Arms the exception catch latch</i>"]:::entryNode
+        B --> C["<b>Freeze Application UI:</b><br/><code>ScreenUpdating = False</code><br/><code>EnableEvents = False</code>"]:::entryNode
     end
 
-    subgraph BusinessLogic["2. Core Automation Engine"]
-        C --> D["Execute Business Logic<br/>Transform Data, Query Tables, Build Reports"]
-        D --> E{"Runtime Error Occurs?"}
+    subgraph BusinessLogic["⚙️ 2. Core Automation Pipeline"]
+        C --> D["<b>Execute Business Logic</b><br/>Parse Datasets, Update PivotTables, Generate Files"]:::logicNode
+        D --> E{"Runtime Exception<br/>Occurs?"}:::decisionNode
     end
 
-    subgraph HappyPath["3. Clean Exit (Happy Path)"]
-        E -- No --> CE["<b>CleanExit:</b><br/>Always executes before Sub exits"]
+    subgraph HappyPath["✅ 3. Normal Completion"]
+        E -- "❌ No Error" --> CE["<b>CleanExit:</b><br/>Standard exit label"]:::cleanNode
     end
 
-    subgraph TrapPath["4. Error Trap Handler (Exception Path)"]
-        E -- Yes --> EH["<b>ErrorHandler:</b><br/>Capture Err.Number & Err.Description"]
-        EH --> LOG["Log to File / DB / Admin MsgBox"]
-        LOG --> RES["<b>Resume CleanExit</b><br/>Route back to state restore!"]
+    subgraph TrapPath["🚨 4. Exception Handler (Trap Fired)"]
+        E -- "⚠️ Error Triggered" --> EH["<b>ErrorHandler:</b><br/>Capture <code>Err.Number</code> & <code>Err.Description</code>"]:::trapNode
+        EH --> LOG["<b>Diagnostic Logging</b><br/>Write to audit sheet or display Admin MsgBox"]:::trapNode
+        LOG --> RES["<b>Resume CleanExit</b><br/><i>Clears error latch & routes to restoration!</i>"]:::resumeNode
         RES --> CE
     end
 
-    subgraph Restore["5. State Restoration"]
-        CE --> RESTORE["<b>Guaranteed State Restore:</b><br/>ScreenUpdating = True<br/>EnableEvents = True<br/>Calculation = xlAutomatic"]
-        RESTORE --> DONE["Exit Sub"]
+    subgraph Restore["🔄 5. Guaranteed State Restoration"]
+        CE --> RESTORE["<b>Guaranteed State Restore:</b><br/><code>ScreenUpdating = True</code><br/><code>EnableEvents = True</code><br/><code>Calculation = xlAutomatic</code>"]:::restoreNode
+        RESTORE --> DONE(["🏁 <b>Exit Sub (Safe Termination)</b>"]):::endNode
     end
 
-    style Setup fill:#181a24,stroke:#38bdf8,stroke-width:2px
-    style BusinessLogic fill:#12141c,stroke:#f59e0b,stroke-width:2px
-    style HappyPath fill:#10121a,stroke:#10b981,stroke-width:2px
-    style TrapPath fill:#181a24,stroke:#ef4444,stroke-width:2px
-    style Restore fill:#10121a,stroke:#38bdf8,stroke-width:2px
+    classDef startNode fill:#1e1b4b,stroke:#8b5cf6,stroke-width:2px,color:#f8fafc;
+    classDef entryNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
+    classDef logicNode fill:#1e293b,stroke:#94a3b8,stroke-width:2px,color:#f8fafc;
+    classDef decisionNode fill:#334155,stroke:#f59e0b,stroke-width:2px,color:#fef3c7;
+    classDef cleanNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+    classDef trapNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#fef2f2;
+    classDef resumeNode fill:#4c1d95,stroke:#a855f7,stroke-width:2px,color:#f5f3ff;
+    classDef restoreNode fill:#042f2e,stroke:#14b8a6,stroke-width:2px,color:#ccfbf1;
+    classDef endNode fill:#0f172a,stroke:#64748b,stroke-width:2px,color:#94a3b8;
 ```
 
 ---

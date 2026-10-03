@@ -32,19 +32,26 @@ updated: 2026-10-03
 ## 🧠 The Visual Mental Model: The Odometer in the Glovebox
 
 ```mermaid
-flowchart LR
-    subgraph DimCall["Regular Dim Variable (Scratchpad)"]
-        D1["Call 1: Dim counter = 0 -> counter = 1"] --> D2["Exit: Memory ERASED 💥"]
-        D2 --> D3["Call 2: Dim counter = 0 -> counter = 1 (Lost!)"]
+%%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
+flowchart TD
+    subgraph DimPath["📝 Regular Dim Variable (Ephemeral Scratchpad)"]
+        D1["<b>Execution 1</b><br/><code>Dim counter = 0</code> ➡️ <code>counter = 1</code>"]:::dimNode
+        D2["💥 <b>Hits 'End Sub'</b><br/>Stack Frame Deallocated ➡️ Memory ERASED!"]:::dangerNode
+        D3["<b>Execution 2</b><br/><code>Dim counter = 0</code> ➡️ <code>counter = 1</code><br/><i>(Previous state completely lost!)</i>"]:::dimNode
+        D1 --> D2 --> D3
     end
 
-    subgraph StaticCall["Static Variable (Car Odometer)"]
-        S1["Call 1: Static counter = 0 -> counter = 1"] --> S2["Exit: Value '1' LOCKED IN 🔒"]
-        S2 --> S3["Call 2: Retains 1 -> counter = 2 (Preserved!)"]
+    subgraph StaticPath["🔒 Static Variable (Persistent Odometer)"]
+        S1["<b>Execution 1</b><br/><code>Static counter = 0</code> ➡️ <code>counter = 1</code>"]:::staticNode
+        S2["🛡️ <b>Hits 'End Sub'</b><br/>Value '1' Preserved in Memory Heap!"]:::safeNode
+        S3["<b>Execution 2</b><br/>Retains '1' ➡️ <code>counter = 2</code><br/><i>(State successfully remembered!)</i>"]:::staticNode
+        S1 --> S2 --> S3
     end
 
-    style DimCall fill:#181a24,stroke:#ef4444,stroke-width:1.5px
-    style StaticCall fill:#12141c,stroke:#10b981,stroke-width:2px
+    classDef dimNode fill:#1e293b,stroke:#64748b,stroke-width:1.5px,color:#f8fafc;
+    classDef dangerNode fill:#450a0a,stroke:#ef4444,stroke-width:2px,color:#fef2f2;
+    classDef staticNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
+    classDef safeNode fill:#092e20,stroke:#34d399,stroke-width:2px,color:#d1fae5;
 ```
 
 - **Normal `Dim` variable**: Like a sticky note you write on, use during a phone call, and shred the moment you hang up.
