@@ -1,0 +1,8 @@
+{
+  "enableDataviewJs": true,
+  "enableInlineDataviewJs": true,
+  "enableInlineDataview": true,
+  "maxRecursiveRenderDepth": 4,
+  "showResultCount": true,
+  "defaultDateFormat": "yyyy-MM-dd"
+}

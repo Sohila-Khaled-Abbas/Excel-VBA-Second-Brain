@@ -1,5 +1,5 @@
 ---
-type: concept
+type: hub
 domain: VBA
 topic: Fundamentals
 difficulty: beginner
@@ -8,16 +8,122 @@ source: Udemy
 related_concepts:
   - "[[Variables]]"
   - "[[Data Types]]"
+  - "[[Dim Statement]]"
+  - "[[Constants]]"
+  - "[[Option Explicit]]"
+  - "[[Scope]]"
 tags:
   - vba
   - variables
+  - data-types
+  - memory
+  - hub
 created: 2026-10-03
 updated: 2026-10-03
 ---
 
-# Variables & Data Types Hub
+# Variables & Data Types Architecture Hub
 
-- [[Variables]]: Definition, memory allocation, and object assignment (`Set`).
-- [[Data Types]]: Byte sizes, numeric bounds, `Long` vs `Integer`, `Double`.
-- [[Dim Statement]]: Syntax and multiple declaration rules.
-- [[Option Explicit]]: Mandatory declaration compiler directive.
+> [!important]
+> **Foundational Pillar**: Before writing loops, automating reporting workbooks, or handling API calls, you must master how Excel VBA allocates, manages, and protects data in RAM.
+
+---
+
+## 🗺️ Architectural Concept Map
+
+```mermaid
+flowchart TD
+    subgraph Declarations["1. Declaration & Compiler Directives"]
+        OE["[[Option Explicit]]<br/><i>Mandatory compiler rule</i>"]
+        DIM["[[Dim Statement]]<br/><i>Dimension memory in RAM</i>"]
+        CST["[[Constants]]<br/><i>Compile-time immutable values</i>"]
+    end
+
+    subgraph MemoryTypes["2. Memory Containers & Types"]
+        VAR["[[Variables]]<br/><i>Dynamic named memory boxes</i>"]
+        DT["[[Data Types]]<br/><i>Long, Double, String, Boolean, Variant</i>"]
+    end
+
+    subgraph Architecture["3. Visibility & Parameter Passing"]
+        SCP["[[Scope]]<br/><i>Local vs Module vs Global</i>"]
+        STC["[[Static Variables]]<br/><i>Persistent local state</i>"]
+        PAR["[[ByVal vs ByRef]]<br/><i>Clone value vs pass pointer</i>"]
+    end
+
+    OE --> DIM
+    DIM --> VAR
+    VAR --> DT
+    CST --> VAR
+    VAR --> SCP
+    SCP --> STC
+    SCP --> PAR
+
+    style Declarations fill:#181a24,stroke:#38bdf8,stroke-width:2px
+    style MemoryTypes fill:#12141c,stroke:#10b981,stroke-width:2px
+    style Architecture fill:#10121a,stroke:#f59e0b,stroke-width:2px
+```
+
+---
+
+## 🧭 Core Concept Knowledge Grid
+
+<div class="vba-grid-3">
+
+<div class="vba-card">
+<div class="vba-card-header">📦 [[Variables]]</div>
+
+Named RAM storage for dynamic values and Excel objects (`Range`, `Worksheet`). Learn the `Set` keyword for objects and the Comma Trap.
+</div>
+
+<div class="vba-card">
+<div class="vba-card-header">📊 [[Data Types]]</div>
+
+Byte allocations and bounds. Why `Long` has superseded `Integer` in 32/64-bit systems, and when to avoid `Variant` bloat.
+</div>
+
+<div class="vba-card">
+<div class="vba-card-header">🛡️ [[Option Explicit]]</div>
+
+The non-negotiable directive that forces explicit variable declaration, preventing silent typo bugs and memory leaks.
+</div>
+
+<div class="vba-card">
+<div class="vba-card-header">🔒 [[Constants]]</div>
+
+Eliminate "magic numbers" by binding unchanging values to names at compile-time (`Const TAX_RATE As Double = 0.0825`).
+</div>
+
+<div class="vba-card">
+<div class="vba-card-header">👁️ [[Scope]]</div>
+
+The 4-level visibility and lifetime hierarchy (Local, Static, Module-Private, Project-Public) and the risk of VBA state resets.
+</div>
+
+<div class="vba-card">
+<div class="vba-card-header">🔄 [[ByVal vs ByRef]]</div>
+
+Understand memory addresses vs value cloning when passing parameters, and why VBA defaults to dangerous `ByRef`.
+</div>
+
+</div>
+
+---
+
+## 📊 Quick Reference: Primitive Types & Memory Footprint
+
+| Data Type | Suffix | Bytes in RAM | Range / Values | Primary Excel Use Case |
+| :--- | :---: | :---: | :--- | :--- |
+| **`Long`** | `&` | 4 bytes | -2,147,483,648 to 2,147,483,647 | **Row counters**, loop indices, record IDs |
+| **`Double`** | `#` | 8 bytes | ~1.797 × 10^308 (15 digits precision) | **Financial amounts**, currency, percentages |
+| **`String`** | `$` | 10 bytes + 2/char | Up to ~2 billion characters | Names, file paths, status codes |
+| **`Boolean`** | None | 2 bytes | `True` (-1) or `False` (0) | Status flags, condition checks |
+| **`Date`** | None | 8 bytes | Jan 1, 100 to Dec 31, 9999 | Timestamps, report dates, deadlines |
+| **`Variant`** | None | 16-24 bytes | Anything (dynamic) | Excel range arrays, error values, missing args |
+
+---
+
+## 🔗 Connected Navigation
+- **Syntax Hub**: [[VBA Syntax]]
+- **Procedures Hub**: [[Procedures & Functions]]
+- **Object Hierarchy**: [[03 - Excel Object Model/Excel Object Model]]
+- **Course Section**: [[Section 05 - Working with Variables]]
