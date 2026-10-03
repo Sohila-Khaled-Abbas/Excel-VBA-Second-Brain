@@ -1,0 +1,15 @@
+{
+  "accentColor": "#107C41",
+  "baseFontSize": 16,
+  "cssTheme": "Minimal",
+  "enabledCssSnippets": [
+    "second-brain",
+    "metadata-icon-auto-gen"
+  ],
+  "interfaceFontFamily": "Inter",
+  "monospaceFontFamily": "Source Code Pro",
+  "nativeMenus": false,
+  "showRibbon": true,
+  "textFontFamily": "Inter",
+  "theme": "obsidian"
+}

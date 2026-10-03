@@ -1,0 +1,134 @@
+/*
+  second-brain.css
+  Obsidian Visual System for Excel VBA Second Brain
+  Design: Deep charcoal background (#0F1117), Microsoft Excel Emerald Forest Green (#107C41 / #21A366),
+  crisp typography, polished Dataview tables, callouts, and status pills.
+*/
+
+:root {
+  --vba-green: #107C41;
+  --vba-green-bright: #21A366;
+  --vba-green-glow: rgba(16, 124, 65, 0.25);
+  --vba-dark-bg: #0F1117;
+  --vba-card-bg: #181A24;
+  --vba-border: rgba(255, 255, 255, 0.08);
+  --vba-cyan: #38bdf8;
+  --vba-amber: #f59e0b;
+  --vba-purple: #a855f7;
+  --vba-red: #ef4444;
+}
+
+/* Callout Enhancements */
+.callout[data-callout="tip"] {
+  border-left-color: var(--vba-green-bright) !important;
+  background-color: rgba(33, 163, 102, 0.05) !important;
+}
+
+.callout[data-callout="warning"] {
+  border-left-color: var(--vba-amber) !important;
+  background-color: rgba(245, 158, 11, 0.05) !important;
+}
+
+.callout[data-callout="important"] {
+  border-left-color: var(--vba-cyan) !important;
+  background-color: rgba(56, 189, 248, 0.05) !important;
+}
+
+.callout[data-callout="example"] {
+  border-left-color: var(--vba-green) !important;
+  background-color: rgba(16, 124, 65, 0.05) !important;
+}
+
+.callout[data-callout="question"] {
+  border-left-color: var(--vba-purple) !important;
+  background-color: rgba(168, 85, 247, 0.05) !important;
+}
+
+/* Dataview Table Polish */
+.dataview.table-view-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--vba-border);
+  margin: 1em 0;
+}
+
+.dataview.table-view-table thead th {
+  background-color: rgba(16, 124, 65, 0.12);
+  font-family: var(--font-heading, "Inter", sans-serif);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  border-bottom: 2px solid var(--vba-green-bright);
+  padding: 10px 14px;
+}
+
+.dataview.table-view-table tbody td {
+  padding: 8px 14px;
+  border-bottom: 1px solid var(--vba-border);
+  font-size: 0.88rem;
+}
+
+.dataview.table-view-table tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Status Badges */
+.status-badge-mastered {
+  color: #10b981;
+  background-color: rgba(16, 185, 129, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge-practiced {
+  color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge-learning {
+  color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge-remaining {
+  color: #94a3b8;
+  background-color: rgba(148, 163, 184, 0.12);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Card Grid Styling for Dashboards */
+.vba-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 1.5em 0;
+}
+
+.vba-card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--vba-border);
+  border-radius: 8px;
+  padding: 16px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.vba-card:hover {
+  border-color: var(--vba-green-bright);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,48 @@
+# ==========================================
+# Excel VBA Second Brain - Git Ignore Rules
+# ==========================================
+
+# --- Course Materials & Private Assets (Mandatory Separation) ---
+_private/
+_private/**
+*.xlsm
+*.xlsb
+*.xlsx
+*.zip
+*.pdf
+*.docx
+*.pptx
+credentials/
+secrets/
+.env
+*.key
+*.token
+
+# Note: Pure plain-text VBA exported modules (.bas, .cls, .frm) created as original
+# work by the learner may be committed, but proprietary binary workbooks (*.xlsm, *.xlsb)
+# from course downloads are strictly excluded.
+
+# --- Operating System Artifacts ---
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+~$*
+
+# --- Obsidian Workspace & Local Cache ---
+# Preserve settings, themes, and community plugins, but ignore active session/window state
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache/
+.obsidian/plugins/*/data.json.bak
+
+# --- Temporary / Scratch Files ---
+tmp/
+temp/
+*.tmp
+*.log
+*.bak

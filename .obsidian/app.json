@@ -1,0 +1,16 @@
+{
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "assets",
+  "deleteUnlinkedAttachments": "system",
+  "newFileFolderPath": "00 - Dashboard",
+  "newFileLocation": "folder",
+  "openBehavior": "daily",
+  "promptDelete": false,
+  "readableLineLength": false,
+  "showLineNumber": true,
+  "showUnsupportedFiles": true,
+  "smartIndentList": true,
+  "strictLineBreaks": false,
+  "trashOption": "system",
+  "useMarkdownLinks": false
+}
