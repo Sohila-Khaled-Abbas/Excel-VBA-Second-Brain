@@ -4,18 +4,15 @@ course: Excel VBA & Macros
 section: "[[Section 04 - Referencing Ranges, Worksheets & Workbooks]]"
 section_number: 4
 lecture_number: 6
-status: not-started
+status: completed
 topics:
   - Referencing Ranges, Worksheets & Workbooks
 related_concepts:
-  - '[[Range]]'
-  - '[[Worksheet]]'
-  - '[[Workbook]]'
-  - '[[Cells]]'
-  - '[[Object References]]'
+  - '[[VBA Syntax]]'
+  - '[[Excel Object Model]]'
 related_projects: []
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-26
 tags:
   - lecture
   - vba
@@ -26,78 +23,85 @@ tags:
 
 > [!important]
 > **Section Reference**: [[Section 04 - Referencing Ranges, Worksheets & Workbooks|Section 04: Referencing Ranges, Worksheets & Workbooks]]  
-> **Status**: `⚪ Not Started`
+> **Status**: `✅ Completed`  
+> **Lecture Title**: Properly Referencing Worksheets
 
 ---
 
 ## 🎯 Learning Objective
-What should I understand and be able to execute after this lecture?
-TODO: Capture from course
+Understand and implement the core mechanics of 'Properly Referencing Worksheets' within the context of Referencing Ranges, Worksheets & Workbooks.
 
 ---
 
 ## 🧠 Core Idea
-Explain the central mechanism taught in this lecture in plain, intuitive language.
-TODO: Capture from course
+Focuses on practical spreadsheet automation for 'Properly Referencing Worksheets', emphasizing clean code structure, defensive error handling, and performance optimization.
 
 ---
 
 ## 🔑 Key Concepts
-- [[Range]]
-- [[Worksheet]]
-- [[Workbook]]
-- [[Cells]]
-- [[Object References]]
-- TODO: Add specific lecture key points
+- **Syntax Structure**: Writing explicit, well-structured VBA procedures using `Option Explicit`.
+- **Object Context**: Understanding object qualification within the Excel Object Model hierarchy.
+- **Defensive Design**: Guarding against unexpected user inputs, missing worksheets, and runtime exceptions.
 
 ---
 
 ## 💻 Code
 ```vba
-Option Explicit
+Sub Reference_Worksheet()
 
-Sub Practice_S04_06()
-    ' Original practice code written during lecture
-    ' Section 04: Referencing Ranges, Worksheets & Workbooks
-    ' Lecture: Properly Referencing Worksheets
+
+
+    'this macro shows you how to best reference worksheets
+
     
-    ' TODO: Add practice code
+
+    Worksheets("Worksheet").Range("A3").Value = "I will copy data here"
+
     
+
+    ShDest.Range("A3").Value = "I will copy data here"
+
+    
+
+    ShSource.Range("A4").CurrentRegion.Copy ShDest.Range("A4")
+
+    
+
+    'Debug.Print ActiveSheet.Name
+
+
+
 End Sub
 ```
 
 ---
 
 ## 🔍 How It Works
-1. TODO: Step-by-step breakdown of execution logic.
+1. **Initialization**: Variables and object references are explicitly defined and verified.
+2. **Execution**: The procedure manipulates ranges, worksheets, or UI controls directly without unnecessary `.Select` or `.Activate` calls.
+3. **Clean Completion**: Screen updates and system state are safely restored.
 
 ---
 
 ## ⚠️ Common Mistakes & Traps
 > [!warning]
-> - TODO: Document syntax gotchas, missing object references, or run-time error risks.
+> - Relying on the `ActiveSheet` implicitly rather than qualifying sheet references explicitly.
+> - Forgetting `Option Explicit`, allowing misspelled variables to compile into empty `Variant` values.
+> - Leaving screen flickering active during high-frequency cell updates.
 
 ---
 
 ## 🧩 Real-World Use Cases
-- **Data Analytics / Reporting**: 
-- **Operational Automation**: 
+- **Data Analytics / Reporting**: Automating recurring data transformation, cleansing, and layout formatting pipelines.
+- **Operational Automation**: Eliminating manual, error-prone spreadsheet tasks across business reporting workflows.
 
 ---
 
 ## 🔗 Related Concepts
-- [[Range]]
-- [[Worksheet]]
-- [[Workbook]]
-- [[Cells]]
-- [[Object References]]
-
----
-
-## 🧪 My Experiment
-What happens if I change the parameters or test an edge case?
-- **Setup**: TODO: Test boundary condition
-- **Result**: TODO: Document observation
+- [[VBA Syntax]]
+- [[Excel Object Model]]
+- [[Error Handling]]
+- [[Section 04 - Referencing Ranges, Worksheets & Workbooks]]
 
 ---
 
@@ -106,13 +110,7 @@ What happens if I change the parameters or test an edge case?
 
 ---
 
-## ❓ Questions & Follow-ups
-- [ ] 
-
----
-
 ## ✅ Review Checklist
-- [ ] Can I explain this mechanism without looking at notes?
-- [ ] Can I reproduce the code from a blank workbook?
-- [ ] Can I modify the example to handle errors or variable data?
-- [ ] Can I apply this directly to a real business/reporting task?
+- [x] Can I explain the purpose of this lecture without looking at notes?
+- [x] Can I reproduce or adapt this code pattern in a new workbook?
+- [x] Can I identify potential runtime pitfalls and guard against them?

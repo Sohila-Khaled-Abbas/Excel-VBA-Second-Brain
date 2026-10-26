@@ -20,9 +20,9 @@ updated: 2026-10-03
 | Metric | Status / Count | Target |
 | :--- | :---: | :---: |
 | **Total Course Sections** | 21 Sections | 21 (100%) |
-| **Sections Completed** | 3 Sections | 21 (14%) |
-| **Total Lectures Completed** | 37 Lectures | 174 (21%) |
-| **Estimated Hours Logged** | ~4.8 Hours | 22.5 Hours |
+| **Sections Completed** | 4 Sections | 21 (19%) |
+| **Total Lectures Completed** | 33 Lectures | 174 (19%) |
+| **Estimated Hours Logged** | ~4.3 Hours | 22.5 Hours |
 | **Milestone Projects Completed** | 0 Projects | 3 Projects |
 | **Concepts Documented** | 37 Evergreen Notes | 50+ |
 | **Cookbook Snippets Built** | 4 Production Snippets | 25+ |
@@ -31,9 +31,10 @@ updated: 2026-10-03
 ---
 
 ## 🎯 Current Focus Area
-- **Domain**: [[VBA Object Model|Excel Object Model & Range References]]
-- **Section**: [[Section 04 - Referencing Ranges, Worksheets & Workbooks|Section 04: Referencing Ranges, Worksheets & Workbooks]]
-- **Active Challenge**: Mastering dynamic variable range selection and `End(xlUp)` last-row calculations.
+- **Domain**: [[Variables & Data Types|Variables, Memory Types & Scope]]
+- **Section**: [[Section 05 - Working with Variables|Section 05: Working with Variables]]
+- **Active Challenge**: Enforcing Option Explicit, selecting optimal data types (Long vs Integer), and managing object variable lifetime with the Set statement.
+
 
 ---
 

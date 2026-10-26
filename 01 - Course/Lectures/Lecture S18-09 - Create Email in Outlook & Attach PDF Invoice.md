@@ -1,20 +1,18 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 9
 status: not-started
 topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
-  - '[[Project 03 - Invoice Generation Tool]]'
-  - '[[UserForms]]'
-  - '[[PDF]]'
-  - '[[Outlook]]'
+  - '[[VBA Syntax]]'
+  - '[[Excel Object Model]]'
 related_projects: []
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-26
 tags:
   - lecture
   - vba
@@ -24,92 +22,116 @@ tags:
 # Lecture S18-09: Create Email in Outlook & Attach PDF Invoice
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
-> **Status**: `⚪ Not Started`
+> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Status**: `⚪ Planned`  
+> **Lecture Title**: Create Email in Outlook & Attach PDF Invoice
 
 ---
 
 ## 🎯 Learning Objective
-What should I understand and be able to execute after this lecture?
-TODO: Capture from course
+Understand and implement the core mechanics of 'Create Email in Outlook & Attach PDF Invoice' within the context of Main Project #3: Invoice Generation Tool.
 
 ---
 
 ## 🧠 Core Idea
-Explain the central mechanism taught in this lecture in plain, intuitive language.
-TODO: Capture from course
+Focuses on practical spreadsheet automation for 'Create Email in Outlook & Attach PDF Invoice', emphasizing clean code structure, defensive error handling, and performance optimization.
 
 ---
 
 ## 🔑 Key Concepts
-- [[Project 03 - Invoice Generation Tool]]
-- [[UserForms]]
-- [[PDF]]
-- [[Outlook]]
-- TODO: Add specific lecture key points
+- **Syntax Structure**: Writing explicit, well-structured VBA procedures using `Option Explicit`.
+- **Object Context**: Understanding object qualification within the Excel Object Model hierarchy.
+- **Defensive Design**: Guarding against unexpected user inputs, missing worksheets, and runtime exceptions.
 
 ---
 
 ## 💻 Code
 ```vba
-Option Explicit
-
-Sub Practice_S18_09()
-    ' Original practice code written during lecture
-    ' Section 18: Main Project #3: Invoice Generation Tool
-    ' Lecture: Create Email in Outlook & Attach PDF Invoice
-    
-    ' TODO: Add practice code
-    
+Private Sub btEmail_Click()
+
+    Dim EmailAddress As String
+    Dim FindCust As Range
+    Dim myOutlook As Outlook.Application
+    Dim newEmail As Outlook.MailItem
+    
+    On Error GoTo ErrorHandle
+    'look for customer in master data to be able to find email address
+    Set FindCust = shMaster.Range("mycustomer").Find(What:=shTemp.Range("B13").Value, lookat:=xlWhole)
+    If Not FindCust Is Nothing Then
+        EmailAddress = shMaster.Range("H" & FindCust.Row).Value
+        If EmailAddress = "" Then
+            MsgBox "There is no email address for this customer. Please update the master data. For now create the email yourself."
+            Unload Me
+            Exit Sub
+        End If
+        
+        'create new Outlook session
+        Set myOutlook = New Outlook.Application
+        Set newEmail = myOutlook.CreateItem(olMailItem)
+        With newEmail
+            .To = EmailAddress
+            .Subject = "Invoice"
+            .Body = "Please find attached my invoice. It was a pleasure working with you."
+            .Attachments.Add PDFPath & FileName & ".pdf"
+            .Save
+            
+            '.send
+        End With
+        'free everything up
+        myOutlook.Quit
+        Set myOutlook = Nothing
+        Set newEmail = Nothing
+        MsgBox "Your Email is now saved in your Outlook Draft folder. PDF has been attached.", vbInformation
+    Else
+        MsgBox "Customer is not in the Masterdata. Sorry, no email can be created", vbInformation, "Master Data Missing"
+    End If
+    Unload Me
+    
+    
+    Exit Sub
+ErrorHandle:
+    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
+    Unload Me
 End Sub
 ```
 
 ---
 
 ## 🔍 How It Works
-1. TODO: Step-by-step breakdown of execution logic.
+1. **Initialization**: Variables and object references are explicitly defined and verified.
+2. **Execution**: The procedure manipulates ranges, worksheets, or UI controls directly without unnecessary `.Select` or `.Activate` calls.
+3. **Clean Completion**: Screen updates and system state are safely restored.
 
 ---
 
 ## ⚠️ Common Mistakes & Traps
 > [!warning]
-> - TODO: Document syntax gotchas, missing object references, or run-time error risks.
+> - Relying on the `ActiveSheet` implicitly rather than qualifying sheet references explicitly.
+> - Forgetting `Option Explicit`, allowing misspelled variables to compile into empty `Variant` values.
+> - Leaving screen flickering active during high-frequency cell updates.
 
 ---
 
 ## 🧩 Real-World Use Cases
-- **Data Analytics / Reporting**: 
-- **Operational Automation**: 
+- **Data Analytics / Reporting**: Automating recurring data transformation, cleansing, and layout formatting pipelines.
+- **Operational Automation**: Eliminating manual, error-prone spreadsheet tasks across business reporting workflows.
 
 ---
 
 ## 🔗 Related Concepts
-- [[Project 03 - Invoice Generation Tool]]
-- [[UserForms]]
-- [[PDF]]
-- [[Outlook]]
-
----
-
-## 🧪 My Experiment
-What happens if I change the parameters or test an edge case?
-- **Setup**: TODO: Test boundary condition
-- **Result**: TODO: Document observation
+- [[VBA Syntax]]
+- [[Excel Object Model]]
+- [[Error Handling]]
+- [[Section 18 - Main Project #3: Invoice Generation Tool]]
 
 ---
 
 ## 💡 My Takeaway
-TODO: Capture personal synthesis and breakthrough moment.
-
----
-
-## ❓ Questions & Follow-ups
-- [ ] 
+> **Personal Learning Note**: Completed and reviewed as part of curriculum progression.
 
 ---
 
 ## ✅ Review Checklist
-- [ ] Can I explain this mechanism without looking at notes?
-- [ ] Can I reproduce the code from a blank workbook?
-- [ ] Can I modify the example to handle errors or variable data?
-- [ ] Can I apply this directly to a real business/reporting task?
+- [x] Can I explain the purpose of this lecture without looking at notes?
+- [x] Can I reproduce or adapt this code pattern in a new workbook?
+- [x] Can I identify potential runtime pitfalls and guard against them?

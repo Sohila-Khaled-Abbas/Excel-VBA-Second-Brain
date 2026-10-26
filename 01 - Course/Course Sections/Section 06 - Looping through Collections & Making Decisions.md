@@ -7,16 +7,48 @@ status: not-started
 tags:
   - course-section
   - vba
+  - section-06
 ---
 
 # Section 06: Looping through Collections & Making Decisions
 
 > [!important]
-> **Curriculum Pillar**: Section 6 contains **10 lectures**.
-> **Related Concepts**: [[Collections]], [[For Each]], [[If Statements]], [[Select Case]], [[With Statement]]
+> **Curriculum Pillar**: Section 6 contains **10 lectures**.  
+> **Status**: `NOT-STARTED`  
+> **Course Practice Files**: `SectionFiles/S6_Collections_With_IF.xlsm`, `S6_Collections_With_IF_Start.xlsx`
 
-## 🎯 Section Objectives
-TODO: Synthesize high-level section takeaways and core automation capabilities.
+---
+
+## 🎯 Section Objectives & Automation Capabilities
+- Master collections as built-in object containers (`Worksheets`, `Workbooks`, `Cells`).
+- Streamline repetitive object references and boost performance using `With...End With` blocks.
+- Iterate over entire collections in a single step using `For Each...Next`.
+- Direct program flow with conditional branching: single-line `If`, multi-line `If-Then-ElseIf-Else`, and nested conditions.
+- Replace complex, unwieldy If-structures with clean `Select Case` evaluation blocks.
+- Understand controlled jumps with `GoTo` (specifically for error exit pathways).
+
+---
+
+## 🧠 Architectural Takeaways & Mental Models
+- **`With...End With` Construct**: Eliminates redundant object resolution. Each dot inside the block refers to the parent object. Not only cleaner to read, but faster because Excel resolves the object pointer once.
+- **`For Each...Next` on Collections**: The most readable and safest iteration construct. No index tracking required:
+  ```vba
+  Dim ws As Worksheet
+  For Each ws In ThisWorkbook.Worksheets
+      ws.Protect Password:="Secret"
+  Next ws
+  ```
+- **`Select Case`**: Far superior to cascading `ElseIf` ladders when testing a single variable against multiple outcomes, discrete lists, or numeric ranges (`Case 1 To 10`, `Case Is > 100`, `Case "A", "B"`).
+- **GoTo Discipline**: Never use `GoTo` for standard program loops ("spaghetti code"). Reserve `GoTo` strictly for clean error handling exits (`On Error GoTo ErrorHandler`).
+
+---
+
+## ⚠️ Common Pitfalls & Gotchas
+> [!warning]
+- Forgetting the leading dot inside a `With` block (e.g. writing `Range("A1")` instead of `.Range("A1")`) breaks encapsulation and points back to the `ActiveSheet`!
+- Modifying a collection (such as deleting sheets or rows) inside a `For Each` loop can cause skipped elements or runtime crashes. Use backwards `For i = count To 1 Step -1` instead.
+
+---
 
 ## 📚 Lecture Index
 
@@ -31,7 +63,10 @@ TODO: Synthesize high-level section takeaways and core automation capabilities.
 - [ ] [[Lecture S06-09 - Bonus Unhide All Sheets in One Go|Lecture 09: Bonus: Unhide All Sheets in One Go]]
 - [ ] [[Lecture S06-10 - Key Takeaways for Collections & Decision Making in VBA|Lecture 10: Key Takeaways for Collections & Decision Making in VBA]]
 
+---
+
 ## 🔗 Section Knowledge Links
 - **Parent Roadmap**: [[Course Roadmap]]
 - **Course Overview**: [[Course Overview]]
-- **Core Concepts**: [[Collections]], [[For Each]], [[If Statements]], [[Select Case]], [[With Statement]]
+- **Progress Tracking**: [[Progress Dashboard]]
+- **Course Materials Guide**: [[Course Materials & Workbooks Guide]]

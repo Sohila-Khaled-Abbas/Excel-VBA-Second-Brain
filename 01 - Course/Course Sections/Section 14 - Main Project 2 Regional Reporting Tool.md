@@ -7,16 +7,45 @@ status: not-started
 tags:
   - course-section
   - vba
+  - section-14
 ---
 
 # Section 14: Main Project #2: Regional Reporting Tool
 
 > [!important]
-> **Curriculum Pillar**: Section 14 contains **11 lectures**.
-> **Related Concepts**: [[Project 02 - Regional Sales Reporting Tool]], [[File Automation]], [[Pivot Automation]], [[CSV]]
+> **Curriculum Pillar**: Section 14 contains **11 lectures**.  
+> **Status**: `NOT-STARTED`  
+> **Course Practice Files**: `Milestones/SalesReporting/Monthly_Sales_Reporting_Template_Tool.xlsm`, 4 regional sales data workbooks
 
-## 🎯 Section Objectives
-TODO: Synthesize high-level section takeaways and core automation capabilities.
+---
+
+## 🎯 Section Objectives & Automation Capabilities
+- Build **Main Project #2: Regional Sales Reporting Tool** (Complete Multi-File Consolidation & Reporting Pipeline).
+- Implement multi-file workbook batch ingestion using `FileDialog` with `AllowMultiSelect:=True`.
+- Dynamically transfer sales data into a centralized raw repository while updating status bars.
+- Generate formatted, presentation-ready regional and managerial reports from a master template.
+- Export clean semicolon-delimited CSV text files for enterprise ERP compatibility.
+- Implement administrative security: password-protected tab hiding (`xlSheetVeryHidden`) and automated audit tracking.
+
+---
+
+## 🧠 Architectural Takeaways & Mental Models
+- **Milestone Project #2**: Represents a complete end-to-end Data Engineering & BI pipeline built natively in Excel VBA.
+- **Modular Pipeline Architecture**:
+  1. `Import_Sales`: Batch file picker, clipboard bypass, sequential append to `RawData`.
+  2. `Create_Reports`: Refresh pivot caches, apply template formatting, generate static value exports.
+  3. `Create_CSV`: Custom `FreeFile` streaming with guaranteed semicolon delimiters.
+  4. `Admin_Tasks`: Password prompt protecting sensitive mapping and configuration tabs.
+- **`xlSheetVeryHidden`**: Makes tabs completely invisible in the standard Excel UI (unhide option is disabled); only accessible via VBA code with the correct administrative password.
+
+---
+
+## ⚠️ Common Pitfalls & Gotchas
+> [!warning]
+- Opening multiple workbooks without setting `Application.ScreenUpdating = False` causes severe screen flashing and multiplies execution time by 5-10x.
+- Always check if the user clicked "Cancel" on the `FileDialog` before attempting to loop through `SelectedItems`.
+
+---
 
 ## 📚 Lecture Index
 
@@ -32,7 +61,10 @@ TODO: Synthesize high-level section takeaways and core automation capabilities.
 - [ ] [[Lecture S14-10 - Key Takeaways & Tips for VBA based Excel Tools|Lecture 10: Key Takeaways & Tips for VBA based Excel Tools]]
 - [ ] [[Lecture S14-11 - Second Milestone Completed!|Lecture 11: Second Milestone Completed!]]
 
+---
+
 ## 🔗 Section Knowledge Links
 - **Parent Roadmap**: [[Course Roadmap]]
 - **Course Overview**: [[Course Overview]]
-- **Core Concepts**: [[Project 02 - Regional Sales Reporting Tool]], [[File Automation]], [[Pivot Automation]], [[CSV]]
+- **Progress Tracking**: [[Progress Dashboard]]
+- **Course Materials Guide**: [[Course Materials & Workbooks Guide]]

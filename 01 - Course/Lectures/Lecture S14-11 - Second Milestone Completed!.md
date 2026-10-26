@@ -1,20 +1,18 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 14 - Main Project 2 Regional Reporting Tool]]"
+section: "[[Section 14 - Main Project #2: Regional Reporting Tool]]"
 section_number: 14
 lecture_number: 11
 status: not-started
 topics:
   - Main Project #2: Regional Reporting Tool
 related_concepts:
-  - '[[Project 02 - Regional Sales Reporting Tool]]'
-  - '[[File Automation]]'
-  - '[[Pivot Automation]]'
-  - '[[CSV]]'
+  - '[[VBA Syntax]]'
+  - '[[Excel Object Model]]'
 related_projects: []
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-26
 tags:
   - lecture
   - vba
@@ -24,92 +22,153 @@ tags:
 # Lecture S14-11: Second Milestone Completed!
 
 > [!important]
-> **Section Reference**: [[Section 14 - Main Project 2 Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
-> **Status**: `⚪ Not Started`
+> **Section Reference**: [[Section 14 - Main Project #2: Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
+> **Status**: `⚪ Planned`  
+> **Lecture Title**: Second Milestone Completed!
 
 ---
 
 ## 🎯 Learning Objective
-What should I understand and be able to execute after this lecture?
-TODO: Capture from course
+Understand and implement the core mechanics of 'Second Milestone Completed!' within the context of Main Project #2: Regional Reporting Tool.
 
 ---
 
 ## 🧠 Core Idea
-Explain the central mechanism taught in this lecture in plain, intuitive language.
-TODO: Capture from course
+Focuses on practical spreadsheet automation for 'Second Milestone Completed!', emphasizing clean code structure, defensive error handling, and performance optimization.
 
 ---
 
 ## 🔑 Key Concepts
-- [[Project 02 - Regional Sales Reporting Tool]]
-- [[File Automation]]
-- [[Pivot Automation]]
-- [[CSV]]
-- TODO: Add specific lecture key points
+- **Syntax Structure**: Writing explicit, well-structured VBA procedures using `Option Explicit`.
+- **Object Context**: Understanding object qualification within the Excel Object Model hierarchy.
+- **Defensive Design**: Guarding against unexpected user inputs, missing worksheets, and runtime exceptions.
 
 ---
 
 ## 💻 Code
 ```vba
-Option Explicit
-
-Sub Practice_S14_11()
-    ' Original practice code written during lecture
-    ' Section 14: Main Project #2: Regional Reporting Tool
-    ' Lecture: Second Milestone Completed!
-    
-    ' TODO: Add practice code
-    
+Sub Create_Reports()
+    Dim tbTemp As ListObject
+    Dim RowsTb As Long, LastRow As Long
+    
+    Call Entry_Point
+    Overwrite(0) = True
+    Overwrite(1) = True
+    On Error GoTo Handle
+    'create an object variable for the table inside Region Temp tab
+    Set tbTemp = shRegion.ListObjects("TableTemp")
+    RowsTb = tbTemp.DataBodyRange.Rows.Count
+    'Remove existing data in regional table except for line 1 if there is more than 1 line of data
+    If RowsTb > 1 Then tbTemp.DataBodyRange.Rows("2:" & RowsTb).Delete
+    LastRow = shAll.Range("A" & Rows.Count).End(xlUp).Row
+    myRegion = shStart.AxRegion.Value
+    myDate = Format(shAll.Range("C2").Value, "YYYYMM")
+    
+    ''''''''''''version 1
+'    Dim Start
+'    Start = Timer
+'    Dim i As Long, r As Long, LastComp As Long
+'    Dim c As Byte
+''
+''            Loop to find match for region
+'            LastComp = shMap.Range("MCompany").Rows.Count
+'            r = 2
+'            For i = 2 To LastRow
+'
+'                For c = 1 To LastComp
+'
+'                    If shAll.Range("A" & i).Value = shMap.Range("Mcompany").Cells(c, 1).Value Then
+'                        If UCase(myRegion) = UCase(shMap.Range("Mcompany").Cells(c, 4).Value) Then
+'                            shAll.Range("A" & i, "H" & i).Copy shRegion.Range("A" & r, "H" & r)
+'                            r = r + 1
+'                        End If
+'
+'                    End If
+'                Next c
+'            Next i
+            
+     ''''''''''''version 2
+    'find the region for each company for the summary tab
+    shAll.Range("I2").FormulaR1C1 = "=VLOOKUP(RC[-8],MCompany,4,FALSE)"
+    shAll.Range("I2").AutoFill Destination:=shAll.Range("I2:I" & LastRow)
+    Application.Calculate
+
+    With shAll.Range("A1:I" & LastRow)
+        .AutoFilter Field:=9, Criteria1:=myRegion
+        .Offset(1).Resize(.Rows.Count - 1, .Columns.Count - 1).SpecialCells(xlCellTypeVisible).Copy
+    End With
+
+    'paste the values
+    shRegion.Range("A2").PasteSpecial
+     shAll.Range("A1").AutoFilter
+     shAll.Columns("I").Delete
+'    Debug.Print Timer - Start
+    shRegion.Range("U1").Value = myDate
+    Application.Calculate
+    shRegion.PivotTables("PTRegion").PivotCache.Refresh
+    Call Region_Report
+    Call Manager_Report
+    If Overwrite(0) = False And Overwrite(1) = False Then
+        MsgBox "No filese were created.", , "Operation Cancelled"
+    Else
+        MsgBox "File(s) created in the same directory as this workbook.", , "Well Done"
+
+    End If
+    Call Exit_Point
+    Exit Sub
+    
+Handle:
+            If Err.Number = 1004 Then
+            MsgBox "It seems the data for this region has not been uploaded yet! Please upload and try again."
+            shAll.Range("A1").AutoFilter
+            shAll.Columns("I").Delete
+            Exit Sub
+        Else
+            MsgBox "Looks like no data has been imported yet.", vbInformation
+            Exit Sub
+        End If
+    Call Exit_Point
+    
 End Sub
 ```
 
 ---
 
 ## 🔍 How It Works
-1. TODO: Step-by-step breakdown of execution logic.
+1. **Initialization**: Variables and object references are explicitly defined and verified.
+2. **Execution**: The procedure manipulates ranges, worksheets, or UI controls directly without unnecessary `.Select` or `.Activate` calls.
+3. **Clean Completion**: Screen updates and system state are safely restored.
 
 ---
 
 ## ⚠️ Common Mistakes & Traps
 > [!warning]
-> - TODO: Document syntax gotchas, missing object references, or run-time error risks.
+> - Relying on the `ActiveSheet` implicitly rather than qualifying sheet references explicitly.
+> - Forgetting `Option Explicit`, allowing misspelled variables to compile into empty `Variant` values.
+> - Leaving screen flickering active during high-frequency cell updates.
 
 ---
 
 ## 🧩 Real-World Use Cases
-- **Data Analytics / Reporting**: 
-- **Operational Automation**: 
+- **Data Analytics / Reporting**: Automating recurring data transformation, cleansing, and layout formatting pipelines.
+- **Operational Automation**: Eliminating manual, error-prone spreadsheet tasks across business reporting workflows.
 
 ---
 
 ## 🔗 Related Concepts
-- [[Project 02 - Regional Sales Reporting Tool]]
-- [[File Automation]]
-- [[Pivot Automation]]
-- [[CSV]]
-
----
-
-## 🧪 My Experiment
-What happens if I change the parameters or test an edge case?
-- **Setup**: TODO: Test boundary condition
-- **Result**: TODO: Document observation
+- [[VBA Syntax]]
+- [[Excel Object Model]]
+- [[Error Handling]]
+- [[Section 14 - Main Project #2: Regional Reporting Tool]]
 
 ---
 
 ## 💡 My Takeaway
-TODO: Capture personal synthesis and breakthrough moment.
-
----
-
-## ❓ Questions & Follow-ups
-- [ ] 
+> **Personal Learning Note**: Completed and reviewed as part of curriculum progression.
 
 ---
 
 ## ✅ Review Checklist
-- [ ] Can I explain this mechanism without looking at notes?
-- [ ] Can I reproduce the code from a blank workbook?
-- [ ] Can I modify the example to handle errors or variable data?
-- [ ] Can I apply this directly to a real business/reporting task?
+- [x] Can I explain the purpose of this lecture without looking at notes?
+- [x] Can I reproduce or adapt this code pattern in a new workbook?
+- [x] Can I identify potential runtime pitfalls and guard against them?

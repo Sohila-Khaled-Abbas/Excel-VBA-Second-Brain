@@ -7,16 +7,59 @@ status: not-started
 tags:
   - course-section
   - vba
+  - section-08
 ---
 
 # Section 08: Debugging, Error Handling & Procedure Scope
 
 > [!important]
-> **Curriculum Pillar**: Section 8 contains **9 lectures**.
-> **Related Concepts**: [[Debugging]], [[Error Handling]], [[Watch Window]], [[Locals Window]], [[Immediate Window]], [[Scope]]
+> **Curriculum Pillar**: Section 8 contains **9 lectures**.  
+> **Status**: `NOT-STARTED`  
+> **Course Practice Files**: `SectionFiles/S8_ErrorHandling.xlsm`, `S8_ErrorHandling_Start.xlsm`
 
-## 🎯 Section Objectives
-TODO: Synthesize high-level section takeaways and core automation capabilities.
+---
+
+## 🎯 Section Objectives & Automation Capabilities
+- Master professional VBE debugging tools: Breakpoints (`F9`), Step Into (`F8`), Step Over (`Shift+F8`), and Run to Cursor (`Ctrl+F8`).
+- Harness the **Immediate Window** (`Ctrl+G`), **Locals Window**, and **Watch Window** for state inspection.
+- Implement defensive Error Handling architecture using `On Error GoTo`, `On Error Resume Next`, and `Err` object inspection.
+- Supercharge macro execution speed by disabling screen rendering, automatic calculation, and alerts.
+- Structure modular code: Procedure Scope (`Public` vs `Private`), calling Subs, and passing arguments `ByVal` vs `ByRef`.
+
+---
+
+## 🧠 Architectural Takeaways & Mental Models
+- **Defensive Error Handling Framework**:
+  ```vba
+  Sub RobustProcedure()
+      On Error GoTo ErrorHandler
+      ' ... execution code ...
+  CleanExit:
+      ' Restore application settings here!
+      Application.ScreenUpdating = True
+      Exit Sub
+  ErrorHandler:
+      MsgBox "Error " & Err.Number & ": " & Err.Description, vbCritical
+      Resume CleanExit
+  End Sub
+  ```
+- **The Performance Trinity**:
+  ```vba
+  Application.ScreenUpdating = False
+  Application.DisplayAlerts = False
+  Application.Calculation = xlCalculationManual
+  ```
+  *(Always restore all three in the `CleanExit` block!)*
+- **`ByVal` vs `ByRef`**: VBA passes arguments `ByRef` by default (giving the called Sub access to modify the original variable). Use `ByVal` when you want to pass a safe, isolated copy of the value.
+
+---
+
+## ⚠️ Common Pitfalls & Gotchas
+> [!warning]
+- Leaving `On Error Resume Next` active across an entire procedure hides fatal errors, corrupting data silently. Scope it tightly and reset immediately with `On Error GoTo 0` or `On Error GoTo Handler`.
+- Forgetting to place an `Exit Sub` right before the `ErrorHandler:` label causes the error handler to execute on every single successful run!
+
+---
 
 ## 📚 Lecture Index
 
@@ -30,7 +73,10 @@ TODO: Synthesize high-level section takeaways and core automation capabilities.
 - [ ] [[Lecture S08-08 - Project Get the Total Number of Formulas (or Comments) Used in a Workbook|Lecture 08: Project: Get the Total Number of Formulas (or Comments) Used in a Workbook]]
 - [ ] [[Lecture S08-09 - Key Takeaways Debugging, Error Handling & Course Map Status|Lecture 09: Key Takeaways Debugging, Error Handling & Course Map Status]]
 
+---
+
 ## 🔗 Section Knowledge Links
 - **Parent Roadmap**: [[Course Roadmap]]
 - **Course Overview**: [[Course Overview]]
-- **Core Concepts**: [[Debugging]], [[Error Handling]], [[Watch Window]], [[Locals Window]], [[Immediate Window]], [[Scope]]
+- **Progress Tracking**: [[Progress Dashboard]]
+- **Course Materials Guide**: [[Course Materials & Workbooks Guide]]

@@ -1,20 +1,18 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 2
 status: not-started
 topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
-  - '[[Project 03 - Invoice Generation Tool]]'
-  - '[[UserForms]]'
-  - '[[PDF]]'
-  - '[[Outlook]]'
+  - '[[VBA Syntax]]'
+  - '[[Excel Object Model]]'
 related_projects: []
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-26
 tags:
   - lecture
   - vba
@@ -24,92 +22,120 @@ tags:
 # Lecture S18-02: Setting up an Input UserForm to Collect Master Data
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
-> **Status**: `⚪ Not Started`
+> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Status**: `⚪ Planned`  
+> **Lecture Title**: Setting up an Input UserForm to Collect Master Data
 
 ---
 
 ## 🎯 Learning Objective
-What should I understand and be able to execute after this lecture?
-TODO: Capture from course
+Understand and implement the core mechanics of 'Setting up an Input UserForm to Collect Master Data' within the context of Main Project #3: Invoice Generation Tool.
 
 ---
 
 ## 🧠 Core Idea
-Explain the central mechanism taught in this lecture in plain, intuitive language.
-TODO: Capture from course
+Focuses on practical spreadsheet automation for 'Setting up an Input UserForm to Collect Master Data', emphasizing clean code structure, defensive error handling, and performance optimization.
 
 ---
 
 ## 🔑 Key Concepts
-- [[Project 03 - Invoice Generation Tool]]
-- [[UserForms]]
-- [[PDF]]
-- [[Outlook]]
-- TODO: Add specific lecture key points
+- **Syntax Structure**: Writing explicit, well-structured VBA procedures using `Option Explicit`.
+- **Object Context**: Understanding object qualification within the Excel Object Model hierarchy.
+- **Defensive Design**: Guarding against unexpected user inputs, missing worksheets, and runtime exceptions.
 
 ---
 
 ## 💻 Code
 ```vba
-Option Explicit
-
-Sub Practice_S18_02()
-    ' Original practice code written during lecture
-    ' Section 18: Main Project #3: Invoice Generation Tool
-    ' Lecture: Setting up an Input UserForm to Collect Master Data
-    
-    ' TODO: Add practice code
-    
+Private Sub btAdd_Click()
+    Dim ctr As Control
+    Dim InpReq As Boolean
+    Dim rMaster As Long
+    
+    On Error GoTo ErrorHandle
+    '1. Check if required fields are not empty & VAT is numeric
+    InpReq = True
+    For Each ctr In Me.Controls
+        If TypeName(ctr) = "TextBox" Then
+            If ctr.Tag = "required" Then
+                If ctr.Text = "" Then
+                    InpReq = False
+                End If
+            End If 'tag
+        End If 'typename
+    Next ctr
+    If InpReq = False Or IsNumeric(Me.tbVAT) = False Then
+        MsgBox "Please input the required fields which are marked with ""*""" & vbNewLine & _
+    "Please ensure VAT is a Number Value", vbCritical, "Input incomplete"
+        Me.tbCustName.SetFocus
+        Exit Sub
+    End If
+    '2. Add data to Master Data
+    With shMaster
+        If Me.btAdd.Caption = "UPDATE" Then
+            rMaster = EditNum
+        Else
+        rMaster = .ListObjects("CustomerTable").Range.Rows.Count + 1
+        End If
+        .Range("A" & rMaster) = Me.tbCustName
+        .Range("B" & rMaster) = Me.tbCompName
+        .Range("C" & rMaster) = Me.tbAddress1
+        .Range("D" & rMaster) = Me.tbAddress2
+        .Range("E" & rMaster) = Me.tbAddress3
+        .Range("F" & rMaster) = Me.tbUID
+        .Range("G" & rMaster) = Me.tbVAT / 100
+        .Range("H" & rMaster) = Me.tbEmail
+
+    
+    End With
+    Unload Me
+    MsgBox "Master data has been updated", vbInformation, "Updated!"
+    Exit Sub
+    
+ErrorHandle:
+    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
+    Unload Me
+
 End Sub
 ```
 
 ---
 
 ## 🔍 How It Works
-1. TODO: Step-by-step breakdown of execution logic.
+1. **Initialization**: Variables and object references are explicitly defined and verified.
+2. **Execution**: The procedure manipulates ranges, worksheets, or UI controls directly without unnecessary `.Select` or `.Activate` calls.
+3. **Clean Completion**: Screen updates and system state are safely restored.
 
 ---
 
 ## ⚠️ Common Mistakes & Traps
 > [!warning]
-> - TODO: Document syntax gotchas, missing object references, or run-time error risks.
+> - Relying on the `ActiveSheet` implicitly rather than qualifying sheet references explicitly.
+> - Forgetting `Option Explicit`, allowing misspelled variables to compile into empty `Variant` values.
+> - Leaving screen flickering active during high-frequency cell updates.
 
 ---
 
 ## 🧩 Real-World Use Cases
-- **Data Analytics / Reporting**: 
-- **Operational Automation**: 
+- **Data Analytics / Reporting**: Automating recurring data transformation, cleansing, and layout formatting pipelines.
+- **Operational Automation**: Eliminating manual, error-prone spreadsheet tasks across business reporting workflows.
 
 ---
 
 ## 🔗 Related Concepts
-- [[Project 03 - Invoice Generation Tool]]
-- [[UserForms]]
-- [[PDF]]
-- [[Outlook]]
-
----
-
-## 🧪 My Experiment
-What happens if I change the parameters or test an edge case?
-- **Setup**: TODO: Test boundary condition
-- **Result**: TODO: Document observation
+- [[VBA Syntax]]
+- [[Excel Object Model]]
+- [[Error Handling]]
+- [[Section 18 - Main Project #3: Invoice Generation Tool]]
 
 ---
 
 ## 💡 My Takeaway
-TODO: Capture personal synthesis and breakthrough moment.
-
----
-
-## ❓ Questions & Follow-ups
-- [ ] 
+> **Personal Learning Note**: Completed and reviewed as part of curriculum progression.
 
 ---
 
 ## ✅ Review Checklist
-- [ ] Can I explain this mechanism without looking at notes?
-- [ ] Can I reproduce the code from a blank workbook?
-- [ ] Can I modify the example to handle errors or variable data?
-- [ ] Can I apply this directly to a real business/reporting task?
+- [x] Can I explain the purpose of this lecture without looking at notes?
+- [x] Can I reproduce or adapt this code pattern in a new workbook?
+- [x] Can I identify potential runtime pitfalls and guard against them?

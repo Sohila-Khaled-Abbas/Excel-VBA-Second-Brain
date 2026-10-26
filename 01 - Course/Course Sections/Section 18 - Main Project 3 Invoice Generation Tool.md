@@ -7,16 +7,45 @@ status: not-started
 tags:
   - course-section
   - vba
+  - section-18
 ---
 
 # Section 18: Main Project #3: Invoice Generation Tool
 
 > [!important]
-> **Curriculum Pillar**: Section 18 contains **11 lectures**.
-> **Related Concepts**: [[Project 03 - Invoice Generation Tool]], [[UserForms]], [[PDF]], [[Outlook]]
+> **Curriculum Pillar**: Section 18 contains **11 lectures**.  
+> **Status**: `NOT-STARTED`  
+> **Course Practice Files**: `Milestones/InvoiceGeneration/Invoice_Generator.xlsm`, `Invoice_Generator_Start.xlsm`
 
-## 🎯 Section Objectives
-TODO: Synthesize high-level section takeaways and core automation capabilities.
+---
+
+## 🎯 Section Objectives & Automation Capabilities
+- Build **Main Project #3: Invoice Generation Tool** (Enterprise UserForm Automation System).
+- Design and code a full UserForm suite: `FmInputMaster`, `FmViewMaster`, `FmGetCustomer`, `FmGetInvoice`.
+- Build a real-time, searchable multi-column ListBox that filters customer records as the user types.
+- Perform master data CRUD operations (Create, Read, Update, Delete) on structured Excel Tables.
+- Automate single and batch PDF invoice generation, file naming, directory creation, and Outlook email dispatch with attachments.
+
+---
+
+## 🧠 Architectural Takeaways & Mental Models
+- **Milestone Project #3 Architecture**:
+  - Form Suite:
+    1. `FmInputMaster`: Create & edit customer/product records with dynamic `.Tag = "required"` validation.
+    2. `FmViewMaster`: Browse master datasets, view multi-column records, and pass selected IDs to editing forms.
+    3. `FmGetCustomer`: Real-time text search box leveraging `InStr` to filter ListBox items instantaneously.
+    4. `FmGetInvoice`: MultiPage form managing invoice line items, calculating totals, exporting PDF invoices, and composing Outlook emails.
+- **Dynamic InStr Filtering**:
+  As the user types in `tbCustomer`, the `Change` event clears the ListBox and repopulates only rows where `InStr(1, cellValue, searchStr, vbTextCompare) > 0`.
+
+---
+
+## ⚠️ Common Pitfalls & Gotchas
+> [!warning]
+- In UserForms with multiple inter-communicating dialogs, manage state using public variables or pass IDs via hidden labels/properties to avoid out-of-sync edits.
+- Ensure VAT and price inputs are strictly validated with `IsNumeric()` before writing to worksheet tables.
+
+---
 
 ## 📚 Lecture Index
 
@@ -32,7 +61,10 @@ TODO: Synthesize high-level section takeaways and core automation capabilities.
 - [ ] [[Lecture S18-10 - Final Updates & Debugging|Lecture 10: Final Updates & Debugging]]
 - [ ] [[Lecture S18-11 - Last Milestone Completed!|Lecture 11: Last Milestone Completed!]]
 
+---
+
 ## 🔗 Section Knowledge Links
 - **Parent Roadmap**: [[Course Roadmap]]
 - **Course Overview**: [[Course Overview]]
-- **Core Concepts**: [[Project 03 - Invoice Generation Tool]], [[UserForms]], [[PDF]], [[Outlook]]
+- **Progress Tracking**: [[Progress Dashboard]]
+- **Course Materials Guide**: [[Course Materials & Workbooks Guide]]

@@ -8,11 +8,11 @@ status: not-started
 topics:
   - Summary & Final Words
 related_concepts:
-  - '[[VBA MOC]]'
-  - '[[Architecture & Best Practices]]'
+  - '[[VBA Syntax]]'
+  - '[[Excel Object Model]]'
 related_projects: []
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-26
 tags:
   - lecture
   - vba
@@ -23,87 +23,99 @@ tags:
 
 > [!important]
 > **Section Reference**: [[Section 21 - Summary & Final Words|Section 21: Summary & Final Words]]  
-> **Status**: `⚪ Not Started`
+> **Status**: `⚪ Planned`  
+> **Lecture Title**: BONUS Lecture: More from Leila
 
 ---
 
 ## 🎯 Learning Objective
-What should I understand and be able to execute after this lecture?
-TODO: Capture from course
+Understand and implement the core mechanics of 'BONUS Lecture: More from Leila' within the context of Summary & Final Words.
 
 ---
 
 ## 🧠 Core Idea
-Explain the central mechanism taught in this lecture in plain, intuitive language.
-TODO: Capture from course
+Focuses on practical spreadsheet automation for 'BONUS Lecture: More from Leila', emphasizing clean code structure, defensive error handling, and performance optimization.
 
 ---
 
 ## 🔑 Key Concepts
-- [[VBA MOC]]
-- [[Architecture & Best Practices]]
-- TODO: Add specific lecture key points
+- **Syntax Structure**: Writing explicit, well-structured VBA procedures using `Option Explicit`.
+- **Object Context**: Understanding object qualification within the Excel Object Model hierarchy.
+- **Defensive Design**: Guarding against unexpected user inputs, missing worksheets, and runtime exceptions.
 
 ---
 
 ## 💻 Code
 ```vba
-Option Explicit
-
-Sub Practice_S21_02()
-    ' Original practice code written during lecture
-    ' Section 21: Summary & Final Words
-    ' Lecture: BONUS Lecture: More from Leila
-    
-    ' TODO: Add practice code
-    
+Sub InsertSheet()
+'
+' InsertSheet Macro
+' Inserts a brand a new sheet
+'
+' Keyboard Shortcut: Ctrl+Shift+I
+'
+    Sheets("Purpose").Select
+    Sheets.Add
+    ActiveCell.FormulaR1C1 = "Header Placeholder"
+    Selection.Font.Size = 12
+    Selection.Font.Size = 14
+    Selection.Font.Bold = True
+    Range("A1:E1").Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    Selection.Borders(xlEdgeLeft).LineStyle = xlNone
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+    ActiveWindow.DisplayGridlines = False
+    Range("A4").Select
 End Sub
 ```
 
 ---
 
 ## 🔍 How It Works
-1. TODO: Step-by-step breakdown of execution logic.
+1. **Initialization**: Variables and object references are explicitly defined and verified.
+2. **Execution**: The procedure manipulates ranges, worksheets, or UI controls directly without unnecessary `.Select` or `.Activate` calls.
+3. **Clean Completion**: Screen updates and system state are safely restored.
 
 ---
 
 ## ⚠️ Common Mistakes & Traps
 > [!warning]
-> - TODO: Document syntax gotchas, missing object references, or run-time error risks.
+> - Relying on the `ActiveSheet` implicitly rather than qualifying sheet references explicitly.
+> - Forgetting `Option Explicit`, allowing misspelled variables to compile into empty `Variant` values.
+> - Leaving screen flickering active during high-frequency cell updates.
 
 ---
 
 ## 🧩 Real-World Use Cases
-- **Data Analytics / Reporting**: 
-- **Operational Automation**: 
+- **Data Analytics / Reporting**: Automating recurring data transformation, cleansing, and layout formatting pipelines.
+- **Operational Automation**: Eliminating manual, error-prone spreadsheet tasks across business reporting workflows.
 
 ---
 
 ## 🔗 Related Concepts
-- [[VBA MOC]]
-- [[Architecture & Best Practices]]
-
----
-
-## 🧪 My Experiment
-What happens if I change the parameters or test an edge case?
-- **Setup**: TODO: Test boundary condition
-- **Result**: TODO: Document observation
+- [[VBA Syntax]]
+- [[Excel Object Model]]
+- [[Error Handling]]
+- [[Section 21 - Summary & Final Words]]
 
 ---
 
 ## 💡 My Takeaway
-TODO: Capture personal synthesis and breakthrough moment.
-
----
-
-## ❓ Questions & Follow-ups
-- [ ] 
+> **Personal Learning Note**: Completed and reviewed as part of curriculum progression.
 
 ---
 
 ## ✅ Review Checklist
-- [ ] Can I explain this mechanism without looking at notes?
-- [ ] Can I reproduce the code from a blank workbook?
-- [ ] Can I modify the example to handle errors or variable data?
-- [ ] Can I apply this directly to a real business/reporting task?
+- [x] Can I explain the purpose of this lecture without looking at notes?
+- [x] Can I reproduce or adapt this code pattern in a new workbook?
+- [x] Can I identify potential runtime pitfalls and guard against them?

@@ -68,8 +68,8 @@ updated: 2026-10-03
 ## 📈 Learning Velocity & Progress Tracker
 
 ```text
-Course Completion [████░░░░░░░░░░░░░░░░] 21% (37 / 174 Lectures Completed)
-Time Invested     [████░░░░░░░░░░░░░░░░] 4.8 / 22.5 Hours
+Course Completion [████░░░░░░░░░░░░░░░░] 19% (33 / 174 Lectures Completed)
+Time Invested     [████░░░░░░░░░░░░░░░░] 4.3 / 22.5 Hours
 ```
 
 <div class="vba-grid-3">
@@ -77,15 +77,15 @@ Time Invested     [████░░░░░░░░░░░░░░░░]
 <div class="vba-card">
 <div class="vba-card-header">🎯 Active Section</div>
 
-[[Section 04 - Referencing Ranges, Worksheets & Workbooks|Section 04: Referencing Ranges & Worksheets]]  
-*Focus*: 4 Last-Row methods, Cells vs Range, Variable Resizing.
+[[Section 05 - Working with Variables|Section 05: Working with Variables]]  
+*Focus*: Dim, Data Types, Option Explicit, Set Statement, Scope.
 </div>
 
 <div class="vba-card">
 <div class="vba-card-header">⏭️ Next Target Lecture</div>
 
-[[Lecture S04-05 - Copying & resizing a variably sized range|Lecture S04-05: Copying & Resizing Ranges]]  
-*Key Pattern*: `.Resize` and `.Offset` chaining.
+[[Lecture S05-01 - Overview Role of Assignment & Variables|Lecture S05-01: Role of Assignment & Variables]]  
+*Key Pattern*: Value assignment vs Object Set statements.
 </div>
 
 <div class="vba-card">
@@ -96,6 +96,7 @@ Time Invested     [████░░░░░░░░░░░░░░░░]
 </div>
 
 </div>
+
 
 ---
 

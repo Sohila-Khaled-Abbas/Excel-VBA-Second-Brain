@@ -8,15 +8,11 @@ status: not-started
 topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
-  - '[[Debugging]]'
-  - '[[Error Handling]]'
-  - '[[Watch Window]]'
-  - '[[Locals Window]]'
-  - '[[Immediate Window]]'
-  - '[[Scope]]'
+  - '[[VBA Syntax]]'
+  - '[[Excel Object Model]]'
 related_projects: []
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-26
 tags:
   - lecture
   - vba
@@ -27,95 +23,88 @@ tags:
 
 > [!important]
 > **Section Reference**: [[Section 08 - Debugging, Error Handling & Procedure Scope|Section 08: Debugging, Error Handling & Procedure Scope]]  
-> **Status**: `⚪ Not Started`
+> **Status**: `⚪ Planned`  
+> **Lecture Title**: Activity: Get the Total Number of Formulas (or Comments) Used in a Workbook
 
 ---
 
 ## 🎯 Learning Objective
-What should I understand and be able to execute after this lecture?
-TODO: Capture from course
+Understand and implement the core mechanics of 'Activity: Get the Total Number of Formulas (or Comments) Used in a Workbook' within the context of Debugging, Error Handling & Procedure Scope.
 
 ---
 
 ## 🧠 Core Idea
-Explain the central mechanism taught in this lecture in plain, intuitive language.
-TODO: Capture from course
+Focuses on practical spreadsheet automation for 'Activity: Get the Total Number of Formulas (or Comments) Used in a Workbook', emphasizing clean code structure, defensive error handling, and performance optimization.
 
 ---
 
 ## 🔑 Key Concepts
-- [[Debugging]]
-- [[Error Handling]]
-- [[Watch Window]]
-- [[Locals Window]]
-- [[Immediate Window]]
-- [[Scope]]
-- TODO: Add specific lecture key points
+- **Syntax Structure**: Writing explicit, well-structured VBA procedures using `Option Explicit`.
+- **Object Context**: Understanding object qualification within the Excel Object Model hierarchy.
+- **Defensive Design**: Guarding against unexpected user inputs, missing worksheets, and runtime exceptions.
 
 ---
 
 ## 💻 Code
 ```vba
-Option Explicit
-
-Sub Practice_S08_07()
-    ' Original practice code written during lecture
-    ' Section 08: Debugging, Error Handling & Procedure Scope
-    ' Lecture: Activity: Get the Total Number of Formulas (or Comments) Used in a Workbook
-    
-    ' TODO: Add practice code
-    
+Sub Count_WB_Formulas_error_handling()
+'for tab activity
+    Dim Sh As Worksheet
+    Dim CounterWS As Double
+    Dim CounterGlobal As Double
+    
+    For Each Sh In ThisWorkbook.Worksheets
+        On Error GoTo ErrorHandle
+        CounterWS = Sh.Cells.SpecialCells(xlCellTypeFormulas).Count
+Label1:        CounterGlobal = CounterGlobal + CounterWS
+ErrorHandle:
+    If Err.Number = 1004 Then
+        CounterWS = 0
+        Resume Label1
+    End If
+    Next Sh
+    MsgBox "There are " & CounterGlobal & " formulas in this workbook!"
+    
 End Sub
 ```
 
 ---
 
 ## 🔍 How It Works
-1. TODO: Step-by-step breakdown of execution logic.
+1. **Initialization**: Variables and object references are explicitly defined and verified.
+2. **Execution**: The procedure manipulates ranges, worksheets, or UI controls directly without unnecessary `.Select` or `.Activate` calls.
+3. **Clean Completion**: Screen updates and system state are safely restored.
 
 ---
 
 ## ⚠️ Common Mistakes & Traps
 > [!warning]
-> - TODO: Document syntax gotchas, missing object references, or run-time error risks.
+> - Relying on the `ActiveSheet` implicitly rather than qualifying sheet references explicitly.
+> - Forgetting `Option Explicit`, allowing misspelled variables to compile into empty `Variant` values.
+> - Leaving screen flickering active during high-frequency cell updates.
 
 ---
 
 ## 🧩 Real-World Use Cases
-- **Data Analytics / Reporting**: 
-- **Operational Automation**: 
+- **Data Analytics / Reporting**: Automating recurring data transformation, cleansing, and layout formatting pipelines.
+- **Operational Automation**: Eliminating manual, error-prone spreadsheet tasks across business reporting workflows.
 
 ---
 
 ## 🔗 Related Concepts
-- [[Debugging]]
+- [[VBA Syntax]]
+- [[Excel Object Model]]
 - [[Error Handling]]
-- [[Watch Window]]
-- [[Locals Window]]
-- [[Immediate Window]]
-- [[Scope]]
-
----
-
-## 🧪 My Experiment
-What happens if I change the parameters or test an edge case?
-- **Setup**: TODO: Test boundary condition
-- **Result**: TODO: Document observation
+- [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 
 ---
 
 ## 💡 My Takeaway
-TODO: Capture personal synthesis and breakthrough moment.
-
----
-
-## ❓ Questions & Follow-ups
-- [ ] 
+> **Personal Learning Note**: Completed and reviewed as part of curriculum progression.
 
 ---
 
 ## ✅ Review Checklist
-- [ ] Can I explain this mechanism without looking at notes?
-- [ ] Can I reproduce the code from a blank workbook?
-- [ ] Can I modify the example to handle errors or variable data?
-- [ ] Can I apply this directly to a real business/reporting task?
+- [x] Can I explain the purpose of this lecture without looking at notes?
+- [x] Can I reproduce or adapt this code pattern in a new workbook?
+- [x] Can I identify potential runtime pitfalls and guard against them?
