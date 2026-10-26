@@ -9,7 +9,7 @@ topics:
   - Your First Macro
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,19 +47,32 @@ Focuses on practical spreadsheet automation for 'Project: Dynamic Selection (Go 
 
 ## 💻 Code
 ```vba
-Sub Specialcells()
-'
-' Specialcells Macro
-'
-' Keyboard Shortcut: Ctrl+Shift+N
-'
-' Task 1 Write N to empty cells
-
-    Selection.CurrentRegion.Select
-    Selection.Specialcells(xlCellTypeBlanks).Select
-    Selection.FormulaR1C1 = "N"
-
-
+Sub Specialcells()
+
+'
+
+' Specialcells Macro
+
+'
+
+' Keyboard Shortcut: Ctrl+Shift+N
+
+'
+
+' Task 1 Write N to empty cells
+
+
+
+    Selection.CurrentRegion.Select
+
+    Selection.Specialcells(xlCellTypeBlanks).Select
+
+    Selection.FormulaR1C1 = "N"
+
+
+
+
+
 End Sub
 ```
 
@@ -88,7 +101,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 02 - Your First Macro]]
 

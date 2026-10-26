@@ -9,7 +9,7 @@ topics:
   - Excel Tables, Formulas & Pivot Tables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,16 +47,26 @@ Focuses on practical spreadsheet automation for 'Activity: Update Existing Formu
 
 ## 💻 Code
 ```vba
-Sub Replace_Formulas()
-
-    Dim cell As Range
-    Dim FormulaRange As Range
-    
-    Set FormulaRange = Cells.SpecialCells(xlCellTypeFormulas)
-    For Each cell In FormulaRange
-        cell.Formula = "=iferror(" & VBA.Mid(cell.Formula, 2) & ", """")"
-    Next cell
-
+Sub Replace_Formulas()
+
+
+
+    Dim cell As Range
+
+    Dim FormulaRange As Range
+
+    
+
+    Set FormulaRange = Cells.SpecialCells(xlCellTypeFormulas)
+
+    For Each cell In FormulaRange
+
+        cell.Formula = "=iferror(" & VBA.Mid(cell.Formula, 2) & ", """")"
+
+    Next cell
+
+
+
 End Sub
 ```
 
@@ -85,7 +95,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 13 - Excel Tables, Formulas & Pivot Tables]]
 

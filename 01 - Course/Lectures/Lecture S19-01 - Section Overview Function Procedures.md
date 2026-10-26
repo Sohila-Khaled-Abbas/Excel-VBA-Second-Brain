@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 19 - Creating Customized Functions / Formulas]]"
+section: "[[Section 19 - Creating Customized Functions Formulas]]"
 section_number: 19
 lecture_number: 1
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Creating Customized Functions / Formulas
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S19-01: Section Overview: Function Procedures
 
 > [!important]
-> **Section Reference**: [[Section 19 - Creating Customized Functions / Formulas|Section 19: Creating Customized Functions / Formulas]]  
+> **Section Reference**: [[Section 19 - Creating Customized Functions Formulas|Section 19: Creating Customized Functions / Formulas]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Section Overview: Function Procedures
 
@@ -47,8 +47,10 @@ Focuses on practical spreadsheet automation for 'Section Overview: Function Proc
 
 ## 💻 Code
 ```vba
-Public Function YearsSince(myDate As Date) As Long
-    YearsSince = Year(Date) - Year(myDate)
+Public Function YearsSince(myDate As Date) As Long
+
+    YearsSince = Year(Date) - Year(myDate)
+
 End Function
 ```
 
@@ -77,9 +79,9 @@ End Function
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 19 - Creating Customized Functions / Formulas]]
+- [[Section 19 - Creating Customized Functions Formulas]]
 
 ---
 

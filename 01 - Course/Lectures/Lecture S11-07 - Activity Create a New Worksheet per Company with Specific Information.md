@@ -9,7 +9,7 @@ topics:
   - Working with Arrays
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,29 +47,52 @@ Focuses on practical spreadsheet automation for 'Activity: Create a New Workshee
 
 ## 💻 Code
 ```vba
-Sub Manager_Report()
-
-    Dim CompInfo(1 To 8, 1 To 2) As String
-    Dim r As Byte, c As Byte
-    Const StartRow As Long = 6
-    Dim NewBook As Workbook
-    Dim ShNew As Worksheet
-    
-    For r = 1 To 8
-        For c = 1 To 2
-            CompInfo(r, c) = Cells(r + StartRow, c).Value
-        Next c
-    Next r
-    
-    Set NewBook = Workbooks.Add
-    'reuse r for worksheets
-    For r = 1 To 8
-        Set ShNew = NewBook.Worksheets.Add
-        ShNew.Name = CompInfo(r, 1)
-        ShNew.Range("A1").Value = CompInfo(r, 1)
-        ShNew.Range("A2").Value = CompInfo(r, 2)
-        
-    Next r
+Sub Manager_Report()
+
+
+
+    Dim CompInfo(1 To 8, 1 To 2) As String
+
+    Dim r As Byte, c As Byte
+
+    Const StartRow As Long = 6
+
+    Dim NewBook As Workbook
+
+    Dim ShNew As Worksheet
+
+    
+
+    For r = 1 To 8
+
+        For c = 1 To 2
+
+            CompInfo(r, c) = Cells(r + StartRow, c).Value
+
+        Next c
+
+    Next r
+
+    
+
+    Set NewBook = Workbooks.Add
+
+    'reuse r for worksheets
+
+    For r = 1 To 8
+
+        Set ShNew = NewBook.Worksheets.Add
+
+        ShNew.Name = CompInfo(r, 1)
+
+        ShNew.Range("A1").Value = CompInfo(r, 1)
+
+        ShNew.Range("A2").Value = CompInfo(r, 2)
+
+        
+
+    Next r
+
 End Sub
 ```
 
@@ -98,7 +121,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 11 - Working with Arrays]]
 

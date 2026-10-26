@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 1
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-01: Tool Overview: What You Will Learn
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Tool Overview: What You Will Learn
 
@@ -47,9 +47,12 @@ Focuses on practical spreadsheet automation for 'Tool Overview: What You Will Le
 
 ## 💻 Code
 ```vba
-Sub Customer_Master()
-    FmInputMaster.btAdd.Caption = "ADD"
-    FmInputMaster.Show
+Sub Customer_Master()
+
+    FmInputMaster.btAdd.Caption = "ADD"
+
+    FmInputMaster.Show
+
 End Sub
 ```
 
@@ -78,9 +81,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

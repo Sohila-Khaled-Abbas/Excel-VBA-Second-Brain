@@ -9,7 +9,7 @@ topics:
   - Working with Variables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,20 +47,34 @@ Focuses on practical spreadsheet automation for 'Using Object Variables (Set sta
 
 ## 💻 Code
 ```vba
-Sub Create_NewBook()
-
-    Dim NewBook As Workbook
-    Dim NewSheet As Worksheet
-    Set NewBook = Workbooks.Add
-    Set NewSheet = NewBook.Sheets(1)
-    NewSheet.Range("A1").Value = "New one"
-    
-    Dim NewRange As Range
-    Set NewRange = ThisWorkbook.Worksheets("Dim").Range("B5:D5")
-    NewRange.Font.Bold = True
-    NewRange.Interior.Color = VBA.RGB(255, 255, 204)
-    
-    
+Sub Create_NewBook()
+
+
+
+    Dim NewBook As Workbook
+
+    Dim NewSheet As Worksheet
+
+    Set NewBook = Workbooks.Add
+
+    Set NewSheet = NewBook.Sheets(1)
+
+    NewSheet.Range("A1").Value = "New one"
+
+    
+
+    Dim NewRange As Range
+
+    Set NewRange = ThisWorkbook.Worksheets("Dim").Range("B5:D5")
+
+    NewRange.Font.Bold = True
+
+    NewRange.Interior.Color = VBA.RGB(255, 255, 204)
+
+    
+
+    
+
 End Sub
 ```
 
@@ -89,7 +103,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 05 - Working with Variables]]
 

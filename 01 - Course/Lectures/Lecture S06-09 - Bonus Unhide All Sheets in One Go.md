@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,12 +47,18 @@ Focuses on practical spreadsheet automation for 'Bonus: Unhide All Sheets in One
 
 ## 💻 Code
 ```vba
-Sub Unhide_All()
-    Dim sh As Worksheet
-    For Each sh In ThisWorkbook.Worksheets
-    sh.Visible = True
-    
-    Next sh
+Sub Unhide_All()
+
+    Dim sh As Worksheet
+
+    For Each sh In ThisWorkbook.Worksheets
+
+    sh.Visible = True
+
+    
+
+    Next sh
+
 End Sub
 ```
 
@@ -81,7 +87,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

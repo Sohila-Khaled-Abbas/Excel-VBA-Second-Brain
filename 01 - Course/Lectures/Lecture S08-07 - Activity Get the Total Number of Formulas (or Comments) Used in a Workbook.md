@@ -9,7 +9,7 @@ topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,24 +47,42 @@ Focuses on practical spreadsheet automation for 'Activity: Get the Total Number 
 
 ## 💻 Code
 ```vba
-Sub Count_WB_Formulas_error_handling()
-'for tab activity
-    Dim Sh As Worksheet
-    Dim CounterWS As Double
-    Dim CounterGlobal As Double
-    
-    For Each Sh In ThisWorkbook.Worksheets
-        On Error GoTo ErrorHandle
-        CounterWS = Sh.Cells.SpecialCells(xlCellTypeFormulas).Count
-Label1:        CounterGlobal = CounterGlobal + CounterWS
-ErrorHandle:
-    If Err.Number = 1004 Then
-        CounterWS = 0
-        Resume Label1
-    End If
-    Next Sh
-    MsgBox "There are " & CounterGlobal & " formulas in this workbook!"
-    
+Sub Count_WB_Formulas_error_handling()
+
+'for tab activity
+
+    Dim Sh As Worksheet
+
+    Dim CounterWS As Double
+
+    Dim CounterGlobal As Double
+
+    
+
+    For Each Sh In ThisWorkbook.Worksheets
+
+        On Error GoTo ErrorHandle
+
+        CounterWS = Sh.Cells.SpecialCells(xlCellTypeFormulas).Count
+
+Label1:        CounterGlobal = CounterGlobal + CounterWS
+
+ErrorHandle:
+
+    If Err.Number = 1004 Then
+
+        CounterWS = 0
+
+        Resume Label1
+
+    End If
+
+    Next Sh
+
+    MsgBox "There are " & CounterGlobal & " formulas in this workbook!"
+
+    
+
 End Sub
 ```
 
@@ -93,7 +111,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 

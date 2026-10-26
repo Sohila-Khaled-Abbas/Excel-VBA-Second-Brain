@@ -9,7 +9,7 @@ topics:
   - Interacting with Other Applications (Word, PowerPoint etc.)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,23 +47,40 @@ Focuses on practical spreadsheet automation for 'Project Email: Automatically Cr
 
 ## 💻 Code
 ```vba
-Sub Email_Worksheet()
-    ' this macro shows you how to use Excel's Dialogs to send an email. For more control over Outlook, you need to activate the Outlook reference library
-    'We see this in the invoicing project - where we save specific sheets as PDF and email it to certain person.
-    Dim ShName As String
-    Dim cell As Range
-    Application.ScreenUpdating = False
-    
-     'update the range or make it dynamic as you see fit
-    For Each cell In Worksheets("Email").Range("A10:A11")
-        ShName = cell.Value
-        ThisWorkbook.Worksheets(ShName).Copy
-        
-        Application.Dialogs(xlDialogSendMail).Show cell.Offset(0, 1).Value, cell.Offset(0, 2).Value
-        ActiveWorkbook.Close False
-    Next cell
-    
-    Application.ScreenUpdating = True
+Sub Email_Worksheet()
+
+    ' this macro shows you how to use Excel's Dialogs to send an email. For more control over Outlook, you need to activate the Outlook reference library
+
+    'We see this in the invoicing project - where we save specific sheets as PDF and email it to certain person.
+
+    Dim ShName As String
+
+    Dim cell As Range
+
+    Application.ScreenUpdating = False
+
+    
+
+     'update the range or make it dynamic as you see fit
+
+    For Each cell In Worksheets("Email").Range("A10:A11")
+
+        ShName = cell.Value
+
+        ThisWorkbook.Worksheets(ShName).Copy
+
+        
+
+        Application.Dialogs(xlDialogSendMail).Show cell.Offset(0, 1).Value, cell.Offset(0, 2).Value
+
+        ActiveWorkbook.Close False
+
+    Next cell
+
+    
+
+    Application.ScreenUpdating = True
+
 End Sub
 ```
 
@@ -92,7 +109,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 15 - Interacting with Other Applications (Word, PowerPoint etc.)]]
 

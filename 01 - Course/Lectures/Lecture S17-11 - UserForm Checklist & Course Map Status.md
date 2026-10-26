@@ -9,7 +9,7 @@ topics:
   - Working with Userforms & ActiveX Controls
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,8 +47,10 @@ Focuses on practical spreadsheet automation for 'UserForm Checklist & Course Map
 
 ## 💻 Code
 ```vba
-Private Sub btCancel_Click()
-    Unload Me
+Private Sub btCancel_Click()
+
+    Unload Me
+
 End Sub
 ```
 
@@ -77,7 +79,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 17 - Working with Userforms & ActiveX Controls]]
 

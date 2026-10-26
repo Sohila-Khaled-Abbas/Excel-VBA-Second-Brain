@@ -9,7 +9,7 @@ topics:
   - Worksheet and Workbook Events
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,12 +47,18 @@ Focuses on practical spreadsheet automation for 'Overview & What are Event Proce
 
 ## 💻 Code
 ```vba
-Sub Toggle_View()
-    Application.DisplayFullScreen = Not Application.DisplayFullScreen
-    With Application.ActiveWindow
-        .DisplayHeadings = Not .DisplayHeadings
-        .DisplayWorkbookTabs = Not .DisplayWorkbookTabs
-    End With
+Sub Toggle_View()
+
+    Application.DisplayFullScreen = Not Application.DisplayFullScreen
+
+    With Application.ActiveWindow
+
+        .DisplayHeadings = Not .DisplayHeadings
+
+        .DisplayWorkbookTabs = Not .DisplayWorkbookTabs
+
+    End With
+
 End Sub
 ```
 
@@ -81,7 +87,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 16 - Worksheet and Workbook Events]]
 

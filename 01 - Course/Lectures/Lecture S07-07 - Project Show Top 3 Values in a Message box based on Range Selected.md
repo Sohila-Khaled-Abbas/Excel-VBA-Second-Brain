@@ -9,7 +9,7 @@ topics:
   - Useful Built-in Functions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,24 +47,42 @@ Focuses on practical spreadsheet automation for 'Project: Show Top 3 Values in a
 
 ## 💻 Code
 ```vba
-Sub Top_3_Bids()
-
-    Dim myRange As Range
-    Dim Top1 As Double, Top2 As Double, Top3 As Double
-    
-    On Error GoTo Leave
-    Set myRange = Application.InputBox(Prompt:="Select a range of numbers to get the top 3 Values", _
-    Title:="Top 3", Type:=8)
-    If Application.WorksheetFunction.Count(myRange) > 2 Then
-        Top1 = Excel.WorksheetFunction.Large(myRange, 1)
-        Top2 = Excel.WorksheetFunction.Large(myRange, 2)
-        Top3 = Excel.WorksheetFunction.Large(myRange, 3)
-        MsgBox "Top1: " & Top1 & vbNewLine & "Top2: " & Top2 & vbNewLine & "Top3: " & Top3 & vbNewLine, , "Top 3"
-    Else
-        MsgBox "Please select at least 3 cells with numbers", vbInformation
-        
-    End If
-Leave:
+Sub Top_3_Bids()
+
+
+
+    Dim myRange As Range
+
+    Dim Top1 As Double, Top2 As Double, Top3 As Double
+
+    
+
+    On Error GoTo Leave
+
+    Set myRange = Application.InputBox(Prompt:="Select a range of numbers to get the top 3 Values", _
+
+    Title:="Top 3", Type:=8)
+
+    If Application.WorksheetFunction.Count(myRange) > 2 Then
+
+        Top1 = Excel.WorksheetFunction.Large(myRange, 1)
+
+        Top2 = Excel.WorksheetFunction.Large(myRange, 2)
+
+        Top3 = Excel.WorksheetFunction.Large(myRange, 3)
+
+        MsgBox "Top1: " & Top1 & vbNewLine & "Top2: " & Top2 & vbNewLine & "Top3: " & Top3 & vbNewLine, , "Top 3"
+
+    Else
+
+        MsgBox "Please select at least 3 cells with numbers", vbInformation
+
+        
+
+    End If
+
+Leave:
+
 End Sub
 ```
 
@@ -93,7 +111,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 07 - Useful Built-in Functions]]
 

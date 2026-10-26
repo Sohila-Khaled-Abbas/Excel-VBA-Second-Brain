@@ -9,7 +9,7 @@ topics:
   - Working with Arrays
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,18 +47,30 @@ Focuses on practical spreadsheet automation for 'Key Takeaways Arrays', emphasiz
 
 ## 💻 Code
 ```vba
-Sub Write_to_Variant_Array()
-
-   'notice brackets are not required for variant arrays
-    Dim QuantityValue As Variant
-    Dim r As Long
-      'QuantityTbl is set in name manager
-    QuantityValue = Range("Quantitytbl").Value
-    For r = 1 To UBound(QuantityValue)
-        QuantityValue(r, 1) = QuantityValue(r, 1) + 10
-    Next r
-    Range("QuantityTbl") = QuantityValue
-    
+Sub Write_to_Variant_Array()
+
+
+
+   'notice brackets are not required for variant arrays
+
+    Dim QuantityValue As Variant
+
+    Dim r As Long
+
+      'QuantityTbl is set in name manager
+
+    QuantityValue = Range("Quantitytbl").Value
+
+    For r = 1 To UBound(QuantityValue)
+
+        QuantityValue(r, 1) = QuantityValue(r, 1) + 10
+
+    Next r
+
+    Range("QuantityTbl") = QuantityValue
+
+    
+
 End Sub
 ```
 
@@ -87,7 +99,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 11 - Working with Arrays]]
 

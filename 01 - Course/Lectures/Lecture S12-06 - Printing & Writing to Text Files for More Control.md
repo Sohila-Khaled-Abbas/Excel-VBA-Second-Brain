@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,18 +47,30 @@ Focuses on practical spreadsheet automation for 'Printing & Writing to Text File
 
 ## 💻 Code
 ```vba
-Sub Simple_TextFile()
-    Dim FileName As String
-    FileName = ThisWorkbook.Path & "\TestTextFile.csv"
-    Open FileName For Output As #1
-    Print #1, "Print line 1"
-    Write #1, "Print line 2"
-    Print #1, 1
-    Write #1, 2
-    Print #1, Range("A1").Value
-    Write #1, Range("A1").Value
-    
-    Close #1
+Sub Simple_TextFile()
+
+    Dim FileName As String
+
+    FileName = ThisWorkbook.Path & "\TestTextFile.csv"
+
+    Open FileName For Output As #1
+
+    Print #1, "Print line 1"
+
+    Write #1, "Print line 2"
+
+    Print #1, 1
+
+    Write #1, 2
+
+    Print #1, Range("A1").Value
+
+    Write #1, Range("A1").Value
+
+    
+
+    Close #1
+
 End Sub
 ```
 
@@ -87,7 +99,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

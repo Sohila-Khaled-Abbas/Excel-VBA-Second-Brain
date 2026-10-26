@@ -9,7 +9,7 @@ topics:
   - Your First Macro
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,15 +47,24 @@ Focuses on practical spreadsheet automation for 'Project: Copy (Consolidate) Dat
 
 ## 💻 Code
 ```vba
-Sub Relative()
-'
-' Relative Macro
-'
-
-'
-    ActiveCell.Offset(-6, 0).Range("A1").Select
-    Selection.End(xlDown).Select
-    ActiveCell.Offset(1, 0).Range("A1").Select
+Sub Relative()
+
+'
+
+' Relative Macro
+
+'
+
+
+
+'
+
+    ActiveCell.Offset(-6, 0).Range("A1").Select
+
+    Selection.End(xlDown).Select
+
+    ActiveCell.Offset(1, 0).Range("A1").Select
+
 End Sub
 ```
 
@@ -84,7 +93,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 02 - Your First Macro]]
 

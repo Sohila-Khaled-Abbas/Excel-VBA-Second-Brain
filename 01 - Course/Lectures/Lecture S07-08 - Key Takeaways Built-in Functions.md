@@ -9,7 +9,7 @@ topics:
   - Useful Built-in Functions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,19 +47,32 @@ Focuses on practical spreadsheet automation for 'Key Takeaways Built-in Function
 
 ## 💻 Code
 ```vba
-Sub Excel_InputBox()
- 'for tab InputBox_Excel
-    Dim CName As String
-    Dim NextRow As Long
-    Dim CAmount As Long
-    
-    CName = VBA.InputBox("Please input new Customer Name", "Customer Master")
-    NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
-    'write back to sheet in proper format
-    Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(CName)
-    CAmount = Excel.Application.InputBox(Prompt:="Please Input Amount", Title:="Amount", Type:=1)
-    Cells(NextRow, 2).Value = CAmount
-    
+Sub Excel_InputBox()
+
+ 'for tab InputBox_Excel
+
+    Dim CName As String
+
+    Dim NextRow As Long
+
+    Dim CAmount As Long
+
+    
+
+    CName = VBA.InputBox("Please input new Customer Name", "Customer Master")
+
+    NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+    'write back to sheet in proper format
+
+    Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(CName)
+
+    CAmount = Excel.Application.InputBox(Prompt:="Please Input Amount", Title:="Amount", Type:=1)
+
+    Cells(NextRow, 2).Value = CAmount
+
+    
+
 End Sub
 ```
 
@@ -88,7 +101,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 07 - Useful Built-in Functions]]
 

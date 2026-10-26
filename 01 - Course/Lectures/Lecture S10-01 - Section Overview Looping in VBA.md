@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,19 +47,32 @@ Focuses on practical spreadsheet automation for 'Section Overview: Looping in VB
 
 ## 💻 Code
 ```vba
-Sub Simple_For()
-    Dim i As Long
-
-    Dim myValue As Double
-    
-    LastRow = Range("A" & StartRow).End(xlDown).Row
-    For i = StartRow To LastRow
-        myValue = Range("F" & i).Value
-        If myValue > 400 Then Range("F" & i).Value = myValue + 10
-        If myValue < 0 Then Exit For
-        
-    Next i
-    
+Sub Simple_For()
+
+    Dim i As Long
+
+
+
+    Dim myValue As Double
+
+    
+
+    LastRow = Range("A" & StartRow).End(xlDown).Row
+
+    For i = StartRow To LastRow
+
+        myValue = Range("F" & i).Value
+
+        If myValue > 400 Then Range("F" & i).Value = myValue + 10
+
+        If myValue < 0 Then Exit For
+
+        
+
+    Next i
+
+    
+
 End Sub
 ```
 
@@ -88,7 +101,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

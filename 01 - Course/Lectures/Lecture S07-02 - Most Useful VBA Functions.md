@@ -9,7 +9,7 @@ topics:
   - Useful Built-in Functions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,18 +47,30 @@ Focuses on practical spreadsheet automation for 'Most Useful VBA Functions', emp
 
 ## 💻 Code
 ```vba
-Sub VBA_Functions()
-     'Working with Dates & months
-    Range("B3").Value = VBA.Month(VBA.Date)
-    Range("B4").Value = VBA.MonthName(VBA.Month(VBA.Date))
-    Range("C5").Value = VBA.MonthName(Month(Date), True)
-    'Check if cells are empty
-    'formula cells are not empty even if they return ""
-    Range("B9").Value = VBA.IsEmpty(Range("A9"))
-    Range("B10").Value = VBA.IsEmpty(Range("A10"))
-    Range("B11").Value = VBA.IsEmpty(Range("A11"))
-    Debug.Print TypeName(Range("B9").Value)
-    Debug.Print TypeName(Range("B4").Value)
+Sub VBA_Functions()
+
+     'Working with Dates & months
+
+    Range("B3").Value = VBA.Month(VBA.Date)
+
+    Range("B4").Value = VBA.MonthName(VBA.Month(VBA.Date))
+
+    Range("C5").Value = VBA.MonthName(Month(Date), True)
+
+    'Check if cells are empty
+
+    'formula cells are not empty even if they return ""
+
+    Range("B9").Value = VBA.IsEmpty(Range("A9"))
+
+    Range("B10").Value = VBA.IsEmpty(Range("A10"))
+
+    Range("B11").Value = VBA.IsEmpty(Range("A11"))
+
+    Debug.Print TypeName(Range("B9").Value)
+
+    Debug.Print TypeName(Range("B4").Value)
+
 End Sub
 ```
 
@@ -87,7 +99,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 07 - Useful Built-in Functions]]
 

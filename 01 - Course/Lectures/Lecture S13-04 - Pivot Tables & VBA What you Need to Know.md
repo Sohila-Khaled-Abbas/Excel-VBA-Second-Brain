@@ -9,7 +9,7 @@ topics:
   - Excel Tables, Formulas & Pivot Tables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,67 +47,128 @@ Focuses on practical spreadsheet automation for 'Pivot Tables & VBA: What you Ne
 
 ## 💻 Code
 ```vba
-Sub Create_Pivot()
-'
-' Create_Pivot Macro
-' Best is to start by recording a macro to see how pivottables are referenced.
-    ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:= _
-        "CompTable", Version:=6).CreatePivotTable TableDestination:= _
-        "PivotTables!R8C1", TableName:="PivotTable1", DefaultVersion:=6
-    Sheets("PivotTables").Select
-    Cells(8, 1).Select
-    With ActiveSheet.PivotTables("PivotTable1")
-        .ColumnGrand = True
-        .HasAutoFormat = True
-        .DisplayErrorString = False
-        .DisplayNullString = True
-        .EnableDrilldown = True
-        .ErrorString = ""
-        .MergeLabels = False
-        .NullString = ""
-        .PageFieldOrder = 2
-        .PageFieldWrapCount = 0
-        .PreserveFormatting = True
-        .RowGrand = True
-        .SaveData = True
-        .PrintTitles = False
-        .RepeatItemsOnEachPrintedPage = True
-        .TotalsAnnotation = False
-        .CompactRowIndent = 1
-        .InGridDropZones = False
-        .DisplayFieldCaptions = True
-        .DisplayMemberPropertyTooltips = False
-        .DisplayContextTooltips = True
-        .ShowDrillIndicators = True
-        .PrintDrillIndicators = False
-        .AllowMultipleFilters = False
-        .SortUsingCustomLists = True
-        .FieldListSortAscending = False
-        .ShowValuesRow = False
-        .CalculatedMembersInFilters = False
-        .RowAxisLayout xlCompactRow
-    End With
-    With ActiveSheet.PivotTables("PivotTable1").PivotCache
-        .RefreshOnFileOpen = False
-        .MissingItemsLimit = xlMissingItemsDefault
-    End With
-    ActiveSheet.PivotTables("PivotTable1").RepeatAllLabels xlRepeatLabels
-    With ActiveSheet.PivotTables("PivotTable1").PivotFields("Customer code")
-        .Orientation = xlRowField
-        .Position = 1
-    End With
-    ActiveSheet.PivotTables("PivotTable1").AddDataField ActiveSheet.PivotTables( _
-        "PivotTable1").PivotFields("Quantity"), "Sum of Quantity", xlSum
-    ActiveSheet.PivotTables("PivotTable1").AddDataField ActiveSheet.PivotTables( _
-        "PivotTable1").PivotFields("Quantity"), "Sum of Quantity2", xlSum
-    Range("C8").Select
-    ActiveSheet.PivotTables("PivotTable1").DataPivotField.PivotItems( _
-        "Sum of Quantity2").Caption = "% Quantity"
-    Range("C9").Select
-    With ActiveSheet.PivotTables("PivotTable1").PivotFields("% Quantity")
-        .Calculation = xlPercentOfTotal
-        .NumberFormat = "0.00%"
-    End With
+Sub Create_Pivot()
+
+'
+
+' Create_Pivot Macro
+
+' Best is to start by recording a macro to see how pivottables are referenced.
+
+    ActiveWorkbook.PivotCaches.Create(SourceType:=xlDatabase, SourceData:= _
+
+        "CompTable", Version:=6).CreatePivotTable TableDestination:= _
+
+        "PivotTables!R8C1", TableName:="PivotTable1", DefaultVersion:=6
+
+    Sheets("PivotTables").Select
+
+    Cells(8, 1).Select
+
+    With ActiveSheet.PivotTables("PivotTable1")
+
+        .ColumnGrand = True
+
+        .HasAutoFormat = True
+
+        .DisplayErrorString = False
+
+        .DisplayNullString = True
+
+        .EnableDrilldown = True
+
+        .ErrorString = ""
+
+        .MergeLabels = False
+
+        .NullString = ""
+
+        .PageFieldOrder = 2
+
+        .PageFieldWrapCount = 0
+
+        .PreserveFormatting = True
+
+        .RowGrand = True
+
+        .SaveData = True
+
+        .PrintTitles = False
+
+        .RepeatItemsOnEachPrintedPage = True
+
+        .TotalsAnnotation = False
+
+        .CompactRowIndent = 1
+
+        .InGridDropZones = False
+
+        .DisplayFieldCaptions = True
+
+        .DisplayMemberPropertyTooltips = False
+
+        .DisplayContextTooltips = True
+
+        .ShowDrillIndicators = True
+
+        .PrintDrillIndicators = False
+
+        .AllowMultipleFilters = False
+
+        .SortUsingCustomLists = True
+
+        .FieldListSortAscending = False
+
+        .ShowValuesRow = False
+
+        .CalculatedMembersInFilters = False
+
+        .RowAxisLayout xlCompactRow
+
+    End With
+
+    With ActiveSheet.PivotTables("PivotTable1").PivotCache
+
+        .RefreshOnFileOpen = False
+
+        .MissingItemsLimit = xlMissingItemsDefault
+
+    End With
+
+    ActiveSheet.PivotTables("PivotTable1").RepeatAllLabels xlRepeatLabels
+
+    With ActiveSheet.PivotTables("PivotTable1").PivotFields("Customer code")
+
+        .Orientation = xlRowField
+
+        .Position = 1
+
+    End With
+
+    ActiveSheet.PivotTables("PivotTable1").AddDataField ActiveSheet.PivotTables( _
+
+        "PivotTable1").PivotFields("Quantity"), "Sum of Quantity", xlSum
+
+    ActiveSheet.PivotTables("PivotTable1").AddDataField ActiveSheet.PivotTables( _
+
+        "PivotTable1").PivotFields("Quantity"), "Sum of Quantity2", xlSum
+
+    Range("C8").Select
+
+    ActiveSheet.PivotTables("PivotTable1").DataPivotField.PivotItems( _
+
+        "Sum of Quantity2").Caption = "% Quantity"
+
+    Range("C9").Select
+
+    With ActiveSheet.PivotTables("PivotTable1").PivotFields("% Quantity")
+
+        .Calculation = xlPercentOfTotal
+
+        .NumberFormat = "0.00%"
+
+    End With
+
 End Sub
 ```
 
@@ -136,7 +197,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 13 - Excel Tables, Formulas & Pivot Tables]]
 

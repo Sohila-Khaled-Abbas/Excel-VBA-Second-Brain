@@ -126,5 +126,5 @@ Understand memory addresses vs value cloning when passing parameters, and why VB
 ## 🔗 Connected Navigation
 - **Syntax Hub**: [[VBA Syntax]]
 - **Procedures Hub**: [[Procedures & Functions]]
-- **Object Hierarchy**: [[03 - Excel Object Model/Excel Object Model]]
+- **Object Hierarchy**: [[VBA Object Model]]
 - **Course Section**: [[Section 05 - Working with Variables]]

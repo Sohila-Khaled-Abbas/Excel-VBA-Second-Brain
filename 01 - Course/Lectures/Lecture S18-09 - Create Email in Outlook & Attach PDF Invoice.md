@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 9
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-09: Create Email in Outlook & Attach PDF Invoice
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Create Email in Outlook & Attach PDF Invoice
 
@@ -47,51 +47,96 @@ Focuses on practical spreadsheet automation for 'Create Email in Outlook & Attac
 
 ## 💻 Code
 ```vba
-Private Sub btEmail_Click()
-
-    Dim EmailAddress As String
-    Dim FindCust As Range
-    Dim myOutlook As Outlook.Application
-    Dim newEmail As Outlook.MailItem
-    
-    On Error GoTo ErrorHandle
-    'look for customer in master data to be able to find email address
-    Set FindCust = shMaster.Range("mycustomer").Find(What:=shTemp.Range("B13").Value, lookat:=xlWhole)
-    If Not FindCust Is Nothing Then
-        EmailAddress = shMaster.Range("H" & FindCust.Row).Value
-        If EmailAddress = "" Then
-            MsgBox "There is no email address for this customer. Please update the master data. For now create the email yourself."
-            Unload Me
-            Exit Sub
-        End If
-        
-        'create new Outlook session
-        Set myOutlook = New Outlook.Application
-        Set newEmail = myOutlook.CreateItem(olMailItem)
-        With newEmail
-            .To = EmailAddress
-            .Subject = "Invoice"
-            .Body = "Please find attached my invoice. It was a pleasure working with you."
-            .Attachments.Add PDFPath & FileName & ".pdf"
-            .Save
-            
-            '.send
-        End With
-        'free everything up
-        myOutlook.Quit
-        Set myOutlook = Nothing
-        Set newEmail = Nothing
-        MsgBox "Your Email is now saved in your Outlook Draft folder. PDF has been attached.", vbInformation
-    Else
-        MsgBox "Customer is not in the Masterdata. Sorry, no email can be created", vbInformation, "Master Data Missing"
-    End If
-    Unload Me
-    
-    
-    Exit Sub
-ErrorHandle:
-    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
-    Unload Me
+Private Sub btEmail_Click()
+
+
+
+    Dim EmailAddress As String
+
+    Dim FindCust As Range
+
+    Dim myOutlook As Outlook.Application
+
+    Dim newEmail As Outlook.MailItem
+
+    
+
+    On Error GoTo ErrorHandle
+
+    'look for customer in master data to be able to find email address
+
+    Set FindCust = shMaster.Range("mycustomer").Find(What:=shTemp.Range("B13").Value, lookat:=xlWhole)
+
+    If Not FindCust Is Nothing Then
+
+        EmailAddress = shMaster.Range("H" & FindCust.Row).Value
+
+        If EmailAddress = "" Then
+
+            MsgBox "There is no email address for this customer. Please update the master data. For now create the email yourself."
+
+            Unload Me
+
+            Exit Sub
+
+        End If
+
+        
+
+        'create new Outlook session
+
+        Set myOutlook = New Outlook.Application
+
+        Set newEmail = myOutlook.CreateItem(olMailItem)
+
+        With newEmail
+
+            .To = EmailAddress
+
+            .Subject = "Invoice"
+
+            .Body = "Please find attached my invoice. It was a pleasure working with you."
+
+            .Attachments.Add PDFPath & FileName & ".pdf"
+
+            .Save
+
+            
+
+            '.send
+
+        End With
+
+        'free everything up
+
+        myOutlook.Quit
+
+        Set myOutlook = Nothing
+
+        Set newEmail = Nothing
+
+        MsgBox "Your Email is now saved in your Outlook Draft folder. PDF has been attached.", vbInformation
+
+    Else
+
+        MsgBox "Customer is not in the Masterdata. Sorry, no email can be created", vbInformation, "Master Data Missing"
+
+    End If
+
+    Unload Me
+
+    
+
+    
+
+    Exit Sub
+
+ErrorHandle:
+
+    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
+
+    Unload Me
+
 End Sub
 ```
 
@@ -120,9 +165,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

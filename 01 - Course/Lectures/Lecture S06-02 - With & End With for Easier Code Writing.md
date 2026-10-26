@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,18 +47,30 @@ Focuses on practical spreadsheet automation for 'With & End With for Easier Code
 
 ## 💻 Code
 ```vba
-Sub With_Change_Font()
-' for tab With
-    Dim myRange As Range
-    'start is fixed but last cell is variable
-      Set myRange = Range("A10", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
-      With myRange.Font
-        .Name = "Arial"
-        .Size = 12
-        .Bold = True
-        ' myRange.WrapText = True
-      End With
-  
+Sub With_Change_Font()
+
+' for tab With
+
+    Dim myRange As Range
+
+    'start is fixed but last cell is variable
+
+      Set myRange = Range("A10", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
+
+      With myRange.Font
+
+        .Name = "Arial"
+
+        .Size = 12
+
+        .Bold = True
+
+        ' myRange.WrapText = True
+
+      End With
+
+  
+
 End Sub
 ```
 
@@ -87,7 +99,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

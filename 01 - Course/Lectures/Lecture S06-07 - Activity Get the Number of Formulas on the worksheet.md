@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,19 +47,32 @@ Focuses on practical spreadsheet automation for 'Activity: Get the Number of For
 
 ## 💻 Code
 ```vba
-Sub Count_IF_Formula()
-'for tab Activity
-    Dim cell As Range
-    Dim CountFormula As Long
-    
-        For Each cell In ActiveSheet.UsedRange
-            If cell.HasFormula Then
-                CountFormula = CountFormula + 1
-            End If
-        Next cell
-        Range("B6").Value = CountFormula
-      '  MsgBox "There are " & CountFormula & " formulas on this worksheet"
-        
+Sub Count_IF_Formula()
+
+'for tab Activity
+
+    Dim cell As Range
+
+    Dim CountFormula As Long
+
+    
+
+        For Each cell In ActiveSheet.UsedRange
+
+            If cell.HasFormula Then
+
+                CountFormula = CountFormula + 1
+
+            End If
+
+        Next cell
+
+        Range("B6").Value = CountFormula
+
+      '  MsgBox "There are " & CountFormula & " formulas on this worksheet"
+
+        
+
 End Sub
 ```
 
@@ -88,7 +101,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

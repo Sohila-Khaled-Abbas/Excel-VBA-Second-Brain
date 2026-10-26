@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 14 - Main Project #2: Regional Reporting Tool]]"
+section: "[[Section 14 - Main Project 2 Regional Reporting Tool]]"
 section_number: 14
 lecture_number: 6
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #2: Regional Reporting Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S14-06: Fine-tuning Report Export Procedure (Double-check if user wants to overwrite)
 
 > [!important]
-> **Section Reference**: [[Section 14 - Main Project #2: Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
+> **Section Reference**: [[Section 14 - Main Project 2 Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Fine-tuning Report Export Procedure (Double-check if user wants to overwrite)
 
@@ -47,41 +47,76 @@ Focuses on practical spreadsheet automation for 'Fine-tuning Report Export Proce
 
 ## 💻 Code
 ```vba
-Private Sub Manager_Report()
-
-    Dim newBook As Workbook
-    Dim newPath As String
-    
-    newPath = ThisWorkbook.Path & "\" & "M_" & myDate & myRegion & ".xlsx"
-    If Len(Dir(newPath)) > 0 Then 'file exists
-        ReplaceFile = MsgBox("Manager File Exists. Do you want to overwrite?", vbOKCancel, "Overwrite?")
-        If ReplaceFile = vbCancel Then
-            Overwrite(1) = False
-            Exit Sub
-        End If
-    End If
-    Set newBook = Workbooks.Add
-     ActiveWindow.DisplayGridlines = False
-    
-    shRegion.PivotTables("PTManager").TableRange1.Copy
-       
-    With newBook.Sheets(1).Range("A3")
-        .PasteSpecial (xlPasteValues)
-        .PasteSpecial (xlPasteFormats)
-        .PasteSpecial (xlPasteColumnWidths)
-    End With
-           
-    With newBook.Sheets(1).Range("A1:C1")
-         Range("A1").Value = "Regional Overview"
-        .Font.ColorIndex = 2
-        .Font.Bold = True
-        .Interior.ColorIndex = 55
-    End With
-
-   newBook.SaveAs FileName:=newPath
-   newBook.Close
-    TaskRow = shStart.Range("B" & shStart.Rows.Count).End(xlUp).Row + 1
-    shStart.Range("B" & TaskRow).Value = "Manager Report for " & myRegion & myDate & " - created on: " & Now
+Private Sub Manager_Report()
+
+
+
+    Dim newBook As Workbook
+
+    Dim newPath As String
+
+    
+
+    newPath = ThisWorkbook.Path & "\" & "M_" & myDate & myRegion & ".xlsx"
+
+    If Len(Dir(newPath)) > 0 Then 'file exists
+
+        ReplaceFile = MsgBox("Manager File Exists. Do you want to overwrite?", vbOKCancel, "Overwrite?")
+
+        If ReplaceFile = vbCancel Then
+
+            Overwrite(1) = False
+
+            Exit Sub
+
+        End If
+
+    End If
+
+    Set newBook = Workbooks.Add
+
+     ActiveWindow.DisplayGridlines = False
+
+    
+
+    shRegion.PivotTables("PTManager").TableRange1.Copy
+
+       
+
+    With newBook.Sheets(1).Range("A3")
+
+        .PasteSpecial (xlPasteValues)
+
+        .PasteSpecial (xlPasteFormats)
+
+        .PasteSpecial (xlPasteColumnWidths)
+
+    End With
+
+           
+
+    With newBook.Sheets(1).Range("A1:C1")
+
+         Range("A1").Value = "Regional Overview"
+
+        .Font.ColorIndex = 2
+
+        .Font.Bold = True
+
+        .Interior.ColorIndex = 55
+
+    End With
+
+
+
+   newBook.SaveAs FileName:=newPath
+
+   newBook.Close
+
+    TaskRow = shStart.Range("B" & shStart.Rows.Count).End(xlUp).Row + 1
+
+    shStart.Range("B" & TaskRow).Value = "Manager Report for " & myRegion & myDate & " - created on: " & Now
+
 End Sub
 ```
 
@@ -110,9 +145,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 14 - Main Project #2: Regional Reporting Tool]]
+- [[Section 14 - Main Project 2 Regional Reporting Tool]]
 
 ---
 

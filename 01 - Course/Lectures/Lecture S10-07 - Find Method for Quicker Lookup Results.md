@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,16 +47,26 @@ Focuses on practical spreadsheet automation for 'Find Method for Quicker Lookup 
 
 ## 💻 Code
 ```vba
-Sub One_Find()
-    Dim CompId As Range
-    Range("C3").ClearContents
-    Set CompId = Range("A:A").Find(what:=Range("B3").Value, _
-    LookIn:=xlValues, lookat:=xlWhole)
-    If Not CompId Is Nothing Then
-        Range("C3").Value = CompId.Offset(, 4).Value
-    Else
-    MsgBox "Company not found!"
-    End If
+Sub One_Find()
+
+    Dim CompId As Range
+
+    Range("C3").ClearContents
+
+    Set CompId = Range("A:A").Find(what:=Range("B3").Value, _
+
+    LookIn:=xlValues, lookat:=xlWhole)
+
+    If Not CompId Is Nothing Then
+
+        Range("C3").Value = CompId.Offset(, 4).Value
+
+    Else
+
+    MsgBox "Company not found!"
+
+    End If
+
 End Sub
 ```
 
@@ -85,7 +95,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

@@ -9,7 +9,7 @@ topics:
   - Working with Userforms & ActiveX Controls
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,9 +47,12 @@ Focuses on practical spreadsheet automation for 'UserForm to Document External L
 
 ## 💻 Code
 ```vba
-Private Sub UserForm_Initialize()
-    Me.CombTask.AddItem "Document Comments"
-    Me.CombTask.AddItem "Document External Links"
+Private Sub UserForm_Initialize()
+
+    Me.CombTask.AddItem "Document Comments"
+
+    Me.CombTask.AddItem "Document External Links"
+
 End Sub
 ```
 
@@ -78,7 +81,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 17 - Working with Userforms & ActiveX Controls]]
 

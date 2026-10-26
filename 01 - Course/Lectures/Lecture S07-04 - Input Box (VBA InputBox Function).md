@@ -9,7 +9,7 @@ topics:
   - Useful Built-in Functions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,16 +47,26 @@ Focuses on practical spreadsheet automation for 'Input Box (VBA InputBox Functio
 
 ## 💻 Code
 ```vba
-Sub VBA_InputBox()
-
-    'for tab Inputbox_VBA - inputs name in the last empty cell
-    Dim CName As String
-    Dim NextRow As Long
-    CName = VBA.InputBox("Please input new Customer Name", "Customer Master")
-    NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
-    'write back to sheet in proper format
-    Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(CName)
-
+Sub VBA_InputBox()
+
+
+
+    'for tab Inputbox_VBA - inputs name in the last empty cell
+
+    Dim CName As String
+
+    Dim NextRow As Long
+
+    CName = VBA.InputBox("Please input new Customer Name", "Customer Master")
+
+    NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+    'write back to sheet in proper format
+
+    Range("A" & NextRow).Value = Excel.WorksheetFunction.Proper(CName)
+
+
+
 End Sub
 ```
 
@@ -85,7 +95,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 07 - Useful Built-in Functions]]
 

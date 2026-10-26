@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 11
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-11: Last Milestone Completed!
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Last Milestone Completed!
 
@@ -47,8 +47,10 @@ Focuses on practical spreadsheet automation for 'Last Milestone Completed!', emp
 
 ## 💻 Code
 ```vba
-Sub Create_Invoice()
-    FmGetInvoice.Show
+Sub Create_Invoice()
+
+    FmGetInvoice.Show
+
 End Sub
 ```
 
@@ -77,9 +79,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

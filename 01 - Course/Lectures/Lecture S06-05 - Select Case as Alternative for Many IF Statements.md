@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,18 +47,30 @@ Focuses on practical spreadsheet automation for 'Select Case as Alternative for 
 
 ## 💻 Code
 ```vba
-Sub Simple_Case()
-    'for tab Case
-    Select Case Range("B3").Value
-        Case 1 To 200
-           Range("C3").Value = "Good"
-        Case 0
-            Range("C3").Value = ""
-        Case Is > 200
-             Range("C3").Value = "Excellent"
-        Case Else
-            Range("C3").Value = "Bad"
-    End Select
+Sub Simple_Case()
+
+    'for tab Case
+
+    Select Case Range("B3").Value
+
+        Case 1 To 200
+
+           Range("C3").Value = "Good"
+
+        Case 0
+
+            Range("C3").Value = ""
+
+        Case Is > 200
+
+             Range("C3").Value = "Excellent"
+
+        Case Else
+
+            Range("C3").Value = "Bad"
+
+    End Select
+
 End Sub
 ```
 
@@ -87,7 +99,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

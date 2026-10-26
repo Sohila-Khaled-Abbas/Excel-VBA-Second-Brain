@@ -9,7 +9,7 @@ topics:
   - Worksheet and Workbook Events
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,10 +47,14 @@ Focuses on practical spreadsheet automation for 'Worksheet Selection Change: Dyn
 
 ## 💻 Code
 ```vba
-Private Sub Worksheet_SelectionChange(ByVal Target As Range)
-    Cells.Font.Color = VBA.ColorConstants.vbBlack
-    Target.Font.Color = VBA.ColorConstants.vbBlue
-    
+Private Sub Worksheet_SelectionChange(ByVal Target As Range)
+
+    Cells.Font.Color = VBA.ColorConstants.vbBlack
+
+    Target.Font.Color = VBA.ColorConstants.vbBlue
+
+    
+
 End Sub
 ```
 
@@ -79,7 +83,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 16 - Worksheet and Workbook Events]]
 

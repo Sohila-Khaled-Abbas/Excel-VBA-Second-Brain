@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 19 - Creating Customized Functions / Formulas]]"
+section: "[[Section 19 - Creating Customized Functions Formulas]]"
 section_number: 19
 lecture_number: 5
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Creating Customized Functions / Formulas
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S19-05: Using Functions in Sub Procedures
 
 > [!important]
-> **Section Reference**: [[Section 19 - Creating Customized Functions / Formulas|Section 19: Creating Customized Functions / Formulas]]  
+> **Section Reference**: [[Section 19 - Creating Customized Functions Formulas|Section 19: Creating Customized Functions / Formulas]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Using Functions in Sub Procedures
 
@@ -47,16 +47,26 @@ Focuses on practical spreadsheet automation for 'Using Functions in Sub Procedur
 
 ## 💻 Code
 ```vba
-Sub Split_Text_Number()
-
-    Dim myRange As Range
-    Dim cell As Range
-    Set myRange = Range("A6", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
-    
-    For Each cell In myRange
-        cell.Offset(0, 1).Value = TextOnly(cell.Value)
-        cell.Offset(0, 2).Value = NumberOnly(cell.Value)
-    Next cell
+Sub Split_Text_Number()
+
+
+
+    Dim myRange As Range
+
+    Dim cell As Range
+
+    Set myRange = Range("A6", "A" & Cells(Rows.Count, 1).End(xlUp).Row)
+
+    
+
+    For Each cell In myRange
+
+        cell.Offset(0, 1).Value = TextOnly(cell.Value)
+
+        cell.Offset(0, 2).Value = NumberOnly(cell.Value)
+
+    Next cell
+
 End Sub
 ```
 
@@ -85,9 +95,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 19 - Creating Customized Functions / Formulas]]
+- [[Section 19 - Creating Customized Functions Formulas]]
 
 ---
 

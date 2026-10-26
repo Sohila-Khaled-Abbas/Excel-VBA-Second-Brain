@@ -9,7 +9,7 @@ topics:
   - Interacting with Other Applications (Word, PowerPoint etc.)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,44 +47,82 @@ Focuses on practical spreadsheet automation for 'Project Microsoft Word: Create 
 
 ## 💻 Code
 ```vba
-Sub Input_Sales_Word()
-    Dim WordApp As Word.Application
-    Dim WordDoc As Word.Document
-    Dim r As Long
-    Dim FileName As String
-    
-    On Error Resume Next
-    Set WordApp = GetObject(, "Word.Application")
-    On Error GoTo errorhandle:
-    If WordApp Is Nothing Then
-        Set WordApp = New Word.Application
-    End If
-    WordApp.Visible = True
-    
-    
-    FileName = ThisWorkbook.Path & "\Letter_"
-    'starting row
-    r = 10
-    'use a Do Loop
-    Do Until IsEmpty(Cells(r, 1))
-        Set WordDoc = WordApp.Documents.Open(ThisWorkbook.Path & "\Letter_Word.docx")
-        WordDoc.Bookmarks("PersonName").Range.InsertAfter Cells(r, 1).Text
-        WordDoc.Bookmarks("SalesValue").Range.InsertAfter Cells(r, 2).Text
-        WordDoc.SaveAs2 FileName & Cells(r, 1).Text
-        WordDoc.Close
-        
-        r = r + 1
-    Loop
-    Set WordApp = Nothing
-    
-    MsgBox "Personalized letters have been created." & vbNewLine & _
-    "They are saved in the same folder as this Workbook.", vbInformation, "Job Done"
-    Exit Sub
-
-errorhandle:
-MsgBox "An error has occurred. One reason can be that the Word Document, Letter_Word is not save in the same directory as this Workbook." & vbNewLine & _
-"Please update and run the macro again.", vbInformation, "Missing File?"
-
+Sub Input_Sales_Word()
+
+    Dim WordApp As Word.Application
+
+    Dim WordDoc As Word.Document
+
+    Dim r As Long
+
+    Dim FileName As String
+
+    
+
+    On Error Resume Next
+
+    Set WordApp = GetObject(, "Word.Application")
+
+    On Error GoTo errorhandle:
+
+    If WordApp Is Nothing Then
+
+        Set WordApp = New Word.Application
+
+    End If
+
+    WordApp.Visible = True
+
+    
+
+    
+
+    FileName = ThisWorkbook.Path & "\Letter_"
+
+    'starting row
+
+    r = 10
+
+    'use a Do Loop
+
+    Do Until IsEmpty(Cells(r, 1))
+
+        Set WordDoc = WordApp.Documents.Open(ThisWorkbook.Path & "\Letter_Word.docx")
+
+        WordDoc.Bookmarks("PersonName").Range.InsertAfter Cells(r, 1).Text
+
+        WordDoc.Bookmarks("SalesValue").Range.InsertAfter Cells(r, 2).Text
+
+        WordDoc.SaveAs2 FileName & Cells(r, 1).Text
+
+        WordDoc.Close
+
+        
+
+        r = r + 1
+
+    Loop
+
+    Set WordApp = Nothing
+
+    
+
+    MsgBox "Personalized letters have been created." & vbNewLine & _
+
+    "They are saved in the same folder as this Workbook.", vbInformation, "Job Done"
+
+    Exit Sub
+
+
+
+errorhandle:
+
+MsgBox "An error has occurred. One reason can be that the Word Document, Letter_Word is not save in the same directory as this Workbook." & vbNewLine & _
+
+"Please update and run the macro again.", vbInformation, "Missing File?"
+
+
+
 End Sub
 ```
 
@@ -113,7 +151,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 15 - Interacting with Other Applications (Word, PowerPoint etc.)]]
 

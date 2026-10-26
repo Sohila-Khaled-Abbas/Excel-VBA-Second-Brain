@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,15 +47,24 @@ Focuses on practical spreadsheet automation for 'Goto Statement to Change Progra
 
 ## 💻 Code
 ```vba
-Sub Simple_GoTo()
-    'for tab GoTo
-    Range("D3").Value = ""
-    If IsError(Range("B3")) Then GoTo GetOut
-    Range("C3").Value = Range("B3").Value
-    Exit Sub
-GetOut:
-    Range("D3").Value = "You have an error in the cell"
-    Range("C3").Value = ""
+Sub Simple_GoTo()
+
+    'for tab GoTo
+
+    Range("D3").Value = ""
+
+    If IsError(Range("B3")) Then GoTo GetOut
+
+    Range("C3").Value = Range("B3").Value
+
+    Exit Sub
+
+GetOut:
+
+    Range("D3").Value = "You have an error in the cell"
+
+    Range("C3").Value = ""
+
 End Sub
 ```
 
@@ -84,7 +93,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

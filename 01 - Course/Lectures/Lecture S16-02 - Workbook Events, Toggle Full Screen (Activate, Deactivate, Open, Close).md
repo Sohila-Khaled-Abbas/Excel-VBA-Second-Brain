@@ -9,7 +9,7 @@ topics:
   - Worksheet and Workbook Events
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,11 +47,16 @@ Focuses on practical spreadsheet automation for 'Workbook Events, Toggle Full Sc
 
 ## 💻 Code
 ```vba
-Private Sub Workbook_Open()
-    Sheets(1).Select
-    MsgBox "Welcome to this lesson on Events"
-    Sheets(1).ScrollArea = "A1:K15"
-    
+Private Sub Workbook_Open()
+
+    Sheets(1).Select
+
+    MsgBox "Welcome to this lesson on Events"
+
+    Sheets(1).ScrollArea = "A1:K15"
+
+    
+
 End Sub
 ```
 
@@ -80,7 +85,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 16 - Worksheet and Workbook Events]]
 

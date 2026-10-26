@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 19 - Creating Customized Functions / Formulas]]"
+section: "[[Section 19 - Creating Customized Functions Formulas]]"
 section_number: 19
 lecture_number: 7
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Creating Customized Functions / Formulas
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S19-07: Project: Function That Sums based on Cell Color
 
 > [!important]
-> **Section Reference**: [[Section 19 - Creating Customized Functions / Formulas|Section 19: Creating Customized Functions / Formulas]]  
+> **Section Reference**: [[Section 19 - Creating Customized Functions Formulas|Section 19: Creating Customized Functions / Formulas]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Project: Function That Sums based on Cell Color
 
@@ -47,18 +47,30 @@ Focuses on practical spreadsheet automation for 'Project: Function That Sums bas
 
 ## 💻 Code
 ```vba
-Function SumColor(MatchColor As Range, sumRange As Range)
-
-   Application.Volatile True
-    Dim cell As Range
-    Dim myColor As Long
-    myColor = MatchColor.Cells(1, 1).Interior.Color
-    For Each cell In sumRange
-        If cell.Interior.Color = myColor Then
-            SumColor = SumColor + cell.Value
-        End If
-    Next
-
+Function SumColor(MatchColor As Range, sumRange As Range)
+
+
+
+   Application.Volatile True
+
+    Dim cell As Range
+
+    Dim myColor As Long
+
+    myColor = MatchColor.Cells(1, 1).Interior.Color
+
+    For Each cell In sumRange
+
+        If cell.Interior.Color = myColor Then
+
+            SumColor = SumColor + cell.Value
+
+        End If
+
+    Next
+
+
+
 End Function
 ```
 
@@ -87,9 +99,9 @@ End Function
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 19 - Creating Customized Functions / Formulas]]
+- [[Section 19 - Creating Customized Functions Formulas]]
 
 ---
 

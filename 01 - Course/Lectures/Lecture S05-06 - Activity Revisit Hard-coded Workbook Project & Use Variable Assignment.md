@@ -9,7 +9,7 @@ topics:
   - Working with Variables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,32 +47,58 @@ Focuses on practical spreadsheet automation for 'Activity: Revisit Hard-coded Wo
 
 ## 💻 Code
 ```vba
-Sub Hardcoded_Workbook_copy()
-
-    'Use appropriate variables in this example
-    
-    'this macro should first_
-    '1: Save the current workbook
-    '2: Select all sheets, copy and paste special all cells in the sheets
-    '3: Save the workbook with SaveAs (be careful you don't just SAVE, but SAVEAS)
-    '4: Save it in the same directory as this workbook but before the name put "HC_"
-    'Bonus: Add today's date in the form of "yymmdd" after "HC_" so HC_yymmdd_S4_ReferencingRanges"
-
-    Dim FilePath As String
-    Dim HCName As String
-    
-    FilePath = ThisWorkbook.Path & "\"
-    HCName = "HC_" & VBA.Format(Date, "yymmdd") & "_" & ThisWorkbook.Name
-    ThisWorkbook.Save
-    Sheets.Select
-    Cells.Copy
-    Cells.PasteSpecial xlPasteValues
-    
-    Range("A1").Select
-    Sheets(1).Select
-    ThisWorkbook.SaveAs Filename:=FilePath & HCName
-    
-    
+Sub Hardcoded_Workbook_copy()
+
+
+
+    'Use appropriate variables in this example
+
+    
+
+    'this macro should first_
+
+    '1: Save the current workbook
+
+    '2: Select all sheets, copy and paste special all cells in the sheets
+
+    '3: Save the workbook with SaveAs (be careful you don't just SAVE, but SAVEAS)
+
+    '4: Save it in the same directory as this workbook but before the name put "HC_"
+
+    'Bonus: Add today's date in the form of "yymmdd" after "HC_" so HC_yymmdd_S4_ReferencingRanges"
+
+
+
+    Dim FilePath As String
+
+    Dim HCName As String
+
+    
+
+    FilePath = ThisWorkbook.Path & "\"
+
+    HCName = "HC_" & VBA.Format(Date, "yymmdd") & "_" & ThisWorkbook.Name
+
+    ThisWorkbook.Save
+
+    Sheets.Select
+
+    Cells.Copy
+
+    Cells.PasteSpecial xlPasteValues
+
+    
+
+    Range("A1").Select
+
+    Sheets(1).Select
+
+    ThisWorkbook.SaveAs Filename:=FilePath & HCName
+
+    
+
+    
+
 End Sub
 ```
 
@@ -101,7 +127,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 05 - Working with Variables]]
 

@@ -9,7 +9,7 @@ topics:
   - Referencing Ranges, Worksheets & Workbooks
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,58 +47,110 @@ Focuses on practical spreadsheet automation for 'Overview: Referencing Ranges, W
 
 ## 💻 Code
 ```vba
-Sub ReferToCells()
-    '_______________________________________________
-    '
-    'Write to one or more cells. Make sure you run this in the correct sheet
-    '_______________________________________________
-    
-    Cells.Clear
-    Range("A1").Value = "1st"  'Cells(1, 1).Value = "1st"
-    
-    Range("A2:C2").Value = "2nd"
-    
-    Range("A3:C3,E3:F3").Value = "3rd"
-    
-    'pastes only in A4 and C4 but not in B4
-    Range("A4,C4") = "4th"
-    
-    'pastes from A5 to C5 including B5
-    Range("A5", "C5") = "5th"
-    
-    Range("A" & 6, "C" & 6) = "6th"   'Range(Cells(6, 1), Cells(6, 3)).Value = "6th"
-    
-    'uses the cells property of the range object
-    Range("A4:C7").Cells(4, 2).Value = "7th"
-    
-    'uses the offset property
-    Range("A1").Offset(7, 2).Value = "8th"
-    
-    'offset can be used on more than one cell
-    Range("A1:B1").Offset(8, 1).Value = "9th"
-    
-    'names in name manager can be used
-    'Lastone is a name in name manager
-    
-    Range("LastOne").Value = "10th"
-    
-    '_______________________________________________
-    '
-    'Refer to entire rows or columns
-    '_______________________________________________
-    
-    Rows("12:14").RowHeight = 30
-    
-    'rows 17 & 19 are not impacted
-    Range("16:16,18:18,20:20").RowHeight = 30
-    
-    Columns("E:F").ColumnWidth = 10
-    Range("H:H,J:J").ColumnWidth = 10
-    Range(Columns(1), Columns(3)).ColumnWidth = 5
-    
-    'to autofit all columns
-    'Cells.Columns.AutoFit
-   
+Sub ReferToCells()
+
+    '_______________________________________________
+
+    '
+
+    'Write to one or more cells. Make sure you run this in the correct sheet
+
+    '_______________________________________________
+
+    
+
+    Cells.Clear
+
+    Range("A1").Value = "1st"  'Cells(1, 1).Value = "1st"
+
+    
+
+    Range("A2:C2").Value = "2nd"
+
+    
+
+    Range("A3:C3,E3:F3").Value = "3rd"
+
+    
+
+    'pastes only in A4 and C4 but not in B4
+
+    Range("A4,C4") = "4th"
+
+    
+
+    'pastes from A5 to C5 including B5
+
+    Range("A5", "C5") = "5th"
+
+    
+
+    Range("A" & 6, "C" & 6) = "6th"   'Range(Cells(6, 1), Cells(6, 3)).Value = "6th"
+
+    
+
+    'uses the cells property of the range object
+
+    Range("A4:C7").Cells(4, 2).Value = "7th"
+
+    
+
+    'uses the offset property
+
+    Range("A1").Offset(7, 2).Value = "8th"
+
+    
+
+    'offset can be used on more than one cell
+
+    Range("A1:B1").Offset(8, 1).Value = "9th"
+
+    
+
+    'names in name manager can be used
+
+    'Lastone is a name in name manager
+
+    
+
+    Range("LastOne").Value = "10th"
+
+    
+
+    '_______________________________________________
+
+    '
+
+    'Refer to entire rows or columns
+
+    '_______________________________________________
+
+    
+
+    Rows("12:14").RowHeight = 30
+
+    
+
+    'rows 17 & 19 are not impacted
+
+    Range("16:16,18:18,20:20").RowHeight = 30
+
+    
+
+    Columns("E:F").ColumnWidth = 10
+
+    Range("H:H,J:J").ColumnWidth = 10
+
+    Range(Columns(1), Columns(3)).ColumnWidth = 5
+
+    
+
+    'to autofit all columns
+
+    'Cells.Columns.AutoFit
+
+   
+
 End Sub
 ```
 
@@ -127,7 +179,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 04 - Referencing Ranges, Worksheets & Workbooks]]
 

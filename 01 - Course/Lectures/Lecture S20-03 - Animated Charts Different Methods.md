@@ -9,7 +9,7 @@ topics:
   - Working with Charts
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,22 +47,38 @@ Focuses on practical spreadsheet automation for 'Animated Charts: Different Meth
 
 ## 💻 Code
 ```vba
-Sub Animate_Columns_VBA()
-    Dim LastRow As Long
-    Const StartRow As Long = 5
-    Dim i As Long
-    
-    LastRow = Range("A" & StartRow).End(xlDown).Row
-    'clear everything first
-    Range("C" & StartRow, "C" & LastRow).ClearContents
-    DoEvents
-    Application.Wait (Now + TimeValue("0:00:1"))
-    For i = StartRow To LastRow
-        DoEvents
-        Range("C" & i).Value = Range("B" & i).Value
-        Application.Wait (Now + TimeValue("0:00:1"))
-        DoEvents
-    Next i
+Sub Animate_Columns_VBA()
+
+    Dim LastRow As Long
+
+    Const StartRow As Long = 5
+
+    Dim i As Long
+
+    
+
+    LastRow = Range("A" & StartRow).End(xlDown).Row
+
+    'clear everything first
+
+    Range("C" & StartRow, "C" & LastRow).ClearContents
+
+    DoEvents
+
+    Application.Wait (Now + TimeValue("0:00:1"))
+
+    For i = StartRow To LastRow
+
+        DoEvents
+
+        Range("C" & i).Value = Range("B" & i).Value
+
+        Application.Wait (Now + TimeValue("0:00:1"))
+
+        DoEvents
+
+    Next i
+
 End Sub
 ```
 
@@ -91,7 +107,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 20 - Working with Charts]]
 

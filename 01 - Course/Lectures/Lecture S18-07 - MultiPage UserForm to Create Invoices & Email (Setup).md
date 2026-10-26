@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 7
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-07: MultiPage UserForm to Create Invoices & Email (Setup)
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: MultiPage UserForm to Create Invoices & Email (Setup)
 
@@ -47,37 +47,68 @@ Focuses on practical spreadsheet automation for 'MultiPage UserForm to Create In
 
 ## 💻 Code
 ```vba
-Private Sub UserForm_Initialize()
-    Dim StatusRange As Range
-    Dim cell As Range
-    Dim InvoiceText As String
-    Dim StatusRow As Long
-    
-    On Error GoTo ErrorHandle
-    
-    'start from first page on multipage
-    Me.MPInvoice.Value = 0
-    'loop through status column to find cells with empty status
-    Set StatusRange = shInvoice.Range("InvoiceTable[Status]")
-    For Each cell In StatusRange
-        If cell.Value = "" Then
-            StatusRow = cell.Row - shInvoice.Range("InvoiceTable[[#Headers],[Status]]").Row
-           'get the invoice text for the listbox
-           InvoiceText = shInvoice.Range("InvoiceTable[company]").Cells(StatusRow, 1).Value _
-            & " - " & shInvoice.Range("InvoiceTable[Date Line 1]").Cells(StatusRow, 1).Value & " - Table Row: " & StatusRow
-            Me.lbOpenInvoice.AddItem InvoiceText
-            
-        End If
-    Next cell
-    'remove the last item since it's just instruction text
-    If Me.lbOpenInvoice.ListCount > 0 Then
-        Me.lbOpenInvoice.RemoveItem (Me.lbOpenInvoice.ListCount - 1)
-    End If
-    
-    Exit Sub
-ErrorHandle:
-    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
-    Unload Me
+Private Sub UserForm_Initialize()
+
+    Dim StatusRange As Range
+
+    Dim cell As Range
+
+    Dim InvoiceText As String
+
+    Dim StatusRow As Long
+
+    
+
+    On Error GoTo ErrorHandle
+
+    
+
+    'start from first page on multipage
+
+    Me.MPInvoice.Value = 0
+
+    'loop through status column to find cells with empty status
+
+    Set StatusRange = shInvoice.Range("InvoiceTable[Status]")
+
+    For Each cell In StatusRange
+
+        If cell.Value = "" Then
+
+            StatusRow = cell.Row - shInvoice.Range("InvoiceTable[[#Headers],[Status]]").Row
+
+           'get the invoice text for the listbox
+
+           InvoiceText = shInvoice.Range("InvoiceTable[company]").Cells(StatusRow, 1).Value _
+
+            & " - " & shInvoice.Range("InvoiceTable[Date Line 1]").Cells(StatusRow, 1).Value & " - Table Row: " & StatusRow
+
+            Me.lbOpenInvoice.AddItem InvoiceText
+
+            
+
+        End If
+
+    Next cell
+
+    'remove the last item since it's just instruction text
+
+    If Me.lbOpenInvoice.ListCount > 0 Then
+
+        Me.lbOpenInvoice.RemoveItem (Me.lbOpenInvoice.ListCount - 1)
+
+    End If
+
+    
+
+    Exit Sub
+
+ErrorHandle:
+
+    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
+
+    Unload Me
+
 End Sub
 ```
 
@@ -106,9 +137,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

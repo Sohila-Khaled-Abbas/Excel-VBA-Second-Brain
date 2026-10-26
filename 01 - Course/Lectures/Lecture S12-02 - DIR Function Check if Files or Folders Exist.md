@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,26 +47,46 @@ Focuses on practical spreadsheet automation for 'DIR Function: Check if Files or
 
 ## 💻 Code
 ```vba
-Sub Path_Exists()
-    Dim Path As String
-    Dim Folder As String
-    Dim Answer As VbMsgBoxResult
-    'Update the path to a valid path on your PC
-    Path = "C:\Users\LG\Desktop\VBA\S12"
-    Folder = Dir(Path, vbDirectory)
-    
-    If Folder = vbNullString Then
-        Answer = MsgBox("Path does not exist. Would you like to create it?", vbYesNo, "Create Path?")
-        Select Case Answer
-            Case vbYes
-                VBA.FileSystem.MkDir (Path)
-            Case Else
-                Exit Sub
-        End Select
-    Else
-        MsgBox "Folder exists."
-        
-    End If
+Sub Path_Exists()
+
+    Dim Path As String
+
+    Dim Folder As String
+
+    Dim Answer As VbMsgBoxResult
+
+    'Update the path to a valid path on your PC
+
+    Path = "C:\Users\LG\Desktop\VBA\S12"
+
+    Folder = Dir(Path, vbDirectory)
+
+    
+
+    If Folder = vbNullString Then
+
+        Answer = MsgBox("Path does not exist. Would you like to create it?", vbYesNo, "Create Path?")
+
+        Select Case Answer
+
+            Case vbYes
+
+                VBA.FileSystem.MkDir (Path)
+
+            Case Else
+
+                Exit Sub
+
+        End Select
+
+    Else
+
+        MsgBox "Folder exists."
+
+        
+
+    End If
+
 End Sub
 ```
 
@@ -95,7 +115,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

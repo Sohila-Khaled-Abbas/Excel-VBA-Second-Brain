@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,17 +47,28 @@ Focuses on practical spreadsheet automation for 'Overview: Working with Folders 
 
 ## 💻 Code
 ```vba
-Sub File_Exists()
-    Dim FileName As String
-    'Update the path to a valid path on your PC
-    FileName = VBA.FileSystem.Dir("C:\Users\LG\Desktop\VBA\S2_*start.xls?")
-    If FileName = VBA.Constants.vbNullString Then
-        MsgBox "file does not exist."
-    Else
-        'Update the path to a valid path on your PC
-        Workbooks.Open "C:\Users\LG\Desktop\VBA\" & FileName
-        
-    End If
+Sub File_Exists()
+
+    Dim FileName As String
+
+    'Update the path to a valid path on your PC
+
+    FileName = VBA.FileSystem.Dir("C:\Users\LG\Desktop\VBA\S2_*start.xls?")
+
+    If FileName = VBA.Constants.vbNullString Then
+
+        MsgBox "file does not exist."
+
+    Else
+
+        'Update the path to a valid path on your PC
+
+        Workbooks.Open "C:\Users\LG\Desktop\VBA\" & FileName
+
+        
+
+    End If
+
 End Sub
 ```
 
@@ -86,7 +97,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

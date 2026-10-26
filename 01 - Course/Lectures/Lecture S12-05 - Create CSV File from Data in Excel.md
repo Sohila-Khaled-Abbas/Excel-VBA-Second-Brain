@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,26 +47,46 @@ Focuses on practical spreadsheet automation for 'Create CSV File from Data in Ex
 
 ## 💻 Code
 ```vba
-Sub Save_as_CSV()
-    
-    Dim NewBook As Workbook
-    Dim FileName As String
-    Application.ScreenUpdating = False
-    Application.DisplayAlerts = False
-    
-    FileName = Application.ThisWorkbook.Path & "\TestTextCSV.csv"
-    Set NewBook = Workbooks.Add
-    ShCSV.Copy before:=NewBook.Sheets(1)
-    With NewBook
-        .Sheets(1).Rows("1:3").Delete
-        .SaveAs FileName:=FileName, FileFormat:=Excel.xlCSV
-        .Close
-        
-    End With
-    Application.ScreenUpdating = True
-    Application.DisplayAlerts = True
-    MsgBox "Your CSV file was exported to the same directory as this workbook.", vbInformation
-    
+Sub Save_as_CSV()
+
+    
+
+    Dim NewBook As Workbook
+
+    Dim FileName As String
+
+    Application.ScreenUpdating = False
+
+    Application.DisplayAlerts = False
+
+    
+
+    FileName = Application.ThisWorkbook.Path & "\TestTextCSV.csv"
+
+    Set NewBook = Workbooks.Add
+
+    ShCSV.Copy before:=NewBook.Sheets(1)
+
+    With NewBook
+
+        .Sheets(1).Rows("1:3").Delete
+
+        .SaveAs FileName:=FileName, FileFormat:=Excel.xlCSV
+
+        .Close
+
+        
+
+    End With
+
+    Application.ScreenUpdating = True
+
+    Application.DisplayAlerts = True
+
+    MsgBox "Your CSV file was exported to the same directory as this workbook.", vbInformation
+
+    
+
 End Sub
 ```
 
@@ -95,7 +115,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

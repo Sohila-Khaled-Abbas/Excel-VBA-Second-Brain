@@ -9,7 +9,7 @@ topics:
   - Working with Arrays
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,25 +47,44 @@ Focuses on practical spreadsheet automation for 'Dynamic Arrays (size adjusts de
 
 ## 💻 Code
 ```vba
-Sub Array_Dynamic()
-
-    Dim MonthArray() As String
-    Dim Cnt As Byte
-    Const StartRow As Long = 3
-    Dim r As Byte
-    
-    Cnt = Range("A" & StartRow).CurrentRegion.Rows.Count
-    Cnt = Cnt - 1
-    'only fill up the array if there is at least one month on the list
-    If Cnt > 0 Then
-        'define array size
-        ReDim MonthArray(1 To Cnt)
-        For r = 1 To Cnt
-            MonthArray(r) = Range("A" & StartRow + r).Value
-        Next r
-      ' MsgBox "Size of array is: " & Cnt
-      
-    End If
+Sub Array_Dynamic()
+
+
+
+    Dim MonthArray() As String
+
+    Dim Cnt As Byte
+
+    Const StartRow As Long = 3
+
+    Dim r As Byte
+
+    
+
+    Cnt = Range("A" & StartRow).CurrentRegion.Rows.Count
+
+    Cnt = Cnt - 1
+
+    'only fill up the array if there is at least one month on the list
+
+    If Cnt > 0 Then
+
+        'define array size
+
+        ReDim MonthArray(1 To Cnt)
+
+        For r = 1 To Cnt
+
+            MonthArray(r) = Range("A" & StartRow + r).Value
+
+        Next r
+
+      ' MsgBox "Size of array is: " & Cnt
+
+      
+
+    End If
+
 End Sub
 ```
 
@@ -94,7 +113,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 11 - Working with Arrays]]
 

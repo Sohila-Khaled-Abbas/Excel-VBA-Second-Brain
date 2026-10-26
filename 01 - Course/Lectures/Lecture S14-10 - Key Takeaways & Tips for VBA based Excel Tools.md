@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 14 - Main Project #2: Regional Reporting Tool]]"
+section: "[[Section 14 - Main Project 2 Regional Reporting Tool]]"
 section_number: 14
 lecture_number: 10
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #2: Regional Reporting Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S14-10: Key Takeaways & Tips for VBA based Excel Tools
 
 > [!important]
-> **Section Reference**: [[Section 14 - Main Project #2: Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
+> **Section Reference**: [[Section 14 - Main Project 2 Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Key Takeaways & Tips for VBA based Excel Tools
 
@@ -47,13 +47,20 @@ Focuses on practical spreadsheet automation for 'Key Takeaways & Tips for VBA ba
 
 ## 💻 Code
 ```vba
-Sub Entry_Point()
-    With Application
-        .ScreenUpdating = False
-        .DisplayAlerts = False
-        .Calculation = xlCalculationManual
-        .StatusBar = "Your Assistant is Busy Working"
-    End With
+Sub Entry_Point()
+
+    With Application
+
+        .ScreenUpdating = False
+
+        .DisplayAlerts = False
+
+        .Calculation = xlCalculationManual
+
+        .StatusBar = "Your Assistant is Busy Working"
+
+    End With
+
 End Sub
 ```
 
@@ -82,9 +89,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 14 - Main Project #2: Regional Reporting Tool]]
+- [[Section 14 - Main Project 2 Regional Reporting Tool]]
 
 ---
 

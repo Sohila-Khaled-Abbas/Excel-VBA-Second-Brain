@@ -9,7 +9,7 @@ topics:
   - Working with Variables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,15 +47,24 @@ Focuses on practical spreadsheet automation for 'Scoping Variables', emphasizing
 
 ## 💻 Code
 ```vba
-Sub Var_Example()
-
-    'Define this once and re-use as often as required
-    myTitle = ShReporting.Range("A1").Value
-    'imagine you have a bunch of code here and you reuse this name
-    ShReporting.Range("B10").Value = myTitle
-    ShReporting.Range("C15").Value = myTitle
-    'ThisWorkbook.SaveAs ThisWorkbook.Path & "\" & myTitle & ".xlsm"
-
+Sub Var_Example()
+
+
+
+    'Define this once and re-use as often as required
+
+    myTitle = ShReporting.Range("A1").Value
+
+    'imagine you have a bunch of code here and you reuse this name
+
+    ShReporting.Range("B10").Value = myTitle
+
+    ShReporting.Range("C15").Value = myTitle
+
+    'ThisWorkbook.SaveAs ThisWorkbook.Path & "\" & myTitle & ".xlsm"
+
+
+
 End Sub
 ```
 
@@ -84,7 +93,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 05 - Working with Variables]]
 

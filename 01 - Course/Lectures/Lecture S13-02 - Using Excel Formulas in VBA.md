@@ -9,7 +9,7 @@ topics:
   - Excel Tables, Formulas & Pivot Tables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,23 +47,40 @@ Focuses on practical spreadsheet automation for 'Using Excel Formulas in VBA', e
 
 ## 💻 Code
 ```vba
-Sub Excel_Formula()
-    Dim LastRow As Long
-    Dim r As Long
-    LastRow = Range("A" & Rows.Count).End(xlUp).Row
-    
-    Range("F9").FormulaR1C1 = "=IF(VALUE(LEFT(RC[-4],1))=8,RC[-1]-50,"""")"
-    Range("F9").AutoFill Destination:=Range("F9:F" & LastRow)
-    Application.Calculate
-    'reset color
-    Range("A9", "E" & LastRow).Interior.Color = xlNone
-    'change color if value in F is <=100
-    For r = 9 To LastRow
-        If Range("F" & r).Value <= 100 Then
-            Range("A" & r, "E" & r).Interior.Color = VBA.ColorConstants.vbRed
-            
-        End If
-    Next r
+Sub Excel_Formula()
+
+    Dim LastRow As Long
+
+    Dim r As Long
+
+    LastRow = Range("A" & Rows.Count).End(xlUp).Row
+
+    
+
+    Range("F9").FormulaR1C1 = "=IF(VALUE(LEFT(RC[-4],1))=8,RC[-1]-50,"""")"
+
+    Range("F9").AutoFill Destination:=Range("F9:F" & LastRow)
+
+    Application.Calculate
+
+    'reset color
+
+    Range("A9", "E" & LastRow).Interior.Color = xlNone
+
+    'change color if value in F is <=100
+
+    For r = 9 To LastRow
+
+        If Range("F" & r).Value <= 100 Then
+
+            Range("A" & r, "E" & r).Interior.Color = VBA.ColorConstants.vbRed
+
+            
+
+        End If
+
+    Next r
+
 End Sub
 ```
 
@@ -92,7 +109,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 13 - Excel Tables, Formulas & Pivot Tables]]
 

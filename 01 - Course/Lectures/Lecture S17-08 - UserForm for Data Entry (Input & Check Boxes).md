@@ -9,7 +9,7 @@ topics:
   - Working with Userforms & ActiveX Controls
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,32 +47,58 @@ Focuses on practical spreadsheet automation for 'UserForm for Data Entry (Input 
 
 ## 💻 Code
 ```vba
-Private Sub btAdd_Click()
-    Dim r As Long
-    'did user input correctly
-    If Me.tbCustomer = VBA.Constants.vbNullString Then
-        MsgBox "Please input a customer name."
-        Me.tbCustomer.SetFocus
-        Exit Sub
-    End If
-    If IsNumeric(Me.tbValue) = False Then
-        MsgBox "Please input a valid number."
-        Me.tbValue.SetFocus
-        Exit Sub
-    End If
-    With ShInput
-        'find the last row
-        r = .Range("A" & .Rows.Count).End(xlUp).Row + 1
-        .Range("A" & r).Value = Excel.WorksheetFunction.Proper(Me.tbCustomer)
-        .Range("B" & r).Value = Val(Me.tbValue)
-        If Me.cbInvoice Then
-            .Range("C" & r).Value = "Yes"
-            Else
-            .Range("C" & r).Value = "No"
-        End If
-        Me.tbCustomer = ""
-        Me.tbValue = ""
-    End With
+Private Sub btAdd_Click()
+
+    Dim r As Long
+
+    'did user input correctly
+
+    If Me.tbCustomer = VBA.Constants.vbNullString Then
+
+        MsgBox "Please input a customer name."
+
+        Me.tbCustomer.SetFocus
+
+        Exit Sub
+
+    End If
+
+    If IsNumeric(Me.tbValue) = False Then
+
+        MsgBox "Please input a valid number."
+
+        Me.tbValue.SetFocus
+
+        Exit Sub
+
+    End If
+
+    With ShInput
+
+        'find the last row
+
+        r = .Range("A" & .Rows.Count).End(xlUp).Row + 1
+
+        .Range("A" & r).Value = Excel.WorksheetFunction.Proper(Me.tbCustomer)
+
+        .Range("B" & r).Value = Val(Me.tbValue)
+
+        If Me.cbInvoice Then
+
+            .Range("C" & r).Value = "Yes"
+
+            Else
+
+            .Range("C" & r).Value = "No"
+
+        End If
+
+        Me.tbCustomer = ""
+
+        Me.tbValue = ""
+
+    End With
+
 End Sub
 ```
 
@@ -101,7 +127,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 17 - Working with Userforms & ActiveX Controls]]
 

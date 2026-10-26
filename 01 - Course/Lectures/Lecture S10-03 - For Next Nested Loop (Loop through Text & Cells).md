@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,31 +47,56 @@ Focuses on practical spreadsheet automation for 'For Next Nested Loop (Loop thro
 
 ## 💻 Code
 ```vba
-Sub For_Next_Loop_in_Text()
-    Dim i As Long 'for looping inside each cell
-    Dim myValue As String
-    Dim NumFound As Long
-    Dim TxtFound As String
-    Dim r As Long 'for looping through rows
-    LastRow = Range("A" & Rows.Count).End(xlUp).Row
-    
-    For r = StartRow To LastRow
-        myValue = Range("A" & r).Value
-        For i = 1 To VBA.Len(myValue)
-            If IsNumeric(VBA.Mid(myValue, i, 1)) Then
-                NumFound = NumFound & Mid(myValue, i, 1)
-            ElseIf Not IsNumeric(Mid(myValue, i, 1)) Then
-                TxtFound = TxtFound & Mid(myValue, i, 1)
-            End If
-            
-        Next i
-        Range("H" & r).Value = TxtFound
-        Range("I" & r).Value = NumFound
-        NumFound = 0
-        TxtFound = ""
-        
-    Next r
-    
+Sub For_Next_Loop_in_Text()
+
+    Dim i As Long 'for looping inside each cell
+
+    Dim myValue As String
+
+    Dim NumFound As Long
+
+    Dim TxtFound As String
+
+    Dim r As Long 'for looping through rows
+
+    LastRow = Range("A" & Rows.Count).End(xlUp).Row
+
+    
+
+    For r = StartRow To LastRow
+
+        myValue = Range("A" & r).Value
+
+        For i = 1 To VBA.Len(myValue)
+
+            If IsNumeric(VBA.Mid(myValue, i, 1)) Then
+
+                NumFound = NumFound & Mid(myValue, i, 1)
+
+            ElseIf Not IsNumeric(Mid(myValue, i, 1)) Then
+
+                TxtFound = TxtFound & Mid(myValue, i, 1)
+
+            End If
+
+            
+
+        Next i
+
+        Range("H" & r).Value = TxtFound
+
+        Range("I" & r).Value = NumFound
+
+        NumFound = 0
+
+        TxtFound = ""
+
+        
+
+    Next r
+
+    
+
 End Sub
 ```
 
@@ -100,7 +125,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

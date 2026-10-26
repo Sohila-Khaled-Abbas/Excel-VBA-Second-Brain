@@ -9,7 +9,7 @@ topics:
   - Worksheet and Workbook Events
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,13 +47,20 @@ Focuses on practical spreadsheet automation for 'Activity: Link Page Header to C
 
 ## 💻 Code
 ```vba
-Private Sub Workbook_BeforePrint(Cancel As Boolean)
-    'This is for the activity of this section
-    Dim Sh As Worksheet
-    For Each Sh In Me.Worksheets
-        Sh.PageSetup.LeftHeader = Sh.Range("A2").Value & vbTab & Date
-        
-    Next Sh
+Private Sub Workbook_BeforePrint(Cancel As Boolean)
+
+    'This is for the activity of this section
+
+    Dim Sh As Worksheet
+
+    For Each Sh In Me.Worksheets
+
+        Sh.PageSetup.LeftHeader = Sh.Range("A2").Value & vbTab & Date
+
+        
+
+    Next Sh
+
 End Sub
 ```
 
@@ -82,7 +89,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 16 - Worksheet and Workbook Events]]
 

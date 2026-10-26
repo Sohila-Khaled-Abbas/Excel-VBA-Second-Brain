@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,14 +47,22 @@ Focuses on practical spreadsheet automation for 'Overview: Why Collections are a
 
 ## 💻 Code
 ```vba
-Sub Protect_All_Sheets()
-' for tab collections
-    Dim sh As Worksheet
-    For Each sh In ThisWorkbook.Worksheets
-        sh.Protect "test", , , , , True, True, True
-    Next sh
-    'Note: if you use protection, you might want to lock your VBA code so others can't see the password
-    ' You can do this by going to Tools -> VBAProject Properties -> Protection -> Provide a password
+Sub Protect_All_Sheets()
+
+' for tab collections
+
+    Dim sh As Worksheet
+
+    For Each sh In ThisWorkbook.Worksheets
+
+        sh.Protect "test", , , , , True, True, True
+
+    Next sh
+
+    'Note: if you use protection, you might want to lock your VBA code so others can't see the password
+
+    ' You can do this by going to Tools -> VBAProject Properties -> Protection -> Provide a password
+
 End Sub
 ```
 
@@ -83,7 +91,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

@@ -1,0 +1,13 @@
+{
+  "vault_name": "Excel VBA Second Brain",
+  "theme": "Minimal",
+  "primary_color": "#107C41",
+  "accent_color": "#21A366",
+  "data_source": "config/course_manifest.json",
+  "local_course_path": "D:\\courses\\Data Science\\Data Engineering\\Udemy Courses\\VBA & Marcos Course",
+  "sync_options": {
+    "auto_update_dashboards": true,
+    "auto_update_roadmaps": true,
+    "track_study_sessions": true
+  }
+}

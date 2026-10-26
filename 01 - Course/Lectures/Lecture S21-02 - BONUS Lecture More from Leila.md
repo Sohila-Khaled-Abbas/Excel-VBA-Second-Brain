@@ -9,7 +9,7 @@ topics:
   - Summary & Final Words
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,35 +47,64 @@ Focuses on practical spreadsheet automation for 'BONUS Lecture: More from Leila'
 
 ## 💻 Code
 ```vba
-Sub InsertSheet()
-'
-' InsertSheet Macro
-' Inserts a brand a new sheet
-'
-' Keyboard Shortcut: Ctrl+Shift+I
-'
-    Sheets("Purpose").Select
-    Sheets.Add
-    ActiveCell.FormulaR1C1 = "Header Placeholder"
-    Selection.Font.Size = 12
-    Selection.Font.Size = 14
-    Selection.Font.Bold = True
-    Range("A1:E1").Select
-    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
-    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
-    Selection.Borders(xlEdgeLeft).LineStyle = xlNone
-    Selection.Borders(xlEdgeTop).LineStyle = xlNone
-    With Selection.Borders(xlEdgeBottom)
-        .LineStyle = xlContinuous
-        .ColorIndex = 0
-        .TintAndShade = 0
-        .Weight = xlThin
-    End With
-    Selection.Borders(xlEdgeRight).LineStyle = xlNone
-    Selection.Borders(xlInsideVertical).LineStyle = xlNone
-    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
-    ActiveWindow.DisplayGridlines = False
-    Range("A4").Select
+Sub InsertSheet()
+
+'
+
+' InsertSheet Macro
+
+' Inserts a brand a new sheet
+
+'
+
+' Keyboard Shortcut: Ctrl+Shift+I
+
+'
+
+    Sheets("Purpose").Select
+
+    Sheets.Add
+
+    ActiveCell.FormulaR1C1 = "Header Placeholder"
+
+    Selection.Font.Size = 12
+
+    Selection.Font.Size = 14
+
+    Selection.Font.Bold = True
+
+    Range("A1:E1").Select
+
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+
+    Selection.Borders(xlEdgeLeft).LineStyle = xlNone
+
+    Selection.Borders(xlEdgeTop).LineStyle = xlNone
+
+    With Selection.Borders(xlEdgeBottom)
+
+        .LineStyle = xlContinuous
+
+        .ColorIndex = 0
+
+        .TintAndShade = 0
+
+        .Weight = xlThin
+
+    End With
+
+    Selection.Borders(xlEdgeRight).LineStyle = xlNone
+
+    Selection.Borders(xlInsideVertical).LineStyle = xlNone
+
+    Selection.Borders(xlInsideHorizontal).LineStyle = xlNone
+
+    ActiveWindow.DisplayGridlines = False
+
+    Range("A4").Select
+
 End Sub
 ```
 
@@ -104,7 +133,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 21 - Summary & Final Words]]
 

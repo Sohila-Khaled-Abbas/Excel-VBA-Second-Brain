@@ -1,0 +1,45 @@
+name: Sync Progress & Dashboards
+
+on:
+  workflow_dispatch:
+    inputs:
+      lecture_id:
+        description: 'Lecture ID to mark complete (e.g., S05-01)'
+        required: false
+        type: string
+      section_number:
+        description: 'Section Number to mark complete (e.g., 5)'
+        required: false
+        type: string
+
+jobs:
+  sync:
+    name: Sync Progress
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Sync Engine
+        run: |
+          if [ -n "${{ inputs.lecture_id }}" ]; then
+            python scripts/udemy_progress_sync.py --complete "${{ inputs.lecture_id }}"
+          elif [ -n "${{ inputs.section_number }}" ]; then
+            python scripts/udemy_progress_sync.py --section "${{ inputs.section_number }}"
+          else
+            python scripts/sync_vault.py
+          fi
+
+      - name: Commit & Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(progress): automated vault progress synchronization"
+          branch: main

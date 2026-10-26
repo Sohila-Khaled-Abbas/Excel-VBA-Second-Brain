@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,17 +47,28 @@ Focuses on practical spreadsheet automation for 'For Next Reverse Loop (Delete F
 
 ## 💻 Code
 ```vba
-Sub Delete_Hidden_filtered_Rows()
-    Dim r As Long
-    
-    LastRow = Range("A" & StartRow).CurrentRegion.Rows.Count + StartRow - 2
-    For r = LastRow To StartRow Step -1
-        If Rows(r).Hidden = True Then
-            'Range("H" & r).Value = "X"
-            Rows(r).Delete
-            
-        End If
-    Next r
+Sub Delete_Hidden_filtered_Rows()
+
+    Dim r As Long
+
+    
+
+    LastRow = Range("A" & StartRow).CurrentRegion.Rows.Count + StartRow - 2
+
+    For r = LastRow To StartRow Step -1
+
+        If Rows(r).Hidden = True Then
+
+            'Range("H" & r).Value = "X"
+
+            Rows(r).Delete
+
+            
+
+        End If
+
+    Next r
+
 End Sub
 ```
 
@@ -86,7 +97,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

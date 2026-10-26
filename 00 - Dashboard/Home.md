@@ -68,8 +68,8 @@ updated: 2026-10-03
 ## 📈 Learning Velocity & Progress Tracker
 
 ```text
-Course Completion [████░░░░░░░░░░░░░░░░] 19% (33 / 174 Lectures Completed)
-Time Invested     [████░░░░░░░░░░░░░░░░] 4.3 / 22.5 Hours
+Course Completion [███░░░░░░░░░░░░░] 19% (33 / 174 Lectures Completed)
+Time Invested     [███░░░░░░░░░░░░░] 4.3 / 22.5 Hours
 ```
 
 <div class="vba-grid-3">
@@ -105,12 +105,12 @@ Time Invested     [████░░░░░░░░░░░░░░░░]
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': { 'darkMode': true, 'fontFamily': 'Inter, sans-serif' }}}%%
 flowchart LR
-    A["⚙️ <b>VBA Syntax</b><br/><i>[[VBA Syntax]]</i>"]:::stepNode --> B["🏛️ <b>Object Model</b><br/><i>[[03 - Excel Object Model/Excel Object Model|Object Model]]</i>"]:::stepNode
-    B --> C["🎯 <b>Range & Cells</b><br/><i>[[Range & Cells]]</i>"]:::stepNode
+    A["⚙️ <b>VBA Syntax</b><br/><i>[[VBA Syntax]]</i>"]:::stepNode --> B["🏛️ <b>Object Model</b><br/><i>[[VBA Object Model|Object Model]]</i>"]:::stepNode
+    B --> C["🎯 <b>Range & Cells</b><br/><i>[[Range]]</i>"]:::stepNode
     C --> D["📦 <b>Data & Types</b><br/><i>[[Variables & Data Types]]</i>"]:::stepNode
-    D --> E["🔀 <b>Loops & Logic</b><br/><i>[[04 - Control Flow & Logic/Control Flow & Logic|Control Flow]]</i>"]:::stepNode
-    E --> F["⚡ <b>Arrays & Speed</b><br/><i>[[05 - Data & Automation/Data & Automation|Data & Speed]]</i>"]:::stepNode
-    F --> G["🛡️ <b>Reliability</b><br/><i>[[06 - Debugging & Reliability/Debugging & Reliability|Debugging]]</i>"]:::finishNode
+    D --> E["🔀 <b>Loops & Logic</b><br/><i>[[Conditional Logic Patterns|Control Flow]]</i>"]:::stepNode
+    E --> F["⚡ <b>Arrays & Speed</b><br/><i>[[Arrays|Data & Speed]]</i>"]:::stepNode
+    F --> G["🛡️ <b>Reliability</b><br/><i>[[Debugging|Debugging]]</i>"]:::finishNode
 
     classDef stepNode fill:#0c4a6e,stroke:#38bdf8,stroke-width:2px,color:#f0f9ff;
     classDef finishNode fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
@@ -150,7 +150,7 @@ LIMIT 6
 ---
 
 ## 🛠️ Quick Learning Playgrounds
-- 🧪 [[11 - Labs & Experiments/Lab - Active Exploration Sandbox|Active Exploration Sandbox]]
+- 🧪 [[Playground Readme|Active Exploration Sandbox]]
 - 🐛 [[06 - Debugging & Reliability/Troubleshooting/VBA Troubleshooting Matrix|VBA Troubleshooting Matrix]]
 - 💡 [[14 - Questions & Insights/Things I Finally Understood|Things I Finally Understood]]
 - ⚠️ [[14 - Questions & Insights/Mistakes|Common Pitfalls & The "VBA Hall of Shame"]]

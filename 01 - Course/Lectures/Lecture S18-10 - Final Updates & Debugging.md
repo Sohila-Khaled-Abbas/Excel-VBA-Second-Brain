@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 10
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-10: Final Updates & Debugging
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Final Updates & Debugging
 
@@ -47,31 +47,56 @@ Focuses on practical spreadsheet automation for 'Final Updates & Debugging', emp
 
 ## 💻 Code
 ```vba
-Sub Find_Cust_Comp(SearchRange As Range, SearchValue As String)
-    'this sub is called from shInvoice and FmGetCustomer
-    Dim cell As Range
-    Dim c As Byte
-    
-    On Error GoTo ErrorHandle
-    
-    'searchrange is either customer or company range
-    For Each cell In SearchRange
-        c = InStr(1, cell.Value, SearchValue, vbTextCompare)
-        'there is a match for the text
-        If c > 0 Then
-        'add matching items to listbox
-        ' add the customer name
-        FmGetCustomer.LbCustomer.AddItem shMaster.Range("A" & cell.Row).Value
-        'add the company name
-        FmGetCustomer.LbCustomer.List(FmGetCustomer.LbCustomer.ListCount - 1, 1) = shMaster.Range("B" & cell.Row).Value
-        
-        End If
-    Next cell
-    
-    Exit Sub
-ErrorHandle:
-    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
-    
+Sub Find_Cust_Comp(SearchRange As Range, SearchValue As String)
+
+    'this sub is called from shInvoice and FmGetCustomer
+
+    Dim cell As Range
+
+    Dim c As Byte
+
+    
+
+    On Error GoTo ErrorHandle
+
+    
+
+    'searchrange is either customer or company range
+
+    For Each cell In SearchRange
+
+        c = InStr(1, cell.Value, SearchValue, vbTextCompare)
+
+        'there is a match for the text
+
+        If c > 0 Then
+
+        'add matching items to listbox
+
+        ' add the customer name
+
+        FmGetCustomer.LbCustomer.AddItem shMaster.Range("A" & cell.Row).Value
+
+        'add the company name
+
+        FmGetCustomer.LbCustomer.List(FmGetCustomer.LbCustomer.ListCount - 1, 1) = shMaster.Range("B" & cell.Row).Value
+
+        
+
+        End If
+
+    Next cell
+
+    
+
+    Exit Sub
+
+ErrorHandle:
+
+    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
+
+    
+
 End Sub
 ```
 
@@ -100,9 +125,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

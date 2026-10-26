@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,12 +47,18 @@ Focuses on practical spreadsheet automation for 'Useful VBA Statements & Key tak
 
 ## 💻 Code
 ```vba
-Sub copy_filtered_list()
-'Bonus
-    ActiveSheet.AutoFilter.Range.Copy
-    Worksheets.Add
-    Range("A1").PasteSpecial
-    
+Sub copy_filtered_list()
+
+'Bonus
+
+    ActiveSheet.AutoFilter.Range.Copy
+
+    Worksheets.Add
+
+    Range("A1").PasteSpecial
+
+    
+
 End Sub
 ```
 
@@ -81,7 +87,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

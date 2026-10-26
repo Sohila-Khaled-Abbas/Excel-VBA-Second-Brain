@@ -9,7 +9,7 @@ topics:
   - Useful Built-in Functions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,17 +47,28 @@ Focuses on practical spreadsheet automation for 'Message Box (also with Yes, No 
 
 ## 💻 Code
 ```vba
-Sub Yes_No_MsgBox()
-    'for tab Msgbox
-    Dim Answer As VbMsgBoxResult 'vbmsgbox result is actually an integer number that was given this constant name
-    Answer = MsgBox("Are you sure about this?", vbYesNo + vbQuestion + vbDefaultButton2, "Clear cells")
-        If Answer = vbYes Then
-            Range("A7:B9").Clear
-        Else
-            Exit Sub
-        End If
-
-    'Debug.Print Answer
+Sub Yes_No_MsgBox()
+
+    'for tab Msgbox
+
+    Dim Answer As VbMsgBoxResult 'vbmsgbox result is actually an integer number that was given this constant name
+
+    Answer = MsgBox("Are you sure about this?", vbYesNo + vbQuestion + vbDefaultButton2, "Clear cells")
+
+        If Answer = vbYes Then
+
+            Range("A7:B9").Clear
+
+        Else
+
+            Exit Sub
+
+        End If
+
+
+
+    'Debug.Print Answer
+
 End Sub
 ```
 
@@ -86,7 +97,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 07 - Useful Built-in Functions]]
 

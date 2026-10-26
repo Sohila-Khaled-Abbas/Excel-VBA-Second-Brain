@@ -9,7 +9,7 @@ topics:
   - Working with Charts
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,47 +47,88 @@ Focuses on practical spreadsheet automation for 'Key Takeaways: Charts', emphasi
 
 ## 💻 Code
 ```vba
-Sub Animate_Forecast_Budget()
-
-    Dim Sh As Worksheet
-    Dim FirstRowF As Long, LastRowF As Long
-    Dim FirstRowB As Long, LastRowB As Long
-    Dim i As Byte
-    Set Sh = ThisWorkbook.Worksheets("Animate")
-    
-    'Step 1- Copy to data prep table
-    With Sh
-        'clear existing data and add actuals
-        .Range("J52:L75").ClearContents
-        .Range("C52:C" & .Range("C52").End(xlDown).Row).Copy .Range("J52")
-       
-        'Step 2 - Animate the remaining series
-        FirstRowF = .Range("D51").End(xlDown).Row
-        LastRowF = .Range("D76").End(xlUp).Row
-         'copy last value over to forecast
-        .Range("C52").End(xlDown).Copy .Range("K" & FirstRowF - 1)
-        
-        For i = FirstRowF To LastRowF
-            DoEvents
-            .Range("K" & i).Value = .Range("D" & i).Value
-            Application.Wait (Now + TimeValue("00:00:01"))
-            DoEvents
-        Next i
-        
-        'Step 3 - Animate the budget
-        FirstRowB = .Range("E51").End(xlDown).Row
-        LastRowB = .Range("E76").End(xlUp).Row
-        
-        'copy last value from forecast to budget
-         .Range("D" & LastRowF).Copy .Range("L" & FirstRowB - 1)
-         
-        For i = FirstRowB To LastRowB
-            DoEvents
-            .Range("L" & i).Value = .Range("E" & i).Value
-            Application.Wait (Now + TimeValue("00:00:01"))
-            DoEvents
-        Next i
-    End With
+Sub Animate_Forecast_Budget()
+
+
+
+    Dim Sh As Worksheet
+
+    Dim FirstRowF As Long, LastRowF As Long
+
+    Dim FirstRowB As Long, LastRowB As Long
+
+    Dim i As Byte
+
+    Set Sh = ThisWorkbook.Worksheets("Animate")
+
+    
+
+    'Step 1- Copy to data prep table
+
+    With Sh
+
+        'clear existing data and add actuals
+
+        .Range("J52:L75").ClearContents
+
+        .Range("C52:C" & .Range("C52").End(xlDown).Row).Copy .Range("J52")
+
+       
+
+        'Step 2 - Animate the remaining series
+
+        FirstRowF = .Range("D51").End(xlDown).Row
+
+        LastRowF = .Range("D76").End(xlUp).Row
+
+         'copy last value over to forecast
+
+        .Range("C52").End(xlDown).Copy .Range("K" & FirstRowF - 1)
+
+        
+
+        For i = FirstRowF To LastRowF
+
+            DoEvents
+
+            .Range("K" & i).Value = .Range("D" & i).Value
+
+            Application.Wait (Now + TimeValue("00:00:01"))
+
+            DoEvents
+
+        Next i
+
+        
+
+        'Step 3 - Animate the budget
+
+        FirstRowB = .Range("E51").End(xlDown).Row
+
+        LastRowB = .Range("E76").End(xlUp).Row
+
+        
+
+        'copy last value from forecast to budget
+
+         .Range("D" & LastRowF).Copy .Range("L" & FirstRowB - 1)
+
+         
+
+        For i = FirstRowB To LastRowB
+
+            DoEvents
+
+            .Range("L" & i).Value = .Range("E" & i).Value
+
+            Application.Wait (Now + TimeValue("00:00:01"))
+
+            DoEvents
+
+        Next i
+
+    End With
+
 End Sub
 ```
 
@@ -116,7 +157,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 20 - Working with Charts]]
 

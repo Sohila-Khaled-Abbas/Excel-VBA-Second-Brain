@@ -9,7 +9,7 @@ topics:
   - Working with Variables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,10 +47,14 @@ Focuses on practical spreadsheet automation for 'Overview: Role of Assignment & 
 
 ## 💻 Code
 ```vba
-Sub Simple_Assignment()
-
-   ShReporting.Range("A2").Value = ShReporting.Range("A2").Value + 1
-
+Sub Simple_Assignment()
+
+
+
+   ShReporting.Range("A2").Value = ShReporting.Range("A2").Value + 1
+
+
+
 End Sub
 ```
 
@@ -79,7 +83,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 05 - Working with Variables]]
 

@@ -9,7 +9,7 @@ topics:
   - Working with Arrays
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,30 +47,54 @@ Focuses on practical spreadsheet automation for 'One Dimensional Arrays (and tra
 
 ## 💻 Code
 ```vba
-Sub Array_OneDimension()
-
-    Dim MonthArray(1 To 12) As String
-    Dim i As Byte
-    Dim r As Long
-    
-    'Fill up the month array
-    For i = 1 To 12
-        'MonthArray(i) = Range("A" & 4 + i).Value
-        'my months is a named range
-        MonthArray(i) = Range("mymonths").Cells(i, 1).Value
-    Next i
-        'example of writing the array back to Excel
-        Range("C5:N5").Value = MonthArray
-        'example of writing the array back vertically - it needs to be transposed
-        Range("C5:C16").Value = Application.WorksheetFunction.Transpose(MonthArray)
-        
-       ' MsgBox "Array element for position 3 is: " & MonthArray(3)
-
-        'to create a report that leaves out 4 rows between each month
-        For i = LBound(MonthArray) To UBound(MonthArray)
-            Range("E7").Offset(r).Value = MonthArray(i)
-            r = r + 5
-        Next i
+Sub Array_OneDimension()
+
+
+
+    Dim MonthArray(1 To 12) As String
+
+    Dim i As Byte
+
+    Dim r As Long
+
+    
+
+    'Fill up the month array
+
+    For i = 1 To 12
+
+        'MonthArray(i) = Range("A" & 4 + i).Value
+
+        'my months is a named range
+
+        MonthArray(i) = Range("mymonths").Cells(i, 1).Value
+
+    Next i
+
+        'example of writing the array back to Excel
+
+        Range("C5:N5").Value = MonthArray
+
+        'example of writing the array back vertically - it needs to be transposed
+
+        Range("C5:C16").Value = Application.WorksheetFunction.Transpose(MonthArray)
+
+        
+
+       ' MsgBox "Array element for position 3 is: " & MonthArray(3)
+
+
+
+        'to create a report that leaves out 4 rows between each month
+
+        For i = LBound(MonthArray) To UBound(MonthArray)
+
+            Range("E7").Offset(r).Value = MonthArray(i)
+
+            r = r + 5
+
+        Next i
+
 End Sub
 ```
 
@@ -99,7 +123,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 11 - Working with Arrays]]
 

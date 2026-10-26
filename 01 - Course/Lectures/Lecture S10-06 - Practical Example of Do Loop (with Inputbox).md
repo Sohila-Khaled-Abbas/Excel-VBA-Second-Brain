@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,15 +47,24 @@ Focuses on practical spreadsheet automation for 'Practical Example of Do Loop (w
 
 ## 💻 Code
 ```vba
-Sub Input_Number_Only()
-
-    Dim myAnswer As String
-    Do While IsNumeric(myAnswer) = False
-    
-        myAnswer = VBA.InputBox("Please input Quantity")
-        If IsNumeric(myAnswer) Then MsgBox "Well Done!"
-    Loop
-    
+Sub Input_Number_Only()
+
+
+
+    Dim myAnswer As String
+
+    Do While IsNumeric(myAnswer) = False
+
+    
+
+        myAnswer = VBA.InputBox("Please input Quantity")
+
+        If IsNumeric(myAnswer) Then MsgBox "Well Done!"
+
+    Loop
+
+    
+
 End Sub
 ```
 
@@ -84,7 +93,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

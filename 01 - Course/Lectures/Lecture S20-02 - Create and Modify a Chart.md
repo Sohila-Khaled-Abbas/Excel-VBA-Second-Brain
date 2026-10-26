@@ -9,7 +9,7 @@ topics:
   - Working with Charts
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,31 +47,56 @@ Focuses on practical spreadsheet automation for 'Create and Modify a Chart', emp
 
 ## 💻 Code
 ```vba
-Sub My_Column_Chart()
-'
-' My_Column_Chart Macro
-'
-    If Selection.Cells.Count > 1 Then
-        Set myChart = ActiveSheet.Shapes.AddChart2(201, xlColumnClustered).Chart
-        With myChart
-            .Axes(xlValue).MajorGridlines.Delete
-            .ChartGroups(1).GapWidth = 80
-            .FullSeriesCollection(1).ApplyDataLabels
-            .Axes(xlValue).Delete
-
-            With .FullSeriesCollection(1).Format.Fill
-                .Visible = msoTrue
-                .ForeColor.ObjectThemeColor = msoThemeColorBackground1
-                .ForeColor.TintAndShade = 0
-                .ForeColor.Brightness = -0.5
-                .Transparency = 0
-                .Solid
-            End With
-        End With
-        ActiveSheet.Shapes(myChart.Parent.Name).Line.Visible = msoFalse
-    Else
-        MsgBox "Please select your source data first", vbInformation, "Missing Data"
-    End If
+Sub My_Column_Chart()
+
+'
+
+' My_Column_Chart Macro
+
+'
+
+    If Selection.Cells.Count > 1 Then
+
+        Set myChart = ActiveSheet.Shapes.AddChart2(201, xlColumnClustered).Chart
+
+        With myChart
+
+            .Axes(xlValue).MajorGridlines.Delete
+
+            .ChartGroups(1).GapWidth = 80
+
+            .FullSeriesCollection(1).ApplyDataLabels
+
+            .Axes(xlValue).Delete
+
+
+
+            With .FullSeriesCollection(1).Format.Fill
+
+                .Visible = msoTrue
+
+                .ForeColor.ObjectThemeColor = msoThemeColorBackground1
+
+                .ForeColor.TintAndShade = 0
+
+                .ForeColor.Brightness = -0.5
+
+                .Transparency = 0
+
+                .Solid
+
+            End With
+
+        End With
+
+        ActiveSheet.Shapes(myChart.Parent.Name).Line.Visible = msoFalse
+
+    Else
+
+        MsgBox "Please select your source data first", vbInformation, "Missing Data"
+
+    End If
+
 End Sub
 ```
 
@@ -100,7 +125,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 20 - Working with Charts]]
 

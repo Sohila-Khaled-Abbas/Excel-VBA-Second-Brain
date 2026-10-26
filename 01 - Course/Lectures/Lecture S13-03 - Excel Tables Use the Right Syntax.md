@@ -9,7 +9,7 @@ topics:
   - Excel Tables, Formulas & Pivot Tables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,30 +47,54 @@ Focuses on practical spreadsheet automation for 'Excel Tables: Use the Right Syn
 
 ## 💻 Code
 ```vba
-Sub Working_with_Tables()
-    'using table excel references
-   ' Debug.Print Range("comptable[quantity]").Address
-'    Debug.Print Range("comptable").Address
-    'using listobject
-    Dim myTable As ListObject
-    Set myTable = shTable.ListObjects("comptable")
-    'address of table
-'    Debug.Print myTable.Range.Address
-'    Debug.Print myTable.DataBodyRange.Address
-    'number of rows in the table
-'    Debug.Print myTable.Range.Rows.Count
-'    Debug.Print myTable.DataBodyRange.Rows.Count
-    'refer to specific columns
-'    Debug.Print myTable.ListColumns("quantity").DataBodyRange.Address
-'    Debug.Print myTable.ListRows(5).Range.Address
-    'refer to the header
- '   Debug.Print myTable.HeaderRowRange.Address
-    'insert a new row at the end of the table
-   ' myTable.ListRows.Add 2
-   ' myTable.ListColumns.Add
-   ' myTable.ListColumns(myTable.ListColumns.Count).Name = "New"
-    myTable.DataBodyRange(1, 6).FormulaR1C1 = "=IF(VALUE(LEFT(RC[-4],1))=8,RC[-1]-50,"""")"
-    
+Sub Working_with_Tables()
+
+    'using table excel references
+
+   ' Debug.Print Range("comptable[quantity]").Address
+
+'    Debug.Print Range("comptable").Address
+
+    'using listobject
+
+    Dim myTable As ListObject
+
+    Set myTable = shTable.ListObjects("comptable")
+
+    'address of table
+
+'    Debug.Print myTable.Range.Address
+
+'    Debug.Print myTable.DataBodyRange.Address
+
+    'number of rows in the table
+
+'    Debug.Print myTable.Range.Rows.Count
+
+'    Debug.Print myTable.DataBodyRange.Rows.Count
+
+    'refer to specific columns
+
+'    Debug.Print myTable.ListColumns("quantity").DataBodyRange.Address
+
+'    Debug.Print myTable.ListRows(5).Range.Address
+
+    'refer to the header
+
+ '   Debug.Print myTable.HeaderRowRange.Address
+
+    'insert a new row at the end of the table
+
+   ' myTable.ListRows.Add 2
+
+   ' myTable.ListColumns.Add
+
+   ' myTable.ListColumns(myTable.ListColumns.Count).Name = "New"
+
+    myTable.DataBodyRange(1, 6).FormulaR1C1 = "=IF(VALUE(LEFT(RC[-4],1))=8,RC[-1]-50,"""")"
+
+    
+
 End Sub
 ```
 
@@ -99,7 +123,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 13 - Excel Tables, Formulas & Pivot Tables]]
 

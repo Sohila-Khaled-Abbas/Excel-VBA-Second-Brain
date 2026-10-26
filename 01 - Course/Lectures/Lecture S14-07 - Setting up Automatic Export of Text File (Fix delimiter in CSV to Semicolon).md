@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 14 - Main Project #2: Regional Reporting Tool]]"
+section: "[[Section 14 - Main Project 2 Regional Reporting Tool]]"
 section_number: 14
 lecture_number: 7
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #2: Regional Reporting Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S14-07: Setting up Automatic Export of Text File (Fix delimiter in CSV to Semicolon)
 
 > [!important]
-> **Section Reference**: [[Section 14 - Main Project #2: Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
+> **Section Reference**: [[Section 14 - Main Project 2 Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Setting up Automatic Export of Text File (Fix delimiter in CSV to Semicolon)
 
@@ -47,34 +47,62 @@ Focuses on practical spreadsheet automation for 'Setting up Automatic Export of 
 
 ## 💻 Code
 ```vba
-Sub Create_CSV()
-    Dim FileName As String
-    Dim FileNum As Integer
-    Dim eRow As Range, eCell As Range, FullRange As Range
-    Dim eLine As String
-    
-    Call Entry_Point
-    With shAll.Range("A1").CurrentRegion
-        Set FullRange = .Offset(1, 0).Resize(.Rows.Count - 1, .Columns.Count).Rows
-    End With
-    'Determine file path and name
-    FileName = ThisWorkbook.Path & "\" & Format(shAll.Range("C2").Value, "YYYYMM") & ".csv"
-    'get the next available file number to write to
-    FileNum = FreeFile
-    Open FileName For Output As FileNum
-    For Each eRow In FullRange
-        For Each eCell In eRow.Cells
-            eLine = eLine & eCell.Value & ";"
-        Next eCell
-            eLine = Left(eLine, Len(eLine) - 1)
-            Print #FileNum, eLine
-            eLine = ""
-    Next eRow
-    Close FileNum
-    Call Exit_Point
-    MsgBox "CSV file has been saved in the same directory as this workook.", vbInformation, "CSV Saved"
-    TaskRow = shStart.Range("B" & shStart.Rows.Count).End(xlUp).Row + 1
-    shStart.Range("B" & TaskRow).Value = "CSV for month " & myDate & " - created on: " & Now
+Sub Create_CSV()
+
+    Dim FileName As String
+
+    Dim FileNum As Integer
+
+    Dim eRow As Range, eCell As Range, FullRange As Range
+
+    Dim eLine As String
+
+    
+
+    Call Entry_Point
+
+    With shAll.Range("A1").CurrentRegion
+
+        Set FullRange = .Offset(1, 0).Resize(.Rows.Count - 1, .Columns.Count).Rows
+
+    End With
+
+    'Determine file path and name
+
+    FileName = ThisWorkbook.Path & "\" & Format(shAll.Range("C2").Value, "YYYYMM") & ".csv"
+
+    'get the next available file number to write to
+
+    FileNum = FreeFile
+
+    Open FileName For Output As FileNum
+
+    For Each eRow In FullRange
+
+        For Each eCell In eRow.Cells
+
+            eLine = eLine & eCell.Value & ";"
+
+        Next eCell
+
+            eLine = Left(eLine, Len(eLine) - 1)
+
+            Print #FileNum, eLine
+
+            eLine = ""
+
+    Next eRow
+
+    Close FileNum
+
+    Call Exit_Point
+
+    MsgBox "CSV file has been saved in the same directory as this workook.", vbInformation, "CSV Saved"
+
+    TaskRow = shStart.Range("B" & shStart.Rows.Count).End(xlUp).Row + 1
+
+    shStart.Range("B" & TaskRow).Value = "CSV for month " & myDate & " - created on: " & Now
+
 End Sub
 ```
 
@@ -103,9 +131,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 14 - Main Project #2: Regional Reporting Tool]]
+- [[Section 14 - Main Project 2 Regional Reporting Tool]]
 
 ---
 

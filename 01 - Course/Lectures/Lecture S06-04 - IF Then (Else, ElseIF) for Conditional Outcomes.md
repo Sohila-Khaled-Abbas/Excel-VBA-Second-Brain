@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,14 +47,22 @@ Focuses on practical spreadsheet automation for 'IF Then (Else, ElseIF) for Cond
 
 ## 💻 Code
 ```vba
-Sub Simple_IF()
-'for tab IF
-    
-    If Range("B3").Value <> "" Then Range("C3").Value = Range("B3").Value
-    If Range("B4").Value > 0 And Range("B4").Value <= 400 Then
-    Range("C4").Value = Range("B4").Value
-    End If
-    
+Sub Simple_IF()
+
+'for tab IF
+
+    
+
+    If Range("B3").Value <> "" Then Range("C3").Value = Range("B3").Value
+
+    If Range("B4").Value > 0 And Range("B4").Value <= 400 Then
+
+    Range("C4").Value = Range("B4").Value
+
+    End If
+
+    
+
 End Sub
 ```
 
@@ -83,7 +91,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

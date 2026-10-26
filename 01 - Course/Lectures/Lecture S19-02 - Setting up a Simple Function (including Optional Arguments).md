@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 19 - Creating Customized Functions / Formulas]]"
+section: "[[Section 19 - Creating Customized Functions Formulas]]"
 section_number: 19
 lecture_number: 2
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Creating Customized Functions / Formulas
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S19-02: Setting up a Simple Function (including Optional Arguments)
 
 > [!important]
-> **Section Reference**: [[Section 19 - Creating Customized Functions / Formulas|Section 19: Creating Customized Functions / Formulas]]  
+> **Section Reference**: [[Section 19 - Creating Customized Functions Formulas|Section 19: Creating Customized Functions / Formulas]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Setting up a Simple Function (including Optional Arguments)
 
@@ -47,12 +47,18 @@ Focuses on practical spreadsheet automation for 'Setting up a Simple Function (i
 
 ## 💻 Code
 ```vba
-Public Function YearsSinceOP(myDate As Date, Optional Txt As String) As Variant
-    If VBA.IsMissing(Txt) Then
-        YearsSinceOP = Year(Date) - Year(myDate)
-    Else
-        YearsSinceOP = Year(Date) - Year(myDate) & " " & Txt
-    End If
+Public Function YearsSinceOP(myDate As Date, Optional Txt As String) As Variant
+
+    If VBA.IsMissing(Txt) Then
+
+        YearsSinceOP = Year(Date) - Year(myDate)
+
+    Else
+
+        YearsSinceOP = Year(Date) - Year(myDate) & " " & Txt
+
+    End If
+
 End Function
 ```
 
@@ -81,9 +87,9 @@ End Function
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 19 - Creating Customized Functions / Formulas]]
+- [[Section 19 - Creating Customized Functions Formulas]]
 
 ---
 

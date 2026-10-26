@@ -9,7 +9,7 @@ topics:
   - Interacting with Other Applications (Word, PowerPoint etc.)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,56 +47,106 @@ Focuses on practical spreadsheet automation for 'Project Microsoft PowerPoint: E
 
 ## 💻 Code
 ```vba
-Sub Create_PowerPoint_Slides()
-    Dim PApp As PowerPoint.Application
-    Dim PPres As PowerPoint.Presentation
-    Dim PSlide As PowerPoint.Slide
-    Dim PShape As PowerPoint.Shape
-    Dim PLayout As PowerPoint.CustomLayout
-    Dim toCopy As Range
-    Dim Sh As Worksheet
-    Dim i As Long 'slide counter
-    
-    Application.ScreenUpdating = False
-    On Error Resume Next
-    Set PApp = GetObject(, "Powerpoint.Application")
-    On Error GoTo 0
-    'open a new powerpoint session if not open
-    If PApp Is Nothing Then
-        Set PApp = New PowerPoint.Application
-    End If
-    ' get presentation
-    If PApp.Presentations.Count = 0 Then
-        Set PPres = PApp.Presentations.Add
-        i = 0
-    Else
-        Set PPres = PApp.ActivePresentation
-        i = PPres.Slides.Count
-    End If
-    Set PLayout = PPres.SlideMaster.CustomLayouts(7)
-    
-    For Each Sh In ThisWorkbook.Worksheets
-        If Sh.Index > 7 Then
-            Set toCopy = Sh.UsedRange
-            Set PSlide = PPres.Slides.AddSlide(i + 1, PLayout)
-            DoEvents
-            toCopy.CopyPicture xlScreen, xlPicture
-            PSlide.Shapes.Paste
-            DoEvents
-            Set PShape = PSlide.Shapes(1)
-            With PShape
-                .LockAspectRatio = msoTrue
-                .Left = 40
-                .Top = 40
-                .Width = 850
-            End With
-            i = i + 1
-        End If
-    Next Sh
-    MsgBox "Your Slides have been created."
-   ' PApp.Visible = True
-     Application.ScreenUpdating = True
-    Set PApp = Nothing
+Sub Create_PowerPoint_Slides()
+
+    Dim PApp As PowerPoint.Application
+
+    Dim PPres As PowerPoint.Presentation
+
+    Dim PSlide As PowerPoint.Slide
+
+    Dim PShape As PowerPoint.Shape
+
+    Dim PLayout As PowerPoint.CustomLayout
+
+    Dim toCopy As Range
+
+    Dim Sh As Worksheet
+
+    Dim i As Long 'slide counter
+
+    
+
+    Application.ScreenUpdating = False
+
+    On Error Resume Next
+
+    Set PApp = GetObject(, "Powerpoint.Application")
+
+    On Error GoTo 0
+
+    'open a new powerpoint session if not open
+
+    If PApp Is Nothing Then
+
+        Set PApp = New PowerPoint.Application
+
+    End If
+
+    ' get presentation
+
+    If PApp.Presentations.Count = 0 Then
+
+        Set PPres = PApp.Presentations.Add
+
+        i = 0
+
+    Else
+
+        Set PPres = PApp.ActivePresentation
+
+        i = PPres.Slides.Count
+
+    End If
+
+    Set PLayout = PPres.SlideMaster.CustomLayouts(7)
+
+    
+
+    For Each Sh In ThisWorkbook.Worksheets
+
+        If Sh.Index > 7 Then
+
+            Set toCopy = Sh.UsedRange
+
+            Set PSlide = PPres.Slides.AddSlide(i + 1, PLayout)
+
+            DoEvents
+
+            toCopy.CopyPicture xlScreen, xlPicture
+
+            PSlide.Shapes.Paste
+
+            DoEvents
+
+            Set PShape = PSlide.Shapes(1)
+
+            With PShape
+
+                .LockAspectRatio = msoTrue
+
+                .Left = 40
+
+                .Top = 40
+
+                .Width = 850
+
+            End With
+
+            i = i + 1
+
+        End If
+
+    Next Sh
+
+    MsgBox "Your Slides have been created."
+
+   ' PApp.Visible = True
+
+     Application.ScreenUpdating = True
+
+    Set PApp = Nothing
+
 End Sub
 ```
 
@@ -125,7 +175,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 15 - Interacting with Other Applications (Word, PowerPoint etc.)]]
 

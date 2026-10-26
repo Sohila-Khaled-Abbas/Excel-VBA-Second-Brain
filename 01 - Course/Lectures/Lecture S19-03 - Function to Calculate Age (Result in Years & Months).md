@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 19 - Creating Customized Functions / Formulas]]"
+section: "[[Section 19 - Creating Customized Functions Formulas]]"
 section_number: 19
 lecture_number: 3
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Creating Customized Functions / Formulas
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S19-03: Function to Calculate Age (Result in Years & Months)
 
 > [!important]
-> **Section Reference**: [[Section 19 - Creating Customized Functions / Formulas|Section 19: Creating Customized Functions / Formulas]]  
+> **Section Reference**: [[Section 19 - Creating Customized Functions Formulas|Section 19: Creating Customized Functions / Formulas]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Function to Calculate Age (Result in Years & Months)
 
@@ -47,19 +47,32 @@ Focuses on practical spreadsheet automation for 'Function to Calculate Age (Resu
 
 ## 💻 Code
 ```vba
-Function TheAge(myDate As Date) As String
-    Dim myMonths As Long
-    Dim myYears As Long
-    myMonths = Month(Date) - Month(myDate)
-    myYears = Year(Date) - Year(myDate)
-     'to account for negative months
-    If myMonths < 0 Then
-        myYears = myYears - 1
-        myMonths = 12 - VBA.Abs(myMonths)
-        
-    End If
-    TheAge = myYears & " Years & " & myMonths & " Months"
-    
+Function TheAge(myDate As Date) As String
+
+    Dim myMonths As Long
+
+    Dim myYears As Long
+
+    myMonths = Month(Date) - Month(myDate)
+
+    myYears = Year(Date) - Year(myDate)
+
+     'to account for negative months
+
+    If myMonths < 0 Then
+
+        myYears = myYears - 1
+
+        myMonths = 12 - VBA.Abs(myMonths)
+
+        
+
+    End If
+
+    TheAge = myYears & " Years & " & myMonths & " Months"
+
+    
+
 End Function
 ```
 
@@ -88,9 +101,9 @@ End Function
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 19 - Creating Customized Functions / Formulas]]
+- [[Section 19 - Creating Customized Functions Formulas]]
 
 ---
 

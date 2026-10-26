@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,44 +47,82 @@ Focuses on practical spreadsheet automation for 'Key Takeaways Files & Folders',
 
 ## 💻 Code
 ```vba
-Sub Bonus_Get_Data_From_File_InputBox()
-    
-    Dim FileToOpen As Variant
-    Dim OpenBook As Workbook
-    Dim ShName As String
-    Dim Sh As Worksheet
-    On Error GoTo Handle:
-    
-    FileToOpen = Application.GetOpenFilename(Title:="Browse for your File & Import Range", FileFilter:="Excel Files (*.xls*),*.xls*")
-    Application.ScreenUpdating = False
-    Application.DisplayAlerts = False
-    
-    If FileToOpen <> False Then
-        Set OpenBook = Application.Workbooks.Open(FileToOpen)
-        ShName = Application.InputBox("Enter the sheet name to copy", "Enter the sheet name to copy")
-        For Each Sh In OpenBook.Worksheets
-            If UCase(Sh.Name) Like "*" & UCase(ShName) & "*" Then
-                ShName = Sh.Name
-            End If
-        Next Sh
-
-        'copy data from the specified sheet to this workbook - updae range as you see fit
-        OpenBook.Sheets(ShName).Range("A1:CF1100").Copy
-        ThisWorkbook.ActiveSheet.Range("A10").PasteSpecial xlPasteValues
-        OpenBook.Close False
-    End If
-    Application.ScreenUpdating = True
-    Application.DisplayAlerts = True
-    Exit Sub
-Handle:
-    If Err.Number = 9 Then
-        MsgBox "The sheet name does not exist. Please check spelling"
-    Else
-        MsgBox "An error has occurred."
-    End If
-    OpenBook.Close False
-    Application.ScreenUpdating = True
-    Application.DisplayAlerts = True
+Sub Bonus_Get_Data_From_File_InputBox()
+
+    
+
+    Dim FileToOpen As Variant
+
+    Dim OpenBook As Workbook
+
+    Dim ShName As String
+
+    Dim Sh As Worksheet
+
+    On Error GoTo Handle:
+
+    
+
+    FileToOpen = Application.GetOpenFilename(Title:="Browse for your File & Import Range", FileFilter:="Excel Files (*.xls*),*.xls*")
+
+    Application.ScreenUpdating = False
+
+    Application.DisplayAlerts = False
+
+    
+
+    If FileToOpen <> False Then
+
+        Set OpenBook = Application.Workbooks.Open(FileToOpen)
+
+        ShName = Application.InputBox("Enter the sheet name to copy", "Enter the sheet name to copy")
+
+        For Each Sh In OpenBook.Worksheets
+
+            If UCase(Sh.Name) Like "*" & UCase(ShName) & "*" Then
+
+                ShName = Sh.Name
+
+            End If
+
+        Next Sh
+
+
+
+        'copy data from the specified sheet to this workbook - updae range as you see fit
+
+        OpenBook.Sheets(ShName).Range("A1:CF1100").Copy
+
+        ThisWorkbook.ActiveSheet.Range("A10").PasteSpecial xlPasteValues
+
+        OpenBook.Close False
+
+    End If
+
+    Application.ScreenUpdating = True
+
+    Application.DisplayAlerts = True
+
+    Exit Sub
+
+Handle:
+
+    If Err.Number = 9 Then
+
+        MsgBox "The sheet name does not exist. Please check spelling"
+
+    Else
+
+        MsgBox "An error has occurred."
+
+    End If
+
+    OpenBook.Close False
+
+    Application.ScreenUpdating = True
+
+    Application.DisplayAlerts = True
+
 End Sub
 ```
 
@@ -113,7 +151,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

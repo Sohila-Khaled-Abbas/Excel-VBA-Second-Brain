@@ -9,7 +9,7 @@ topics:
   - Your First Macro
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,34 +47,62 @@ Focuses on practical spreadsheet automation for 'Quiz: Test Your Knowledge on Ma
 
 ## 💻 Code
 ```vba
-Sub Copy_Data()
-'
-' Copy_Data Macro
-'
-
-'
-    Sheets("NewData#1").Select
-    Range("A4").Select
-    Range(Selection, Selection.End(xlDown)).Select
-    Range(Selection, Selection.End(xlToRight)).Select
-    Selection.Copy
-    Sheets("SummaryData").Select
-    Range("A3").Select
-    Selection.End(xlDown).Select
-    ActiveCell.Offset(1, 0).Range("A1").Select
-    ActiveSheet.Paste
-    Sheets("NewData#2").Select
-    Range("A4").Select
-    Range(Selection, Selection.End(xlDown)).Select
-    Range(Selection, Selection.End(xlToRight)).Select
-    Application.CutCopyMode = False
-    Selection.Copy
-    Sheets("SummaryData").Select
-    Range("A3").Select
-    Selection.End(xlDown).Select
-    ActiveCell.Offset(1, 0).Range("A1").Select
-    ActiveSheet.Paste
-    Range("A3").Select
+Sub Copy_Data()
+
+'
+
+' Copy_Data Macro
+
+'
+
+
+
+'
+
+    Sheets("NewData#1").Select
+
+    Range("A4").Select
+
+    Range(Selection, Selection.End(xlDown)).Select
+
+    Range(Selection, Selection.End(xlToRight)).Select
+
+    Selection.Copy
+
+    Sheets("SummaryData").Select
+
+    Range("A3").Select
+
+    Selection.End(xlDown).Select
+
+    ActiveCell.Offset(1, 0).Range("A1").Select
+
+    ActiveSheet.Paste
+
+    Sheets("NewData#2").Select
+
+    Range("A4").Select
+
+    Range(Selection, Selection.End(xlDown)).Select
+
+    Range(Selection, Selection.End(xlToRight)).Select
+
+    Application.CutCopyMode = False
+
+    Selection.Copy
+
+    Sheets("SummaryData").Select
+
+    Range("A3").Select
+
+    Selection.End(xlDown).Select
+
+    ActiveCell.Offset(1, 0).Range("A1").Select
+
+    ActiveSheet.Paste
+
+    Range("A3").Select
+
 End Sub
 ```
 
@@ -103,7 +131,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 02 - Your First Macro]]
 

@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 3
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-03: Working with Multi-Column ListBoxes
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Working with Multi-Column ListBoxes
 
@@ -47,26 +47,46 @@ Focuses on practical spreadsheet automation for 'Working with Multi-Column ListB
 
 ## 💻 Code
 ```vba
-Private Sub btEdit_Click()
-    EditNum = Me.LbEditCust.ListIndex
-     If EditNum = -1 Then
-    
-        MsgBox "nothing has been selected"
-    Else
-        EditNum = EditNum + 2
-        'copy values from listbox to fminputmaster form
-        FmInputMaster.tbCustName = shMaster.Range("A" & EditNum)
-         FmInputMaster.tbCompName = shMaster.Range("B" & EditNum)
-         FmInputMaster.tbAddress1 = shMaster.Range("C" & EditNum)
-         FmInputMaster.tbAddress2 = shMaster.Range("D" & EditNum)
-         FmInputMaster.tbAddress3 = shMaster.Range("E" & EditNum)
-         FmInputMaster.tbUID = shMaster.Range("F" & EditNum)
-         FmInputMaster.tbVAT = shMaster.Range("G" & EditNum) * 100
-         FmInputMaster.tbEmail = shMaster.Range("H" & EditNum)
-        Unload Me
-        FmInputMaster.btAdd.Caption = "UPDATE"
-        FmInputMaster.Show
-   End If
+Private Sub btEdit_Click()
+
+    EditNum = Me.LbEditCust.ListIndex
+
+     If EditNum = -1 Then
+
+    
+
+        MsgBox "nothing has been selected"
+
+    Else
+
+        EditNum = EditNum + 2
+
+        'copy values from listbox to fminputmaster form
+
+        FmInputMaster.tbCustName = shMaster.Range("A" & EditNum)
+
+         FmInputMaster.tbCompName = shMaster.Range("B" & EditNum)
+
+         FmInputMaster.tbAddress1 = shMaster.Range("C" & EditNum)
+
+         FmInputMaster.tbAddress2 = shMaster.Range("D" & EditNum)
+
+         FmInputMaster.tbAddress3 = shMaster.Range("E" & EditNum)
+
+         FmInputMaster.tbUID = shMaster.Range("F" & EditNum)
+
+         FmInputMaster.tbVAT = shMaster.Range("G" & EditNum) * 100
+
+         FmInputMaster.tbEmail = shMaster.Range("H" & EditNum)
+
+        Unload Me
+
+        FmInputMaster.btAdd.Caption = "UPDATE"
+
+        FmInputMaster.Show
+
+   End If
+
 End Sub
 ```
 
@@ -95,9 +115,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

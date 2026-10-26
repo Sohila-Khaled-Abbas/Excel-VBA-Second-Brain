@@ -9,7 +9,7 @@ topics:
   - Interacting with Other Applications (Word, PowerPoint etc.)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,27 +47,48 @@ Focuses on practical spreadsheet automation for 'Key Takeaways when Working with
 
 ## 💻 Code
 ```vba
-Sub Bonus_Copy_to_Word()
-
-    Dim WordApp As Word.Application
-    Dim WordDoc As Word.Document
-    
-    Dim toCopy As Range
-    On Error Resume Next
-    Set WordApp = GetObject(, "Word.Application")
-    On Error GoTo 0
-    If WordApp Is Nothing Then
-        Set WordApp = New Word.Application
-    End If
-    Set WordDoc = WordApp.Documents.Add
-    Set toCopy = Application.InputBox("Please select the range", "select range to copy to word", , , , , , 8)
-    toCopy.Copy
-    WordApp.Selection.Paste
-    WordApp.Visible = True
-    
-    Application.CutCopyMode = False
-    Set WordApp = Nothing
-    
+Sub Bonus_Copy_to_Word()
+
+
+
+    Dim WordApp As Word.Application
+
+    Dim WordDoc As Word.Document
+
+    
+
+    Dim toCopy As Range
+
+    On Error Resume Next
+
+    Set WordApp = GetObject(, "Word.Application")
+
+    On Error GoTo 0
+
+    If WordApp Is Nothing Then
+
+        Set WordApp = New Word.Application
+
+    End If
+
+    Set WordDoc = WordApp.Documents.Add
+
+    Set toCopy = Application.InputBox("Please select the range", "select range to copy to word", , , , , , 8)
+
+    toCopy.Copy
+
+    WordApp.Selection.Paste
+
+    WordApp.Visible = True
+
+    
+
+    Application.CutCopyMode = False
+
+    Set WordApp = Nothing
+
+    
+
 End Sub
 ```
 
@@ -96,7 +117,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 15 - Interacting with Other Applications (Word, PowerPoint etc.)]]
 

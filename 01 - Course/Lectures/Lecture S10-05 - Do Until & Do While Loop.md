@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,13 +47,20 @@ Focuses on practical spreadsheet automation for 'Do Until & Do While Loop', emph
 
 ## 💻 Code
 ```vba
-Sub Simple_Do_While()
-    StartCell = 8
-    Do While Range("A" & StartCell).Value <> ""
-        Range("C" & StartCell).Value = Range("A" & StartCell).Value + 10
-        StartCell = StartCell + 1
-    Loop
-
+Sub Simple_Do_While()
+
+    StartCell = 8
+
+    Do While Range("A" & StartCell).Value <> ""
+
+        Range("C" & StartCell).Value = Range("A" & StartCell).Value + 10
+
+        StartCell = StartCell + 1
+
+    Loop
+
+
+
 End Sub
 ```
 
@@ -82,7 +89,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

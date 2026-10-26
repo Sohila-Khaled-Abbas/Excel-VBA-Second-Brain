@@ -69,7 +69,7 @@ If the issue persists, provide a structured question report containing:
 ---
 
 ## 🔗 Related Vault Resources
-- [[Debugging & Reliability]]
+- [[Debugging]]
 - [[Error Handling]]
 - [[Immediate Window]]
 - [[Watch Window]]

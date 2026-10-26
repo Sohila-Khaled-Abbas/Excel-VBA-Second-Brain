@@ -9,7 +9,7 @@ topics:
   - Working with Arrays
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,21 +47,36 @@ Focuses on practical spreadsheet automation for 'Two Dimensional Arrays', emphas
 
 ## 💻 Code
 ```vba
-Sub Array_TwoDimensions()
-    Dim MonthInfo(1 To 12, 1 To 2) As Variant
-    Dim r As Byte
-    Dim c As Byte
-    Const StartRow As Long = 4
-    'fill up the rows
-    For r = 1 To 12
-        'fill up the columns
-        For c = 1 To 2
-            MonthInfo(r, c) = Cells(r + StartRow, c).Value
-            
-        Next c
-    Next r
-    MsgBox MonthInfo(3, 2)
-    
+Sub Array_TwoDimensions()
+
+    Dim MonthInfo(1 To 12, 1 To 2) As Variant
+
+    Dim r As Byte
+
+    Dim c As Byte
+
+    Const StartRow As Long = 4
+
+    'fill up the rows
+
+    For r = 1 To 12
+
+        'fill up the columns
+
+        For c = 1 To 2
+
+            MonthInfo(r, c) = Cells(r + StartRow, c).Value
+
+            
+
+        Next c
+
+    Next r
+
+    MsgBox MonthInfo(3, 2)
+
+    
+
 End Sub
 ```
 
@@ -90,7 +105,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 11 - Working with Arrays]]
 

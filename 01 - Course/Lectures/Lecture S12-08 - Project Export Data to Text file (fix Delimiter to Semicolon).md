@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,31 +47,56 @@ Focuses on practical spreadsheet automation for 'Project: Export Data to Text fi
 
 ## 💻 Code
 ```vba
-Sub Export_to_File()
-    Dim FileName As String
-    Dim ExpRange As Range
-    Dim ExpRow As Range
-    Dim Expcell As Range
-    Dim myValue As Variant
-    
-    FileName = ThisWorkbook.Path & "\ProjectActivity.csv"
-    Open FileName For Output As #1
-     'set full range but as rows to be able to loop through each row
-    Set ExpRange = Sheet7.Range("A6").CurrentRegion.Rows
-     'for each single row
-    For Each ExpRow In ExpRange
-         'for each single cell in the row
-        For Each Expcell In ExpRow.Cells
-            myValue = myValue & Expcell.Value & ";"
-        Next Expcell
-            myValue = Left(myValue, Len(myValue) - 1)
-
-        Print #1, myValue
-        myValue = ""
-    Next ExpRow
-    Close #1
-    MsgBox "Your Text File (ProjectActivity.csv) has been created in the same directory as this Worbkook.", vbInformation, "Well Done!"
-    
+Sub Export_to_File()
+
+    Dim FileName As String
+
+    Dim ExpRange As Range
+
+    Dim ExpRow As Range
+
+    Dim Expcell As Range
+
+    Dim myValue As Variant
+
+    
+
+    FileName = ThisWorkbook.Path & "\ProjectActivity.csv"
+
+    Open FileName For Output As #1
+
+     'set full range but as rows to be able to loop through each row
+
+    Set ExpRange = Sheet7.Range("A6").CurrentRegion.Rows
+
+     'for each single row
+
+    For Each ExpRow In ExpRange
+
+         'for each single cell in the row
+
+        For Each Expcell In ExpRow.Cells
+
+            myValue = myValue & Expcell.Value & ";"
+
+        Next Expcell
+
+            myValue = Left(myValue, Len(myValue) - 1)
+
+
+
+        Print #1, myValue
+
+        myValue = ""
+
+    Next ExpRow
+
+    Close #1
+
+    MsgBox "Your Text File (ProjectActivity.csv) has been created in the same directory as this Worbkook.", vbInformation, "Well Done!"
+
+    
+
 End Sub
 ```
 
@@ -100,7 +125,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

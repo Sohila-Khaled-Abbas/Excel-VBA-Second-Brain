@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,40 +47,74 @@ Focuses on practical spreadsheet automation for 'FileDialog Property: Loop Insid
 
 ## 💻 Code
 ```vba
-Sub Loop_Inside_Folder()
-
-    Dim FileDir As String
-    Dim FiletoList As String
-    Dim OpenBook As Workbook
-    'Retrieve Target Folder Path From User
-    With Application.FileDialog(msoFileDialogFolderPicker)
-        .Title = "Please select a folder"
-        .ButtonName = "Pick Folder"
-        'Cancel has show value of 0 and -1 means something was selected
-        If .Show = 0 Then
-            MsgBox "Nothing was selected"
-            Exit Sub
-        Else
-            'Dir finds the first file in the folder
-            FileDir = .SelectedItems(1) & "\"
-
-        End If
-    End With
-    'get first matching file name - the below shows you how to get specifc
-    'FiletoList = Dir(FileDir & "Test_*xls*")
-    FiletoList = Dir(FileDir & "*xls*")
-    Do Until FiletoList = ""
-        MsgBox FiletoList
-        
-     '   DoEvents 'allows windows to catchup
-     '   Set OpenBook = Workbooks.Open(FileDir & FiletoList)
-      '  OpenBook.Sheets(1).Copy before:=ThisWorkbook.Sheets(1)
-
-        'This command moves on the next file - don't forget this otherwise you get an endless loop
-        FiletoList = Dir
-
-    Loop
-     
+Sub Loop_Inside_Folder()
+
+
+
+    Dim FileDir As String
+
+    Dim FiletoList As String
+
+    Dim OpenBook As Workbook
+
+    'Retrieve Target Folder Path From User
+
+    With Application.FileDialog(msoFileDialogFolderPicker)
+
+        .Title = "Please select a folder"
+
+        .ButtonName = "Pick Folder"
+
+        'Cancel has show value of 0 and -1 means something was selected
+
+        If .Show = 0 Then
+
+            MsgBox "Nothing was selected"
+
+            Exit Sub
+
+        Else
+
+            'Dir finds the first file in the folder
+
+            FileDir = .SelectedItems(1) & "\"
+
+
+
+        End If
+
+    End With
+
+    'get first matching file name - the below shows you how to get specifc
+
+    'FiletoList = Dir(FileDir & "Test_*xls*")
+
+    FiletoList = Dir(FileDir & "*xls*")
+
+    Do Until FiletoList = ""
+
+        MsgBox FiletoList
+
+        
+
+     '   DoEvents 'allows windows to catchup
+
+     '   Set OpenBook = Workbooks.Open(FileDir & FiletoList)
+
+      '  OpenBook.Sheets(1).Copy before:=ThisWorkbook.Sheets(1)
+
+
+
+        'This command moves on the next file - don't forget this otherwise you get an endless loop
+
+        FiletoList = Dir
+
+
+
+    Loop
+
+     
+
 End Sub
 ```
 
@@ -109,7 +143,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

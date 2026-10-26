@@ -9,7 +9,7 @@ topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,18 +47,30 @@ Focuses on practical spreadsheet automation for 'Debugging Options: Watch, Local
 
 ## 💻 Code
 ```vba
-Sub Count_IF_formulas_Debug()
-'for tab Debug
-    Dim cell As Range
-    Dim CountFormula As Long
-    
-        For Each cell In ActiveSheet.UsedRange
-            If cell.HasFormula Then
-                CountFormula = CountFormula + 1
-            End If
-        Next cell
-        MsgBox "There are " & CountFormula & " formulas on this worksheet"
-        
+Sub Count_IF_formulas_Debug()
+
+'for tab Debug
+
+    Dim cell As Range
+
+    Dim CountFormula As Long
+
+    
+
+        For Each cell In ActiveSheet.UsedRange
+
+            If cell.HasFormula Then
+
+                CountFormula = CountFormula + 1
+
+            End If
+
+        Next cell
+
+        MsgBox "There are " & CountFormula & " formulas on this worksheet"
+
+        
+
 End Sub
 ```
 
@@ -87,7 +99,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 

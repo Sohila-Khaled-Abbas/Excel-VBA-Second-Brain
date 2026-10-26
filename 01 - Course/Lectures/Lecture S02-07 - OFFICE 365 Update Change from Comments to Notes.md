@@ -9,7 +9,7 @@ topics:
   - Your First Macro
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,14 +47,22 @@ Focuses on practical spreadsheet automation for 'OFFICE 365 Update: Change from 
 
 ## 💻 Code
 ```vba
-Sub ClearComments()
-'
-' Clear comments on sheet
-'
-
-    Selection.Specialcells(xlCellTypeComments).Select
-    Selection.ClearComments
-    Range("A7").Select
+Sub ClearComments()
+
+'
+
+' Clear comments on sheet
+
+'
+
+
+
+    Selection.Specialcells(xlCellTypeComments).Select
+
+    Selection.ClearComments
+
+    Range("A7").Select
+
 End Sub
 ```
 
@@ -83,7 +91,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 02 - Your First Macro]]
 

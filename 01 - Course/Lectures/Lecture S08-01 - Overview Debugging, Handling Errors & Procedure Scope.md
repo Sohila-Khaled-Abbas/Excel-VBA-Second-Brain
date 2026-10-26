@@ -9,7 +9,7 @@ topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,29 +47,52 @@ Focuses on practical spreadsheet automation for 'Overview: Debugging, Handling E
 
 ## 💻 Code
 ```vba
-Sub Top_3_Bid_Debug()
-'for tab Debug
-    Dim myRange As Range
-    Dim Top1 As Double
-    Dim Top2 As Double
-    Dim Top3 As Double
-
-    On Error GoTo Leave
-    
-    Set myRange = Application.InputBox("Select a range of numbers to get the Top 3 Values", "Top 3", , , , , , 8)
-    If Application.WorksheetFunction.Count(myRange) > 2 Then
-        Top1 = Application.WorksheetFunction.Large(myRange, 1)
-        Top2 = Application.WorksheetFunction.Large(myRange, 2)
-        Top3 = Application.WorksheetFunction.Large(myRange, 3)
-        
-        MsgBox "Top 1 = " & Top1 & vbNewLine & "Top 2 = " & Top2 & vbNewLine & "Top 3 = " & Top3
-    
-    Else
-        MsgBox "Please select at least 3 cells with numbers!", vbInformation
-    End If
-    
-Leave:
-
+Sub Top_3_Bid_Debug()
+
+'for tab Debug
+
+    Dim myRange As Range
+
+    Dim Top1 As Double
+
+    Dim Top2 As Double
+
+    Dim Top3 As Double
+
+
+
+    On Error GoTo Leave
+
+    
+
+    Set myRange = Application.InputBox("Select a range of numbers to get the Top 3 Values", "Top 3", , , , , , 8)
+
+    If Application.WorksheetFunction.Count(myRange) > 2 Then
+
+        Top1 = Application.WorksheetFunction.Large(myRange, 1)
+
+        Top2 = Application.WorksheetFunction.Large(myRange, 2)
+
+        Top3 = Application.WorksheetFunction.Large(myRange, 3)
+
+        
+
+        MsgBox "Top 1 = " & Top1 & vbNewLine & "Top 2 = " & Top2 & vbNewLine & "Top 3 = " & Top3
+
+    
+
+    Else
+
+        MsgBox "Please select at least 3 cells with numbers!", vbInformation
+
+    End If
+
+    
+
+Leave:
+
+
+
 End Sub
 ```
 
@@ -98,7 +121,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 

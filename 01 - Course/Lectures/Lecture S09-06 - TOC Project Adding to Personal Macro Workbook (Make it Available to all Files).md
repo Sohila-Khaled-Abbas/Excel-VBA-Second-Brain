@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 09 - Main Project #1: Create a Tool to Automate Table of Contents]]"
+section: "[[Section 09 - Main Project 1 Create a Tool to Automate Table of Contents]]"
 section_number: 9
 lecture_number: 6
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #1: Create a Tool to Automate Table of Contents
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S09-06: TOC Project: Adding to Personal Macro Workbook (Make it Available to all Files)
 
 > [!important]
-> **Section Reference**: [[Section 09 - Main Project #1: Create a Tool to Automate Table of Contents|Section 09: Main Project #1: Create a Tool to Automate Table of Contents]]  
+> **Section Reference**: [[Section 09 - Main Project 1 Create a Tool to Automate Table of Contents|Section 09: Main Project #1: Create a Tool to Automate Table of Contents]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: TOC Project: Adding to Personal Macro Workbook (Make it Available to all Files)
 
@@ -47,49 +47,92 @@ Focuses on practical spreadsheet automation for 'TOC Project: Adding to Personal
 
 ## 💻 Code
 ```vba
-Sub Auto_Table_Contents()
-'this procedure adds a table of contents to your active sheet. It creates a hyperlink to each sheet and takes the header from cell A1 of every sheet
-
-    Dim Sh As Worksheet
-    Dim StartCell As Range 'for inputbox
-    Dim ShName As String
-    Dim MsgConfirm As VBA.VbMsgBoxResult
-    Dim EndCell As Range ' for msgbox information
-    
-    'prompt the user to select a cell
-    On Error Resume Next
-    Set StartCell = Excel.Application.InputBox("Where do you want to insert the Table of Contents?" & vbNewLine & "Please select the cell:" _
-                                , "Insert Table of Contents", , , , , , 8)
-    If Err.Number = 424 Then Exit Sub
-    On Error GoTo Handle:
-                         
-    Set StartCell = StartCell.Cells(1, 1)
-    Set EndCell = StartCell.Offset(Worksheets.Count - 2, 1)
-    
-    'allow the user to cancel otherwise their cells might be overwritten
-    MsgConfirm = MsgBox("The values in cells: " & vbNewLine & _
-    StartCell.Address & " to " & EndCell.Address & " could be overwritten." _
-    & vbNewLine & "Would you like to continue?", vbOKCancel + vbDefaultButton2, "Confirmation Required")
-    If MsgConfirm = vbCancel Then Exit Sub
-    
-    For Each Sh In Worksheets
-        ShName = Sh.Name
-         StartCell = ShName
-        'include only if sheet is not activesheet and sheet is visible
-        If ActiveSheet.Name <> ShName Then
-            If Sh.Visible = xlSheetVisible Then
-                ActiveSheet.Hyperlinks.Add Anchor:=StartCell, Address:="", SubAddress:= _
-                 "'" & ShName & "'!A1", TextToDisplay:=ShName
-                StartCell.Offset(0, 1).Value = Sh.Range("A1").Value
-                Set StartCell = StartCell.Offset(1, 0)
-            End If 'if sheet is visible
-        End If ' if sheet <> activesheet
-    Next Sh
-
-    Exit Sub
-Handle:
-MsgBox "Unfortunately, an error has occured!"
-
+Sub Auto_Table_Contents()
+
+'this procedure adds a table of contents to your active sheet. It creates a hyperlink to each sheet and takes the header from cell A1 of every sheet
+
+
+
+    Dim Sh As Worksheet
+
+    Dim StartCell As Range 'for inputbox
+
+    Dim ShName As String
+
+    Dim MsgConfirm As VBA.VbMsgBoxResult
+
+    Dim EndCell As Range ' for msgbox information
+
+    
+
+    'prompt the user to select a cell
+
+    On Error Resume Next
+
+    Set StartCell = Excel.Application.InputBox("Where do you want to insert the Table of Contents?" & vbNewLine & "Please select the cell:" _
+
+                                , "Insert Table of Contents", , , , , , 8)
+
+    If Err.Number = 424 Then Exit Sub
+
+    On Error GoTo Handle:
+
+                         
+
+    Set StartCell = StartCell.Cells(1, 1)
+
+    Set EndCell = StartCell.Offset(Worksheets.Count - 2, 1)
+
+    
+
+    'allow the user to cancel otherwise their cells might be overwritten
+
+    MsgConfirm = MsgBox("The values in cells: " & vbNewLine & _
+
+    StartCell.Address & " to " & EndCell.Address & " could be overwritten." _
+
+    & vbNewLine & "Would you like to continue?", vbOKCancel + vbDefaultButton2, "Confirmation Required")
+
+    If MsgConfirm = vbCancel Then Exit Sub
+
+    
+
+    For Each Sh In Worksheets
+
+        ShName = Sh.Name
+
+         StartCell = ShName
+
+        'include only if sheet is not activesheet and sheet is visible
+
+        If ActiveSheet.Name <> ShName Then
+
+            If Sh.Visible = xlSheetVisible Then
+
+                ActiveSheet.Hyperlinks.Add Anchor:=StartCell, Address:="", SubAddress:= _
+
+                 "'" & ShName & "'!A1", TextToDisplay:=ShName
+
+                StartCell.Offset(0, 1).Value = Sh.Range("A1").Value
+
+                Set StartCell = StartCell.Offset(1, 0)
+
+            End If 'if sheet is visible
+
+        End If ' if sheet <> activesheet
+
+    Next Sh
+
+
+
+    Exit Sub
+
+Handle:
+
+MsgBox "Unfortunately, an error has occured!"
+
+
+
 End Sub
 ```
 
@@ -118,9 +161,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 09 - Main Project #1: Create a Tool to Automate Table of Contents]]
+- [[Section 09 - Main Project 1 Create a Tool to Automate Table of Contents]]
 
 ---
 

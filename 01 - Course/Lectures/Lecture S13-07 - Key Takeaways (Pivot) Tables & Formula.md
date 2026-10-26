@@ -9,7 +9,7 @@ topics:
   - Excel Tables, Formulas & Pivot Tables
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,13 +47,20 @@ Focuses on practical spreadsheet automation for 'Key Takeaways (Pivot) Tables & 
 
 ## 💻 Code
 ```vba
-Sub Refresh_Pivot()
-    ThisWorkbook.RefreshAll
-    
-    Dim PT As PivotTable
-    Set PT = ActiveSheet.PivotTables("PivotTable1")
-    PT.PivotCache.Refresh
-    
+Sub Refresh_Pivot()
+
+    ThisWorkbook.RefreshAll
+
+    
+
+    Dim PT As PivotTable
+
+    Set PT = ActiveSheet.PivotTables("PivotTable1")
+
+    PT.PivotCache.Refresh
+
+    
+
 End Sub
 ```
 
@@ -82,7 +89,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 13 - Excel Tables, Formulas & Pivot Tables]]
 

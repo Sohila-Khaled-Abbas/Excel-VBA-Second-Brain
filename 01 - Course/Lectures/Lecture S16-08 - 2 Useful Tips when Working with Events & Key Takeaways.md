@@ -9,7 +9,7 @@ topics:
   - Worksheet and Workbook Events
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,14 +47,22 @@ Focuses on practical spreadsheet automation for '2 Useful Tips when Working with
 
 ## 💻 Code
 ```vba
-Sub Understand_Intersect()
-    Dim myIntersect As Range
-    Set myIntersect = Excel.Intersect(Selection, Range("J1:K5"))
-    If myIntersect Is Nothing Then
-        Exit Sub
-    Else
-        Debug.Print myIntersect.Address
-    End If
+Sub Understand_Intersect()
+
+    Dim myIntersect As Range
+
+    Set myIntersect = Excel.Intersect(Selection, Range("J1:K5"))
+
+    If myIntersect Is Nothing Then
+
+        Exit Sub
+
+    Else
+
+        Debug.Print myIntersect.Address
+
+    End If
+
 End Sub
 ```
 
@@ -83,7 +91,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 16 - Worksheet and Workbook Events]]
 

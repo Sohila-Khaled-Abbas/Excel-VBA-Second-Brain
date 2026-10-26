@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 2
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-02: Setting up an Input UserForm to Collect Master Data
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Setting up an Input UserForm to Collect Master Data
 
@@ -47,55 +47,104 @@ Focuses on practical spreadsheet automation for 'Setting up an Input UserForm to
 
 ## 💻 Code
 ```vba
-Private Sub btAdd_Click()
-    Dim ctr As Control
-    Dim InpReq As Boolean
-    Dim rMaster As Long
-    
-    On Error GoTo ErrorHandle
-    '1. Check if required fields are not empty & VAT is numeric
-    InpReq = True
-    For Each ctr In Me.Controls
-        If TypeName(ctr) = "TextBox" Then
-            If ctr.Tag = "required" Then
-                If ctr.Text = "" Then
-                    InpReq = False
-                End If
-            End If 'tag
-        End If 'typename
-    Next ctr
-    If InpReq = False Or IsNumeric(Me.tbVAT) = False Then
-        MsgBox "Please input the required fields which are marked with ""*""" & vbNewLine & _
-    "Please ensure VAT is a Number Value", vbCritical, "Input incomplete"
-        Me.tbCustName.SetFocus
-        Exit Sub
-    End If
-    '2. Add data to Master Data
-    With shMaster
-        If Me.btAdd.Caption = "UPDATE" Then
-            rMaster = EditNum
-        Else
-        rMaster = .ListObjects("CustomerTable").Range.Rows.Count + 1
-        End If
-        .Range("A" & rMaster) = Me.tbCustName
-        .Range("B" & rMaster) = Me.tbCompName
-        .Range("C" & rMaster) = Me.tbAddress1
-        .Range("D" & rMaster) = Me.tbAddress2
-        .Range("E" & rMaster) = Me.tbAddress3
-        .Range("F" & rMaster) = Me.tbUID
-        .Range("G" & rMaster) = Me.tbVAT / 100
-        .Range("H" & rMaster) = Me.tbEmail
-
-    
-    End With
-    Unload Me
-    MsgBox "Master data has been updated", vbInformation, "Updated!"
-    Exit Sub
-    
-ErrorHandle:
-    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
-    Unload Me
-
+Private Sub btAdd_Click()
+
+    Dim ctr As Control
+
+    Dim InpReq As Boolean
+
+    Dim rMaster As Long
+
+    
+
+    On Error GoTo ErrorHandle
+
+    '1. Check if required fields are not empty & VAT is numeric
+
+    InpReq = True
+
+    For Each ctr In Me.Controls
+
+        If TypeName(ctr) = "TextBox" Then
+
+            If ctr.Tag = "required" Then
+
+                If ctr.Text = "" Then
+
+                    InpReq = False
+
+                End If
+
+            End If 'tag
+
+        End If 'typename
+
+    Next ctr
+
+    If InpReq = False Or IsNumeric(Me.tbVAT) = False Then
+
+        MsgBox "Please input the required fields which are marked with ""*""" & vbNewLine & _
+
+    "Please ensure VAT is a Number Value", vbCritical, "Input incomplete"
+
+        Me.tbCustName.SetFocus
+
+        Exit Sub
+
+    End If
+
+    '2. Add data to Master Data
+
+    With shMaster
+
+        If Me.btAdd.Caption = "UPDATE" Then
+
+            rMaster = EditNum
+
+        Else
+
+        rMaster = .ListObjects("CustomerTable").Range.Rows.Count + 1
+
+        End If
+
+        .Range("A" & rMaster) = Me.tbCustName
+
+        .Range("B" & rMaster) = Me.tbCompName
+
+        .Range("C" & rMaster) = Me.tbAddress1
+
+        .Range("D" & rMaster) = Me.tbAddress2
+
+        .Range("E" & rMaster) = Me.tbAddress3
+
+        .Range("F" & rMaster) = Me.tbUID
+
+        .Range("G" & rMaster) = Me.tbVAT / 100
+
+        .Range("H" & rMaster) = Me.tbEmail
+
+
+
+    
+
+    End With
+
+    Unload Me
+
+    MsgBox "Master data has been updated", vbInformation, "Updated!"
+
+    Exit Sub
+
+    
+
+ErrorHandle:
+
+    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
+
+    Unload Me
+
+
+
 End Sub
 ```
 
@@ -124,9 +173,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

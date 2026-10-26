@@ -9,7 +9,7 @@ topics:
   - Working with Arrays
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,19 +47,32 @@ Focuses on practical spreadsheet automation for 'Preserving Dynamic Arrays (addi
 
 ## 💻 Code
 ```vba
-Sub Array_Preserve()
-
-    Dim Cust() As String
-    ReDim Cust(1 To 2)
-    Cust(1) = "Perino"
-    Cust(2) = "Hackrr"
-    
-  ' ReDim Cust(1 To 3)
-   ReDim Preserve Cust(1 To 3)
-    
-    Cust(3) = "Pes"
-    MsgBox Cust(1) & vbNewLine & Cust(2) & vbNewLine & Cust(3)
-    
+Sub Array_Preserve()
+
+
+
+    Dim Cust() As String
+
+    ReDim Cust(1 To 2)
+
+    Cust(1) = "Perino"
+
+    Cust(2) = "Hackrr"
+
+    
+
+  ' ReDim Cust(1 To 3)
+
+   ReDim Preserve Cust(1 To 3)
+
+    
+
+    Cust(3) = "Pes"
+
+    MsgBox Cust(1) & vbNewLine & Cust(2) & vbNewLine & Cust(3)
+
+    
+
 End Sub
 ```
 
@@ -88,7 +101,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 11 - Working with Arrays]]
 

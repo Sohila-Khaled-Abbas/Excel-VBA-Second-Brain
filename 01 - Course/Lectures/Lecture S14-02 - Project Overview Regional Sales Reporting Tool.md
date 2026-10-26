@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 14 - Main Project #2: Regional Reporting Tool]]"
+section: "[[Section 14 - Main Project 2 Regional Reporting Tool]]"
 section_number: 14
 lecture_number: 2
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #2: Regional Reporting Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S14-02: Project Overview: Regional Sales Reporting Tool
 
 > [!important]
-> **Section Reference**: [[Section 14 - Main Project #2: Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
+> **Section Reference**: [[Section 14 - Main Project 2 Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Project Overview: Regional Sales Reporting Tool
 
@@ -47,90 +47,174 @@ Focuses on practical spreadsheet automation for 'Project Overview: Regional Sale
 
 ## 💻 Code
 ```vba
-Sub Import_Sales()
-
-    '1. First import data 1-to-1 to NewData tab
-    '2. Use Find function to find the matching header from Summary tab in NewData tab
-    '3. Copy and paste the required column from NewData in Summary tab
-
-    Dim shSales As Worksheet
-    Dim FileToOpen As Variant
-    Dim FileCnt As Byte, c As Byte
-    Dim LastRow As Long, LastTempRow As Long
-    Dim SelectedBook As Workbook
-    Dim GetHeader As Range
-    Const StartRowTemp = 4  ' if start row on company templates change, update this line
-    Const CompanyRng As String = "C2"
-    Dim CompanyImported() As String
-    Call Entry_Point
- 
-    On Error GoTo Handle:
-    
-    'Pick the files to import - allow multiselect
-    FileToOpen = Application.GetOpenFilename(Filefilter:="Excel Files (*.xlsx), *.xlsx", Title:="Select Workbook to Import", MultiSelect:=True)
-        
-        If IsArray(FileToOpen) Then
-            'how many files were selected
-            
-            For FileCnt = 1 To UBound(FileToOpen)
-            
-                'clean up the data on temporary sheet that were already imported
-                shNewDat.Cells.Clear
-                'locate last empty row in summary tab
-                LastRow = shAll.Cells(Rows.Count, 1).End(xlUp).Row + 1
-                Set SelectedBook = Workbooks.Open(FileName:=FileToOpen(FileCnt))
-                
-                'in case this sheet doesn't exist, error handle takes care of it by informing the user
-                SelectedBook.Worksheets("Sales").Cells.Copy
-                
-                shNewDat.Range("A1").PasteSpecial xlPasteValuesAndNumberFormats
-                 
-                 SelectedBook.Close
-                 
-                'locate last row in the temp sheet
-                LastTempRow = shNewDat.Cells(Rows.Count, 2).End(xlUp).Row
-                
-                'assign company name
-                'calculate the number of rows that should be copied over and put the company code there
-                shAll.Range("A" & LastRow, "A" & LastRow + (LastTempRow - StartRowTemp) - 1).Value = shNewDat.Range(CompanyRng).Value
-              '  Debug.Print LastRow + LastTempRow - StartRowTemp - 1
-                c = 2  'columns needed for the summary sheet
-                'use find function to match headers, since the template could have a different order of columns than the summary tab
-                Do While shAll.Cells(1, c) <> ""
-                    Set GetHeader = shNewDat.Rows(StartRowTemp).Find(what:=shAll.Cells(1, c).Value, LookIn:=xlValues, MatchCase:=False, lookat:=xlWhole)
-                    If Not GetHeader Is Nothing Then
-                        shNewDat.Range(shNewDat.Cells(StartRowTemp + 1, GetHeader.Column), shNewDat.Cells(LastTempRow, GetHeader.Column)).Copy
-                        shAll.Cells(LastRow, c).PasteSpecial
-                    End If
-                    c = c + 1 'check and copy next column
-               Loop
-                ReDim Preserve CompanyImported(1 To FileCnt)
-                CompanyImported(FileCnt) = shNewDat.Range("C2").Value
-            Next FileCnt
-              
-            MsgBox "Data Imported Sucessfully", vbInformation, "Good Job"
-         
-        End If
-
-     shStart.Select
-    Range("A1").Select
-    TaskRow = shStart.Range("B" & shStart.Rows.Count).End(xlUp).Row + 1
-    shStart.Range("B" & TaskRow).Value = "Data imported for: " & Join(CompanyImported, ",")
-    
-    
-Call Exit_Point
-
-Exit Sub
-
-Handle:
-If Err.Number = 9 Then
-MsgBox "It looks like you have selected the wrong file."
-Else
-MsgBox "An error has occurred"
-End If
-
-Call Exit_Point
-
+Sub Import_Sales()
+
+
+
+    '1. First import data 1-to-1 to NewData tab
+
+    '2. Use Find function to find the matching header from Summary tab in NewData tab
+
+    '3. Copy and paste the required column from NewData in Summary tab
+
+
+
+    Dim shSales As Worksheet
+
+    Dim FileToOpen As Variant
+
+    Dim FileCnt As Byte, c As Byte
+
+    Dim LastRow As Long, LastTempRow As Long
+
+    Dim SelectedBook As Workbook
+
+    Dim GetHeader As Range
+
+    Const StartRowTemp = 4  ' if start row on company templates change, update this line
+
+    Const CompanyRng As String = "C2"
+
+    Dim CompanyImported() As String
+
+    Call Entry_Point
+
+ 
+
+    On Error GoTo Handle:
+
+    
+
+    'Pick the files to import - allow multiselect
+
+    FileToOpen = Application.GetOpenFilename(Filefilter:="Excel Files (*.xlsx), *.xlsx", Title:="Select Workbook to Import", MultiSelect:=True)
+
+        
+
+        If IsArray(FileToOpen) Then
+
+            'how many files were selected
+
+            
+
+            For FileCnt = 1 To UBound(FileToOpen)
+
+            
+
+                'clean up the data on temporary sheet that were already imported
+
+                shNewDat.Cells.Clear
+
+                'locate last empty row in summary tab
+
+                LastRow = shAll.Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+                Set SelectedBook = Workbooks.Open(FileName:=FileToOpen(FileCnt))
+
+                
+
+                'in case this sheet doesn't exist, error handle takes care of it by informing the user
+
+                SelectedBook.Worksheets("Sales").Cells.Copy
+
+                
+
+                shNewDat.Range("A1").PasteSpecial xlPasteValuesAndNumberFormats
+
+                 
+
+                 SelectedBook.Close
+
+                 
+
+                'locate last row in the temp sheet
+
+                LastTempRow = shNewDat.Cells(Rows.Count, 2).End(xlUp).Row
+
+                
+
+                'assign company name
+
+                'calculate the number of rows that should be copied over and put the company code there
+
+                shAll.Range("A" & LastRow, "A" & LastRow + (LastTempRow - StartRowTemp) - 1).Value = shNewDat.Range(CompanyRng).Value
+
+              '  Debug.Print LastRow + LastTempRow - StartRowTemp - 1
+
+                c = 2  'columns needed for the summary sheet
+
+                'use find function to match headers, since the template could have a different order of columns than the summary tab
+
+                Do While shAll.Cells(1, c) <> ""
+
+                    Set GetHeader = shNewDat.Rows(StartRowTemp).Find(what:=shAll.Cells(1, c).Value, LookIn:=xlValues, MatchCase:=False, lookat:=xlWhole)
+
+                    If Not GetHeader Is Nothing Then
+
+                        shNewDat.Range(shNewDat.Cells(StartRowTemp + 1, GetHeader.Column), shNewDat.Cells(LastTempRow, GetHeader.Column)).Copy
+
+                        shAll.Cells(LastRow, c).PasteSpecial
+
+                    End If
+
+                    c = c + 1 'check and copy next column
+
+               Loop
+
+                ReDim Preserve CompanyImported(1 To FileCnt)
+
+                CompanyImported(FileCnt) = shNewDat.Range("C2").Value
+
+            Next FileCnt
+
+              
+
+            MsgBox "Data Imported Sucessfully", vbInformation, "Good Job"
+
+         
+
+        End If
+
+
+
+     shStart.Select
+
+    Range("A1").Select
+
+    TaskRow = shStart.Range("B" & shStart.Rows.Count).End(xlUp).Row + 1
+
+    shStart.Range("B" & TaskRow).Value = "Data imported for: " & Join(CompanyImported, ",")
+
+    
+
+    
+
+Call Exit_Point
+
+
+
+Exit Sub
+
+
+
+Handle:
+
+If Err.Number = 9 Then
+
+MsgBox "It looks like you have selected the wrong file."
+
+Else
+
+MsgBox "An error has occurred"
+
+End If
+
+
+
+Call Exit_Point
+
+
+
 End Sub
 ```
 
@@ -159,9 +243,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 14 - Main Project #2: Regional Reporting Tool]]
+- [[Section 14 - Main Project 2 Regional Reporting Tool]]
 
 ---
 

@@ -9,7 +9,7 @@ topics:
   - Looping through Collections & Making Decisions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,17 +47,28 @@ Focuses on practical spreadsheet automation for 'For Each to Loop Through Collec
 
 ## 💻 Code
 ```vba
-Sub UnProtect_All_Sheets()
-' for tab collections & IF
-    Dim sh As Worksheet
-   ' Dim ShActive As Worksheet
-    Application.ScreenUpdating = False
-   'Set ShActive = ActiveSheet
-    For Each sh In ThisWorkbook.Worksheets
-        sh.Unprotect Password:="test"
-    Next sh
-   ' ShActive.Select
-    Application.ScreenUpdating = True
+Sub UnProtect_All_Sheets()
+
+' for tab collections & IF
+
+    Dim sh As Worksheet
+
+   ' Dim ShActive As Worksheet
+
+    Application.ScreenUpdating = False
+
+   'Set ShActive = ActiveSheet
+
+    For Each sh In ThisWorkbook.Worksheets
+
+        sh.Unprotect Password:="test"
+
+    Next sh
+
+   ' ShActive.Select
+
+    Application.ScreenUpdating = True
+
 End Sub
 ```
 
@@ -86,7 +97,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 06 - Looping through Collections & Making Decisions]]
 

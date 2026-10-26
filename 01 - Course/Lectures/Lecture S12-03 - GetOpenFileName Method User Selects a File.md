@@ -9,7 +9,7 @@ topics:
   - Working with Files, Folders & Text Files
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,23 +47,40 @@ Focuses on practical spreadsheet automation for 'GetOpenFileName Method: User Se
 
 ## 💻 Code
 ```vba
-Sub Get_Data_From_File()
-
-     'Note: In the Regional Project that's coming up we learn how to import data from multiple Excel workbooks
-    ' Also see BONUS sub procedure below (Bonus_Get_Data_From_File_InputBox()) that expands on this by inlcuding an input box
-    Dim FileToOpen As Variant
-    Dim OpenBook As Workbook
-    Application.ScreenUpdating = False
-    FileToOpen = Application.GetOpenFilename(Title:="Browse for your File & Import Range", FileFilter:="Excel Files (*.xls*),*xls*")
-    If FileToOpen <> False Then
-        Set OpenBook = Application.Workbooks.Open(FileToOpen)
-         'copy data from A1 to E20 from first sheet
-        OpenBook.Sheets(1).Range("A1:E20").Copy
-        ThisWorkbook.Worksheets("SelectFile").Range("A10").PasteSpecial xlPasteValues
-        OpenBook.Close False
-        
-    End If
-    Application.ScreenUpdating = True
+Sub Get_Data_From_File()
+
+
+
+     'Note: In the Regional Project that's coming up we learn how to import data from multiple Excel workbooks
+
+    ' Also see BONUS sub procedure below (Bonus_Get_Data_From_File_InputBox()) that expands on this by inlcuding an input box
+
+    Dim FileToOpen As Variant
+
+    Dim OpenBook As Workbook
+
+    Application.ScreenUpdating = False
+
+    FileToOpen = Application.GetOpenFilename(Title:="Browse for your File & Import Range", FileFilter:="Excel Files (*.xls*),*xls*")
+
+    If FileToOpen <> False Then
+
+        Set OpenBook = Application.Workbooks.Open(FileToOpen)
+
+         'copy data from A1 to E20 from first sheet
+
+        OpenBook.Sheets(1).Range("A1:E20").Copy
+
+        ThisWorkbook.Worksheets("SelectFile").Range("A10").PasteSpecial xlPasteValues
+
+        OpenBook.Close False
+
+        
+
+    End If
+
+    Application.ScreenUpdating = True
+
 End Sub
 ```
 
@@ -92,7 +109,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 12 - Working with Files, Folders & Text Files]]
 

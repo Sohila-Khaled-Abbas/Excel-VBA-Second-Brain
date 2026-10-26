@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 8
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-08: Export PDF & Excel Workbook for Each Invoice based on ListBox Selection
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Export PDF & Excel Workbook for Each Invoice based on ListBox Selection
 
@@ -47,102 +47,198 @@ Focuses on practical spreadsheet automation for 'Export PDF & Excel Workbook for
 
 ## 💻 Code
 ```vba
-Private Sub btInvoice_Click()
-
-    Dim ExcelPath As String
-    Dim r As Long
-    Dim PosTextRow As Byte
-    Dim InvTable As ListObject
-    Dim NextInvoice As Variant
-    Dim NewBook As Workbook
-    
-    On Error GoTo ErrorHandle
-    
-    '1. Check if Folders exist
-    ExcelPath = ThisWorkbook.Path & "\" & Range("Excel_Folder").Value
-    PDFPath = ThisWorkbook.Path & "\" & Range("PDF_Folder").Value
-    
-    If Dir(ExcelPath, vbDirectory) = VBA.Constants.vbNullString Or Dir(PDFPath, vbDirectory) = VBA.Constants.vbNullString Then
-        MsgBox "The Excel & PDF folders do not exist. Please create these in the same folder as this workbook first.", vbInformation, "Folder does not exist"
-        Exit Sub
-    End If
-    '2. Figure out what has been selected in the List Box
-    If Me.lbOpenInvoice.ListIndex = -1 Then
-        MsgBox "Please select a an invoice from the list"
-        Exit Sub
-    Else
-        Application.ScreenUpdating = False
-        Application.DisplayAlerts = False
-        
-        PosTextRow = InStr(1, Me.lbOpenInvoice.Value, " - Table Row: ", vbTextCompare) + Len(" - Table Row: ")
-        r = CLng(Mid(Me.lbOpenInvoice.Value, PosTextRow))
-        
-    '3. Update Invoice Table by assigning a new Invoice number if missing
-        Set InvTable = shInvoice.ListObjects("InvoiceTable")
-        'check if there is at least a number in amount 1 before creating the invoice
-
-        If InvTable.ListColumns("Amount Line 1").DataBodyRange(r).Value = "" Then
-            MsgBox "There is no value to invoice yet."
-            Unload Me
-            Exit Sub
-        End If
-
-        NextInvoice = InvTable.ListColumns("Invoice Number").DataBodyRange(r).Value
-        If NextInvoice = "" Then NextInvoice = Application.WorksheetFunction.Max(InvTable.ListColumns("Invoice Number").DataBodyRange) + 1
-        InvTable.ListColumns("Invoice Number").DataBodyRange(r).Value = NextInvoice
-        
-    '4. Copy fields from Invoice table to template tab
-        shTemp.Range("D7").Value = NextInvoice
-        shTemp.Range("D8").Value = Date
-        shTemp.Range("B12").Value = InvTable.ListColumns("Company").DataBodyRange(r).Value
-        shTemp.Range("B13").Value = InvTable.ListColumns("Customer").DataBodyRange(r).Value
-        shTemp.Range("B15").Value = InvTable.ListColumns("Address Line 1").DataBodyRange(r).Value
-        shTemp.Range("B16").Value = InvTable.ListColumns("Address Line 2").DataBodyRange(r).Value
-        shTemp.Range("B17").Value = InvTable.ListColumns("Address Line 3").DataBodyRange(r).Value
-        shTemp.Range("B21").Value = InvTable.ListColumns("Services Line 1").DataBodyRange(r).Value
-        shTemp.Range("C21").Value = InvTable.ListColumns("Date Line 1").DataBodyRange(r).Value
-        shTemp.Range("D21").Value = InvTable.ListColumns("Amount Line 1").DataBodyRange(r).Value
-        shTemp.Range("B22").Value = InvTable.ListColumns("Services Line 2").DataBodyRange(r).Value
-        shTemp.Range("C22").Value = InvTable.ListColumns("Date Line 2").DataBodyRange(r).Value
-        shTemp.Range("D22").Value = InvTable.ListColumns("Amount Line 2").DataBodyRange(r).Value
-        shTemp.Range("B23").Value = InvTable.ListColumns("Services Line 3").DataBodyRange(r).Value
-        shTemp.Range("C23").Value = InvTable.ListColumns("Date Line 3").DataBodyRange(r).Value
-        shTemp.Range("D23").Value = InvTable.ListColumns("Amount Line 3").DataBodyRange(r).Value
-        'VAT
-        shTemp.Range("E21").Value = InvTable.ListColumns("VAT").DataBodyRange(r).Value
-
-
-        'make sure service text is fully visible
-         shTemp.Rows("21:23").EntireRow.AutoFit
-    
-    '5. Create a new Excel Workbook for the invoice selected
-        Set NewBook = Workbooks.Add
-        shTemp.Copy before:=NewBook.Sheets(1)
-        NewBook.ActiveSheet.Name = CStr(NextInvoice)
-        
-    '6. Create a PDF Version of the Invoice
-        FileName = "\" & NextInvoice & "_" & shTemp.Range("B12").Value
-        NewBook.ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, FileName:=PDFPath & FileName
-        NewBook.SaveAs FileName:=ExcelPath & FileName
-        NewBook.Close
-        
-    '7. Add Date and update status to "created" in Invoice Table
-        InvTable.ListColumns("Invoice Date").DataBodyRange(r).Value = Date
-        InvTable.ListColumns("Status").DataBodyRange(r).Value = "Created"
-    
-        Application.ScreenUpdating = True
-        Application.DisplayAlerts = True
-        MsgBox "Invoice for " & Me.lbOpenInvoice.Value & " has been created!" & vbNewLine _
-        & vbNewLine & "Excel file is saved here: " & ExcelPath & FileName & vbNewLine _
-        & vbNewLine & "PDF file is saved here: " & PDFPath & FileName, vbInformation, "Invoice Created!"
-
-    '8. Move on to the second page of Multipage control
-        Me.MPInvoice.Value = 1
-    End If
-        Exit Sub
-ErrorHandle:
-    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
-    Unload Me
+Private Sub btInvoice_Click()
+
+
+
+    Dim ExcelPath As String
+
+    Dim r As Long
+
+    Dim PosTextRow As Byte
+
+    Dim InvTable As ListObject
+
+    Dim NextInvoice As Variant
+
+    Dim NewBook As Workbook
+
+    
+
+    On Error GoTo ErrorHandle
+
+    
+
+    '1. Check if Folders exist
+
+    ExcelPath = ThisWorkbook.Path & "\" & Range("Excel_Folder").Value
+
+    PDFPath = ThisWorkbook.Path & "\" & Range("PDF_Folder").Value
+
+    
+
+    If Dir(ExcelPath, vbDirectory) = VBA.Constants.vbNullString Or Dir(PDFPath, vbDirectory) = VBA.Constants.vbNullString Then
+
+        MsgBox "The Excel & PDF folders do not exist. Please create these in the same folder as this workbook first.", vbInformation, "Folder does not exist"
+
+        Exit Sub
+
+    End If
+
+    '2. Figure out what has been selected in the List Box
+
+    If Me.lbOpenInvoice.ListIndex = -1 Then
+
+        MsgBox "Please select a an invoice from the list"
+
+        Exit Sub
+
+    Else
+
+        Application.ScreenUpdating = False
+
+        Application.DisplayAlerts = False
+
+        
+
+        PosTextRow = InStr(1, Me.lbOpenInvoice.Value, " - Table Row: ", vbTextCompare) + Len(" - Table Row: ")
+
+        r = CLng(Mid(Me.lbOpenInvoice.Value, PosTextRow))
+
+        
+
+    '3. Update Invoice Table by assigning a new Invoice number if missing
+
+        Set InvTable = shInvoice.ListObjects("InvoiceTable")
+
+        'check if there is at least a number in amount 1 before creating the invoice
+
+
+
+        If InvTable.ListColumns("Amount Line 1").DataBodyRange(r).Value = "" Then
+
+            MsgBox "There is no value to invoice yet."
+
+            Unload Me
+
+            Exit Sub
+
+        End If
+
+
+
+        NextInvoice = InvTable.ListColumns("Invoice Number").DataBodyRange(r).Value
+
+        If NextInvoice = "" Then NextInvoice = Application.WorksheetFunction.Max(InvTable.ListColumns("Invoice Number").DataBodyRange) + 1
+
+        InvTable.ListColumns("Invoice Number").DataBodyRange(r).Value = NextInvoice
+
+        
+
+    '4. Copy fields from Invoice table to template tab
+
+        shTemp.Range("D7").Value = NextInvoice
+
+        shTemp.Range("D8").Value = Date
+
+        shTemp.Range("B12").Value = InvTable.ListColumns("Company").DataBodyRange(r).Value
+
+        shTemp.Range("B13").Value = InvTable.ListColumns("Customer").DataBodyRange(r).Value
+
+        shTemp.Range("B15").Value = InvTable.ListColumns("Address Line 1").DataBodyRange(r).Value
+
+        shTemp.Range("B16").Value = InvTable.ListColumns("Address Line 2").DataBodyRange(r).Value
+
+        shTemp.Range("B17").Value = InvTable.ListColumns("Address Line 3").DataBodyRange(r).Value
+
+        shTemp.Range("B21").Value = InvTable.ListColumns("Services Line 1").DataBodyRange(r).Value
+
+        shTemp.Range("C21").Value = InvTable.ListColumns("Date Line 1").DataBodyRange(r).Value
+
+        shTemp.Range("D21").Value = InvTable.ListColumns("Amount Line 1").DataBodyRange(r).Value
+
+        shTemp.Range("B22").Value = InvTable.ListColumns("Services Line 2").DataBodyRange(r).Value
+
+        shTemp.Range("C22").Value = InvTable.ListColumns("Date Line 2").DataBodyRange(r).Value
+
+        shTemp.Range("D22").Value = InvTable.ListColumns("Amount Line 2").DataBodyRange(r).Value
+
+        shTemp.Range("B23").Value = InvTable.ListColumns("Services Line 3").DataBodyRange(r).Value
+
+        shTemp.Range("C23").Value = InvTable.ListColumns("Date Line 3").DataBodyRange(r).Value
+
+        shTemp.Range("D23").Value = InvTable.ListColumns("Amount Line 3").DataBodyRange(r).Value
+
+        'VAT
+
+        shTemp.Range("E21").Value = InvTable.ListColumns("VAT").DataBodyRange(r).Value
+
+
+
+
+
+        'make sure service text is fully visible
+
+         shTemp.Rows("21:23").EntireRow.AutoFit
+
+    
+
+    '5. Create a new Excel Workbook for the invoice selected
+
+        Set NewBook = Workbooks.Add
+
+        shTemp.Copy before:=NewBook.Sheets(1)
+
+        NewBook.ActiveSheet.Name = CStr(NextInvoice)
+
+        
+
+    '6. Create a PDF Version of the Invoice
+
+        FileName = "\" & NextInvoice & "_" & shTemp.Range("B12").Value
+
+        NewBook.ActiveSheet.ExportAsFixedFormat Type:=xlTypePDF, FileName:=PDFPath & FileName
+
+        NewBook.SaveAs FileName:=ExcelPath & FileName
+
+        NewBook.Close
+
+        
+
+    '7. Add Date and update status to "created" in Invoice Table
+
+        InvTable.ListColumns("Invoice Date").DataBodyRange(r).Value = Date
+
+        InvTable.ListColumns("Status").DataBodyRange(r).Value = "Created"
+
+    
+
+        Application.ScreenUpdating = True
+
+        Application.DisplayAlerts = True
+
+        MsgBox "Invoice for " & Me.lbOpenInvoice.Value & " has been created!" & vbNewLine _
+
+        & vbNewLine & "Excel file is saved here: " & ExcelPath & FileName & vbNewLine _
+
+        & vbNewLine & "PDF file is saved here: " & PDFPath & FileName, vbInformation, "Invoice Created!"
+
+
+
+    '8. Move on to the second page of Multipage control
+
+        Me.MPInvoice.Value = 1
+
+    End If
+
+        Exit Sub
+
+ErrorHandle:
+
+    MsgBox "It looks like an error has occurred! Please make sure you have followed the instructions.", vbCritical
+
+    Unload Me
+
 End Sub
 ```
 
@@ -171,9 +267,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

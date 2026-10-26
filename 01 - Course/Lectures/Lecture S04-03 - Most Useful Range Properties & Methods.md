@@ -9,7 +9,7 @@ topics:
   - Referencing Ranges, Worksheets & Workbooks
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,29 +47,52 @@ Focuses on practical spreadsheet automation for 'Most Useful Range Properties & 
 
 ## 💻 Code
 ```vba
-Sub Range_Property_Method_Examples()
-
-    'Example of Property --> Text Property
-    '--------------------------------------
-    
-    Range("B6").Value = Range("B5").Value
-    'VBA sees this as text
-    Range("B7").Value = Range("B5").Text
-    'Debug.Print TypeName(Range("B5").Text)
-    'Debug.Print TypeName(Range("B5").value)
-    
-    '--------------------------------------
-    'Example of Method --> Delete
-    '--------------------------------------
-    Range("B6").Delete xlToLeft
-    Range("B9").EntireRow.Delete
-    
-    '--------------------------------------
-    'Select cell A1 on Tab "Purpose"
-    '--------------------------------------
-    Worksheets("purpose").Activate
-    Range("A1").Select
-    
+Sub Range_Property_Method_Examples()
+
+
+
+    'Example of Property --> Text Property
+
+    '--------------------------------------
+
+    
+
+    Range("B6").Value = Range("B5").Value
+
+    'VBA sees this as text
+
+    Range("B7").Value = Range("B5").Text
+
+    'Debug.Print TypeName(Range("B5").Text)
+
+    'Debug.Print TypeName(Range("B5").value)
+
+    
+
+    '--------------------------------------
+
+    'Example of Method --> Delete
+
+    '--------------------------------------
+
+    Range("B6").Delete xlToLeft
+
+    Range("B9").EntireRow.Delete
+
+    
+
+    '--------------------------------------
+
+    'Select cell A1 on Tab "Purpose"
+
+    '--------------------------------------
+
+    Worksheets("purpose").Activate
+
+    Range("A1").Select
+
+    
+
 End Sub
 ```
 
@@ -98,7 +121,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 04 - Referencing Ranges, Worksheets & Workbooks]]
 

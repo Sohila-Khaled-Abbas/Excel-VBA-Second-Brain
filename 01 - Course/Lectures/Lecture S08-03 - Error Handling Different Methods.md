@@ -9,7 +9,7 @@ topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,37 +47,68 @@ Focuses on practical spreadsheet automation for 'Error Handling: Different Metho
 
 ## 💻 Code
 ```vba
-Sub Top_3_Bid_ErrorHandle()
-' for tab Errorhandle
-    Dim myRange As Range
-    Dim Top1 As Double
-    Dim Top2 As Double
-    Dim Top3 As Double, Top4 As Double
-    
-    On Error GoTo ErrorHandle
-    Set myRange = Application.InputBox("Select a range of numbers to get the Top 4 Values", "Top 4", , , , , , 8)
-    
-    If Application.WorksheetFunction.Count(myRange) > 3 Then
-        Top1 = Application.WorksheetFunction.Large(myRange, 1)
-        Top2 = Application.WorksheetFunction.Large(myRange, 2)
-        Top3 = Application.WorksheetFunction.Large(myRange, 3)
-        Top4 = Application.WorksheetFunction.Large(myRange, 4)
-        MsgBox "Top 1 = " & Top1 & vbNewLine & "Top 2 = " & Top2 & vbNewLine & "Top 3 = " & Top3 & vbNewLine & "Top 4 = " & Top4
-    
-    Else
-        MsgBox "Please select at least 4 cells with numbers!", vbInformation
-    End If
-
-Exit Sub
-
-ErrorHandle:
-    Select Case Err.Number
-        Case 424
-            Exit Sub
-        Case Else
-            MsgBox "An error has occurred. Please double-check your selection"
-    End Select
-    
+Sub Top_3_Bid_ErrorHandle()
+
+' for tab Errorhandle
+
+    Dim myRange As Range
+
+    Dim Top1 As Double
+
+    Dim Top2 As Double
+
+    Dim Top3 As Double, Top4 As Double
+
+    
+
+    On Error GoTo ErrorHandle
+
+    Set myRange = Application.InputBox("Select a range of numbers to get the Top 4 Values", "Top 4", , , , , , 8)
+
+    
+
+    If Application.WorksheetFunction.Count(myRange) > 3 Then
+
+        Top1 = Application.WorksheetFunction.Large(myRange, 1)
+
+        Top2 = Application.WorksheetFunction.Large(myRange, 2)
+
+        Top3 = Application.WorksheetFunction.Large(myRange, 3)
+
+        Top4 = Application.WorksheetFunction.Large(myRange, 4)
+
+        MsgBox "Top 1 = " & Top1 & vbNewLine & "Top 2 = " & Top2 & vbNewLine & "Top 3 = " & Top3 & vbNewLine & "Top 4 = " & Top4
+
+    
+
+    Else
+
+        MsgBox "Please select at least 4 cells with numbers!", vbInformation
+
+    End If
+
+
+
+Exit Sub
+
+
+
+ErrorHandle:
+
+    Select Case Err.Number
+
+        Case 424
+
+            Exit Sub
+
+        Case Else
+
+            MsgBox "An error has occurred. Please double-check your selection"
+
+    End Select
+
+    
+
 End Sub
 ```
 
@@ -106,7 +137,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 

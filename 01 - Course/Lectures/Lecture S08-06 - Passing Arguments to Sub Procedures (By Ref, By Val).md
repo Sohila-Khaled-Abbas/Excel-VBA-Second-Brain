@@ -9,7 +9,7 @@ topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,11 +47,16 @@ Focuses on practical spreadsheet automation for 'Passing Arguments to Sub Proced
 
 ## 💻 Code
 ```vba
-Private Sub myCalc(GetValue As Double, myPercent)
-
-    GetValue = GetValue * myPercent
-    MsgBox GetValue & " :Inside Private"
-    
+Private Sub myCalc(GetValue As Double, myPercent)
+
+
+
+    GetValue = GetValue * myPercent
+
+    MsgBox GetValue & " :Inside Private"
+
+    
+
 End Sub
 ```
 
@@ -80,7 +85,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 

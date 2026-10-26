@@ -9,7 +9,7 @@ topics:
   - Working with Userforms & ActiveX Controls
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,12 +47,18 @@ Focuses on practical spreadsheet automation for 'ActiveX Combo Box for Easy Shee
 
 ## 💻 Code
 ```vba
-Private Sub cbSheet_Change()
-    If CBSheet.Value <> "Select a sheet" Then
-    Worksheets(CBSheet.Value).Select
-    End If
-    CBSheet.Value = "Select a sheet"
-    
+Private Sub cbSheet_Change()
+
+    If CBSheet.Value <> "Select a sheet" Then
+
+    Worksheets(CBSheet.Value).Select
+
+    End If
+
+    CBSheet.Value = "Select a sheet"
+
+    
+
 End Sub
 ```
 
@@ -81,7 +87,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 17 - Working with Userforms & ActiveX Controls]]
 

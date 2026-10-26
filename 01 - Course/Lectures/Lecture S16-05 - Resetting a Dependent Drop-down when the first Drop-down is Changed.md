@@ -9,7 +9,7 @@ topics:
   - Worksheet and Workbook Events
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,12 +47,18 @@ Focuses on practical spreadsheet automation for 'Resetting a Dependent Drop-down
 
 ## 💻 Code
 ```vba
-Private Sub Worksheet_Change(ByVal Target As Range)
-    If Not Intersect(Target, Columns("A:F")) Is Nothing Then
-        Worksheets("PivotReport").PivotTables("PivotComp").PivotCache.Refresh
-        MsgBox "refresh"
-    End If
-    
+Private Sub Worksheet_Change(ByVal Target As Range)
+
+    If Not Intersect(Target, Columns("A:F")) Is Nothing Then
+
+        Worksheets("PivotReport").PivotTables("PivotComp").PivotCache.Refresh
+
+        MsgBox "refresh"
+
+    End If
+
+    
+
 End Sub
 ```
 
@@ -81,7 +87,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 16 - Worksheet and Workbook Events]]
 

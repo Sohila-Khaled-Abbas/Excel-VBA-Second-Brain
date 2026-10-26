@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,35 +47,64 @@ Focuses on practical spreadsheet automation for 'Find Method with Do Loop - Mult
 
 ## 💻 Code
 ```vba
-Sub Many_Finds()
-    Dim CompId As Range
-    Dim i As Byte
-    Dim FirstMatch As Variant
-    
-    Range("D3:D6").ClearContents
-    i = 3
-    Dim Start
-    Start = VBA.Timer
-    
-    Set CompId = Range("A:A").Find(what:=Range("B3").Value, _
-    LookIn:=xlValues, lookat:=xlWhole)
-    If Not CompId Is Nothing Then
-        Range("D" & i).Value = CompId.Offset(, 4).Value
-        FirstMatch = CompId.Address
-        Do
-            Set CompId = Range("A:A").FindNext(CompId)
-            If CompId.Address = FirstMatch Then Exit Do
-            i = i + 1
-            Range("D" & i).Value = CompId.Offset(, 4).Value
-        Loop
-    Else
-    MsgBox "Company not found!"
-    End If
-    Debug.Print Round(Timer - Start, 3)
-    
-    
-    'Application.Speech.Speak "Well Done. " & i - 2 & " matches were found."
-    
+Sub Many_Finds()
+
+    Dim CompId As Range
+
+    Dim i As Byte
+
+    Dim FirstMatch As Variant
+
+    
+
+    Range("D3:D6").ClearContents
+
+    i = 3
+
+    Dim Start
+
+    Start = VBA.Timer
+
+    
+
+    Set CompId = Range("A:A").Find(what:=Range("B3").Value, _
+
+    LookIn:=xlValues, lookat:=xlWhole)
+
+    If Not CompId Is Nothing Then
+
+        Range("D" & i).Value = CompId.Offset(, 4).Value
+
+        FirstMatch = CompId.Address
+
+        Do
+
+            Set CompId = Range("A:A").FindNext(CompId)
+
+            If CompId.Address = FirstMatch Then Exit Do
+
+            i = i + 1
+
+            Range("D" & i).Value = CompId.Offset(, 4).Value
+
+        Loop
+
+    Else
+
+    MsgBox "Company not found!"
+
+    End If
+
+    Debug.Print Round(Timer - Start, 3)
+
+    
+
+    
+
+    'Application.Speech.Speak "Well Done. " & i - 2 & " matches were found."
+
+    
+
 End Sub
 ```
 
@@ -104,7 +133,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

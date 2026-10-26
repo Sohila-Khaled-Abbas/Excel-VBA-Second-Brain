@@ -9,7 +9,7 @@ topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,16 +47,26 @@ Focuses on practical spreadsheet automation for 'Procedure Scope & Running one S
 
 ## 💻 Code
 ```vba
-Private Sub Entry_Point()
-
-    With Application
-        .StatusBar = "Short wait"
-        .ScreenUpdating = False
-        .Calculation = xlCalculationManual
-        .DisplayAlerts = False
-    
-    End With
-    
+Private Sub Entry_Point()
+
+
+
+    With Application
+
+        .StatusBar = "Short wait"
+
+        .ScreenUpdating = False
+
+        .Calculation = xlCalculationManual
+
+        .DisplayAlerts = False
+
+    
+
+    End With
+
+    
+
 End Sub
 ```
 
@@ -85,7 +95,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 

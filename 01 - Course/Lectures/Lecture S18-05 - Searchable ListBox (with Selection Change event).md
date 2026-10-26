@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 5
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-05: Searchable ListBox (with Selection Change event)
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Searchable ListBox (with Selection Change event)
 
@@ -47,27 +47,48 @@ Focuses on practical spreadsheet automation for 'Searchable ListBox (with Select
 
 ## 💻 Code
 ```vba
-Private Sub btSelect_Click()
-    Dim FindCust As Range
-    If Me.LbCustomer.ListIndex = -1 Then
-        MsgBox "Please select a a name from the list"
-        Exit Sub
-    Else
-        Set FindCust = shMaster.Range("mycustomer").Find(What:=Me.LbCustomer.Value, lookat:=xlWhole)
-        If Not FindCust Is Nothing Then
-            shMaster.Range("A" & FindCust.Row, "G" & FindCust.Row).Copy
-            shInvoice.Range("B" & mySelection.Row).PasteSpecial (xlPasteValues)
-         'add instruction text for last line
-        
-        shInvoice.Range("B" & mySelection.Row + 1).Value = "Type & Enter to select customer or company"
-        shInvoice.Range("Y" & mySelection.Row).Copy
-        shInvoice.Range("Y" & mySelection.Row + 1).PasteSpecial xlPasteValidation
-        Application.CutCopyMode = False
-        Range("A" & mySelection.Row + 1).Select
-           
-        End If
-    End If
-    Unload Me
+Private Sub btSelect_Click()
+
+    Dim FindCust As Range
+
+    If Me.LbCustomer.ListIndex = -1 Then
+
+        MsgBox "Please select a a name from the list"
+
+        Exit Sub
+
+    Else
+
+        Set FindCust = shMaster.Range("mycustomer").Find(What:=Me.LbCustomer.Value, lookat:=xlWhole)
+
+        If Not FindCust Is Nothing Then
+
+            shMaster.Range("A" & FindCust.Row, "G" & FindCust.Row).Copy
+
+            shInvoice.Range("B" & mySelection.Row).PasteSpecial (xlPasteValues)
+
+         'add instruction text for last line
+
+        
+
+        shInvoice.Range("B" & mySelection.Row + 1).Value = "Type & Enter to select customer or company"
+
+        shInvoice.Range("Y" & mySelection.Row).Copy
+
+        shInvoice.Range("Y" & mySelection.Row + 1).PasteSpecial xlPasteValidation
+
+        Application.CutCopyMode = False
+
+        Range("A" & mySelection.Row + 1).Select
+
+           
+
+        End If
+
+    End If
+
+    Unload Me
+
 End Sub
 ```
 
@@ -96,9 +117,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

@@ -257,4 +257,4 @@ Sheets("Summary").Range(Cells(1, 1), Cells(10, 5)).Value = 0
 - **Range Object**: [[Range]]
 - **Sheet Architecture**: [[Worksheet]], [[Worksheets]]
 - **Looping Constructs**: [[For Next]], [[Cheat Sheets/Loops Cheat Sheet|Loops Cheat Sheet]]
-- **Array Memory Processing**: [[Arrays]], [[05 - Data & Automation/Arrays/Dynamic Arrays]]
+- **Array Memory Processing**: [[Arrays]], [[Arrays]]

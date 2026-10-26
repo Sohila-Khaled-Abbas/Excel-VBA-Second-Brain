@@ -9,7 +9,7 @@ topics:
   - Working with Userforms & ActiveX Controls
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,20 +47,34 @@ Focuses on practical spreadsheet automation for 'ActiveX Check Box to Fix Scroll
 
 ## 💻 Code
 ```vba
-Private Sub cbScreen_Click()
-    Application.DisplayFullScreen = Not Application.DisplayFullScreen
-    With Application.ActiveWindow
-                .DisplayHeadings = Not .DisplayHeadings
-                .DisplayWorkbookTabs = Not .DisplayWorkbookTabs
-                .DisplayHorizontalScrollBar = Not .DisplayHorizontalScrollBar
-                .DisplayVerticalScrollBar = Not .DisplayVerticalScrollBar
-    End With
-    If cbScreen.Value Then
-        Me.ScrollArea = "A1:N30"
-    Else
-        Me.ScrollArea = ""
-    End If
-    
+Private Sub cbScreen_Click()
+
+    Application.DisplayFullScreen = Not Application.DisplayFullScreen
+
+    With Application.ActiveWindow
+
+                .DisplayHeadings = Not .DisplayHeadings
+
+                .DisplayWorkbookTabs = Not .DisplayWorkbookTabs
+
+                .DisplayHorizontalScrollBar = Not .DisplayHorizontalScrollBar
+
+                .DisplayVerticalScrollBar = Not .DisplayVerticalScrollBar
+
+    End With
+
+    If cbScreen.Value Then
+
+        Me.ScrollArea = "A1:N30"
+
+    Else
+
+        Me.ScrollArea = ""
+
+    End If
+
+    
+
 End Sub
 ```
 
@@ -89,7 +103,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 17 - Working with Userforms & ActiveX Controls]]
 

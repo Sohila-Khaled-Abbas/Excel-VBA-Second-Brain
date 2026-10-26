@@ -9,7 +9,7 @@ topics:
   - Working with Charts
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,26 +47,46 @@ Focuses on practical spreadsheet automation for 'Show Charts inside UserForms', 
 
 ## 💻 Code
 ```vba
-Sub Chart_in_Form()
-    Dim FileName As String
-    Application.ScreenUpdating = False
-    Worksheets("Create").Select
-    Range("A6:B18").Select
-    FrmChart.LbAverage = VBA.FormatNumber(Application.WorksheetFunction.Average(Range("B7:B18")), 2)
-    
-    Call My_Column_Chart
-    FileName = ThisWorkbook.Path & "\" & myChart.Name & ".gif"
-    myChart.Export FileName, "GIF"
-    'delete chart
-    ActiveSheet.ChartObjects(myChart.Parent.Name).Delete
-    FrmChart.ImageChart.Picture = stdole.LoadPicture(FileName)
-    
-    FrmChart.Show
-    'delete file
-    Kill FileName
-    Worksheets("UserForm").Select
-     Application.ScreenUpdating = True
-    
+Sub Chart_in_Form()
+
+    Dim FileName As String
+
+    Application.ScreenUpdating = False
+
+    Worksheets("Create").Select
+
+    Range("A6:B18").Select
+
+    FrmChart.LbAverage = VBA.FormatNumber(Application.WorksheetFunction.Average(Range("B7:B18")), 2)
+
+    
+
+    Call My_Column_Chart
+
+    FileName = ThisWorkbook.Path & "\" & myChart.Name & ".gif"
+
+    myChart.Export FileName, "GIF"
+
+    'delete chart
+
+    ActiveSheet.ChartObjects(myChart.Parent.Name).Delete
+
+    FrmChart.ImageChart.Picture = stdole.LoadPicture(FileName)
+
+    
+
+    FrmChart.Show
+
+    'delete file
+
+    Kill FileName
+
+    Worksheets("UserForm").Select
+
+     Application.ScreenUpdating = True
+
+    
+
 End Sub
 ```
 
@@ -95,7 +115,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 20 - Working with Charts]]
 

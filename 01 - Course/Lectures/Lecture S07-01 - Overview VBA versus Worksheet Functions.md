@@ -9,7 +9,7 @@ topics:
   - Useful Built-in Functions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,21 +47,36 @@ Focuses on practical spreadsheet automation for 'Overview: VBA versus Worksheet 
 
 ## 💻 Code
 ```vba
-Sub VBA_Excel_Functions()
-    With shVEF
-         'get data in B3
-        .Range("B3").Value = VBA.DateTime.Date
-        'change to case specified in A6 to A9
-        .Range("B6").Value = VBA.UCase(.Range("A6").Value)
-        .Range("B7").Value = VBA.LCase(.Range("A7").Value)
-        .Range("B8").Value = VBA.StrConv(.Range("A8").Value, vbProperCase)
-        .Range("B9").Value = Excel.Application.WorksheetFunction.Proper(.Range("A9").Value)
-         'get max of data set in cell B11
-        Dim myRange As Range
-        Set myRange = .Range("A15").CurrentRegion
-        .Range("B11").Value = Excel.WorksheetFunction.Max(myRange)
-
-    End With
+Sub VBA_Excel_Functions()
+
+    With shVEF
+
+         'get data in B3
+
+        .Range("B3").Value = VBA.DateTime.Date
+
+        'change to case specified in A6 to A9
+
+        .Range("B6").Value = VBA.UCase(.Range("A6").Value)
+
+        .Range("B7").Value = VBA.LCase(.Range("A7").Value)
+
+        .Range("B8").Value = VBA.StrConv(.Range("A8").Value, vbProperCase)
+
+        .Range("B9").Value = Excel.Application.WorksheetFunction.Proper(.Range("A9").Value)
+
+         'get max of data set in cell B11
+
+        Dim myRange As Range
+
+        Set myRange = .Range("A15").CurrentRegion
+
+        .Range("B11").Value = Excel.WorksheetFunction.Max(myRange)
+
+
+
+    End With
+
 End Sub
 ```
 
@@ -90,7 +105,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 07 - Useful Built-in Functions]]
 

@@ -9,7 +9,7 @@ topics:
   - Debugging, Error Handling & Procedure Scope
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,38 +47,70 @@ Focuses on practical spreadsheet automation for 'Faster Code by Suppressing Pop-
 
 ## 💻 Code
 ```vba
-Sub Faster_Code()
-'for tab Faster
-    Dim ShNew As Worksheet
-    Dim cell As Range
-    
-    'turn off some features
-    With Application
-        .StatusBar = "Short wait"
-        .ScreenUpdating = False
-        .DisplayAlerts = False
-        .Calculation = xlCalculationManual
-    End With
-
-    Set ShNew = Worksheets.Add
-    
-    For Each cell In ShNew.Range("A1:A100000")
-        cell.Value = 10
-    Next cell
-    
-    ShNew.Delete
-    Sheet8.Select
-    
-    'turn features on again
-    With Application
-        .ScreenUpdating = True
-        .Calculation = xlCalculationAutomatic
-        .DisplayAlerts = True
-        .StatusBar = ""
-        'in case you have used the copy and pastespecial methods, you could have a lot of data on the clipboard.
-        .Application.CutCopyMode = False
-    End With
-
+Sub Faster_Code()
+
+'for tab Faster
+
+    Dim ShNew As Worksheet
+
+    Dim cell As Range
+
+    
+
+    'turn off some features
+
+    With Application
+
+        .StatusBar = "Short wait"
+
+        .ScreenUpdating = False
+
+        .DisplayAlerts = False
+
+        .Calculation = xlCalculationManual
+
+    End With
+
+
+
+    Set ShNew = Worksheets.Add
+
+    
+
+    For Each cell In ShNew.Range("A1:A100000")
+
+        cell.Value = 10
+
+    Next cell
+
+    
+
+    ShNew.Delete
+
+    Sheet8.Select
+
+    
+
+    'turn features on again
+
+    With Application
+
+        .ScreenUpdating = True
+
+        .Calculation = xlCalculationAutomatic
+
+        .DisplayAlerts = True
+
+        .StatusBar = ""
+
+        'in case you have used the copy and pastespecial methods, you could have a lot of data on the clipboard.
+
+        .Application.CutCopyMode = False
+
+    End With
+
+
+
 End Sub
 ```
 
@@ -107,7 +139,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 08 - Debugging, Error Handling & Procedure Scope]]
 

@@ -9,7 +9,7 @@ topics:
   - Useful Built-in Functions
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,21 +47,36 @@ Focuses on practical spreadsheet automation for 'Input Box that can Select Range
 
 ## 💻 Code
 ```vba
-Sub Excel_InputBox_Range()
-'for tab InputBox_Excel
-    Dim myRange As Range
-    Dim cellBlank As Long, cellNum As Long, cellOther As Long
-    
-    On Error GoTo Leave 'in case the user clicks on cancel
-    Set myRange = Application.InputBox("Count the number of cells", "Checking Cells...", , , , , , 8)
-    cellBlank = Excel.WorksheetFunction.CountBlank(myRange)
-    cellNum = Excel.WorksheetFunction.Count(myRange)
-    cellOther = Excel.WorksheetFunction.CountA(myRange) - cellNum
-    'message box to inform
-    MsgBox cellBlank & " cells are blank." & vbNewLine _
-    & cellNum & " cells have numbers." & vbNewLine _
-    & cellOther & " cells are non-numeric."
-Leave:
+Sub Excel_InputBox_Range()
+
+'for tab InputBox_Excel
+
+    Dim myRange As Range
+
+    Dim cellBlank As Long, cellNum As Long, cellOther As Long
+
+    
+
+    On Error GoTo Leave 'in case the user clicks on cancel
+
+    Set myRange = Application.InputBox("Count the number of cells", "Checking Cells...", , , , , , 8)
+
+    cellBlank = Excel.WorksheetFunction.CountBlank(myRange)
+
+    cellNum = Excel.WorksheetFunction.Count(myRange)
+
+    cellOther = Excel.WorksheetFunction.CountA(myRange) - cellNum
+
+    'message box to inform
+
+    MsgBox cellBlank & " cells are blank." & vbNewLine _
+
+    & cellNum & " cells have numbers." & vbNewLine _
+
+    & cellOther & " cells are non-numeric."
+
+Leave:
+
 End Sub
 ```
 
@@ -90,7 +105,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 07 - Useful Built-in Functions]]
 

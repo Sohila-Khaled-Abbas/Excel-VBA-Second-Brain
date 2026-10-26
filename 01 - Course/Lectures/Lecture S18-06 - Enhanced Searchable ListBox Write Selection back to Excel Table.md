@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 18 - Main Project #3: Invoice Generation Tool]]"
+section: "[[Section 18 - Main Project 3 Invoice Generation Tool]]"
 section_number: 18
 lecture_number: 6
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #3: Invoice Generation Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S18-06: Enhanced Searchable ListBox: Write Selection back to Excel Table
 
 > [!important]
-> **Section Reference**: [[Section 18 - Main Project #3: Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
+> **Section Reference**: [[Section 18 - Main Project 3 Invoice Generation Tool|Section 18: Main Project #3: Invoice Generation Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Enhanced Searchable ListBox: Write Selection back to Excel Table
 
@@ -47,27 +47,48 @@ Focuses on practical spreadsheet automation for 'Enhanced Searchable ListBox: Wr
 
 ## 💻 Code
 ```vba
-Private Sub Worksheet_Change(ByVal Target As Range)
-    If Target.Columns.Count > 25 Then Exit Sub
-    'check if customer is entered
-    If Not Intersect(Target, Me.ListObjects("InvoiceTable").ListColumns(1).Range) Is Nothing Then
-        Set mySelection = Target
-        'send the customer range and customer value to the sub function
-        Call Find_Cust_Comp(shMaster.Range("mycustomer"), mySelection.Value)
-        FmGetCustomer.tbCustomer.Value = mySelection.Value
-        Application.EnableEvents = False
-        FmGetCustomer.Show
-        Application.EnableEvents = True
-        'check if company is entered
-    ElseIf Not Intersect(Target, Me.ListObjects("InvoiceTable").ListColumns(2).Range) Is Nothing Then
-        Set mySelection = Target
-        'send company range and company value to the sub function
-        Call Find_Cust_Comp(shMaster.Range("mycompany"), mySelection.Value)
-        FmGetCustomer.tbCompany.Value = mySelection.Value
-        Application.EnableEvents = False
-         FmGetCustomer.Show
-        Application.EnableEvents = True
-    End If
+Private Sub Worksheet_Change(ByVal Target As Range)
+
+    If Target.Columns.Count > 25 Then Exit Sub
+
+    'check if customer is entered
+
+    If Not Intersect(Target, Me.ListObjects("InvoiceTable").ListColumns(1).Range) Is Nothing Then
+
+        Set mySelection = Target
+
+        'send the customer range and customer value to the sub function
+
+        Call Find_Cust_Comp(shMaster.Range("mycustomer"), mySelection.Value)
+
+        FmGetCustomer.tbCustomer.Value = mySelection.Value
+
+        Application.EnableEvents = False
+
+        FmGetCustomer.Show
+
+        Application.EnableEvents = True
+
+        'check if company is entered
+
+    ElseIf Not Intersect(Target, Me.ListObjects("InvoiceTable").ListColumns(2).Range) Is Nothing Then
+
+        Set mySelection = Target
+
+        'send company range and company value to the sub function
+
+        Call Find_Cust_Comp(shMaster.Range("mycompany"), mySelection.Value)
+
+        FmGetCustomer.tbCompany.Value = mySelection.Value
+
+        Application.EnableEvents = False
+
+         FmGetCustomer.Show
+
+        Application.EnableEvents = True
+
+    End If
+
 End Sub
 ```
 
@@ -96,9 +117,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 18 - Main Project #3: Invoice Generation Tool]]
+- [[Section 18 - Main Project 3 Invoice Generation Tool]]
 
 ---
 

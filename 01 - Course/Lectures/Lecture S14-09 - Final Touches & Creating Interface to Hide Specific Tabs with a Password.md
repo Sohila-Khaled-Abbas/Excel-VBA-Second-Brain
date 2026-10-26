@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 14 - Main Project #2: Regional Reporting Tool]]"
+section: "[[Section 14 - Main Project 2 Regional Reporting Tool]]"
 section_number: 14
 lecture_number: 9
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Main Project #2: Regional Reporting Tool
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S14-09: Final Touches & Creating Interface to Hide Specific Tabs with a Password
 
 > [!important]
-> **Section Reference**: [[Section 14 - Main Project #2: Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
+> **Section Reference**: [[Section 14 - Main Project 2 Regional Reporting Tool|Section 14: Main Project #2: Regional Reporting Tool]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Final Touches & Creating Interface to Hide Specific Tabs with a Password
 
@@ -47,27 +47,48 @@ Focuses on practical spreadsheet automation for 'Final Touches & Creating Interf
 
 ## 💻 Code
 ```vba
-Sub Admin_Tasks()
-    Dim InputPass As String, Password As String
-    Password = "me"
-    InputPass = VBA.InputBox("Enter Password to toggle access")
-    If InputPass = "" Then Exit Sub
-    
-    If InputPass <> Password Then
-        MsgBox Title:="Incorrect Password", prompt:="The Password is Incorrect!", Buttons:=vbCritical
-        Exit Sub
-    End If
-    Application.ScreenUpdating = False
-    If shAll.Visible = xlSheetVisible Then
-        shAll.Visible = xlSheetVeryHidden
-        shMap.Visible = xlSheetVeryHidden
-        shNewDat.Visible = xlSheetVeryHidden
-    Else
-         shAll.Visible = xlSheetVisible
-        shMap.Visible = xlSheetVisible
-        shNewDat.Visible = xlSheetVisible
-    End If
-    Application.ScreenUpdating = False
+Sub Admin_Tasks()
+
+    Dim InputPass As String, Password As String
+
+    Password = "me"
+
+    InputPass = VBA.InputBox("Enter Password to toggle access")
+
+    If InputPass = "" Then Exit Sub
+
+    
+
+    If InputPass <> Password Then
+
+        MsgBox Title:="Incorrect Password", prompt:="The Password is Incorrect!", Buttons:=vbCritical
+
+        Exit Sub
+
+    End If
+
+    Application.ScreenUpdating = False
+
+    If shAll.Visible = xlSheetVisible Then
+
+        shAll.Visible = xlSheetVeryHidden
+
+        shMap.Visible = xlSheetVeryHidden
+
+        shNewDat.Visible = xlSheetVeryHidden
+
+    Else
+
+         shAll.Visible = xlSheetVisible
+
+        shMap.Visible = xlSheetVisible
+
+        shNewDat.Visible = xlSheetVisible
+
+    End If
+
+    Application.ScreenUpdating = False
+
 End Sub
 ```
 
@@ -96,9 +117,9 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 14 - Main Project #2: Regional Reporting Tool]]
+- [[Section 14 - Main Project 2 Regional Reporting Tool]]
 
 ---
 

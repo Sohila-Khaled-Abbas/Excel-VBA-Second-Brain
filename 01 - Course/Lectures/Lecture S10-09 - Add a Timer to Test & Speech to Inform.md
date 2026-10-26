@@ -9,7 +9,7 @@ topics:
   - Looping in VBA (controlling the flow of code)
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,25 +47,44 @@ Focuses on practical spreadsheet automation for 'Add a Timer to Test & Speech to
 
 ## 💻 Code
 ```vba
-Sub Counter_Looping_for_Timer()
-'for tab Find (for Timer testing)
-
-    Dim r As Long
-    Dim i As Byte
-    i = 3
-    Dim Start
-    Start = VBA.Timer
-    Range("D3:D6").ClearContents
-    'this part is hardcoded for the purpose of testing the Timer Function
-    For r = 8 To 200000
-        If UCase(Range("A" & r).Value) = UCase(Range("B3").Value) Then
-            Range("D" & i).Value = Range("E" & r).Value
-            i = i + 1
-        End If
-    Next r
-    
-    Debug.Print Round(Timer - Start, 3)
-    
+Sub Counter_Looping_for_Timer()
+
+'for tab Find (for Timer testing)
+
+
+
+    Dim r As Long
+
+    Dim i As Byte
+
+    i = 3
+
+    Dim Start
+
+    Start = VBA.Timer
+
+    Range("D3:D6").ClearContents
+
+    'this part is hardcoded for the purpose of testing the Timer Function
+
+    For r = 8 To 200000
+
+        If UCase(Range("A" & r).Value) = UCase(Range("B3").Value) Then
+
+            Range("D" & i).Value = Range("E" & r).Value
+
+            i = i + 1
+
+        End If
+
+    Next r
+
+    
+
+    Debug.Print Round(Timer - Start, 3)
+
+    
+
 End Sub
 ```
 
@@ -94,7 +113,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 10 - Looping in VBA (controlling the flow of code)]]
 

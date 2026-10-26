@@ -9,7 +9,7 @@ topics:
   - Referencing Ranges, Worksheets & Workbooks
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -47,40 +47,74 @@ Focuses on practical spreadsheet automation for '4 Methods to Find the Last Row 
 
 ## 💻 Code
 ```vba
-Sub Range_LastRow()
-
-    'Color last row
-    'clear the answer area first and reset color of range area
-    Range("K6:K12").ClearContents
-    Range("A5", "A" & Cells(Rows.Count, 1).End(xlUp).Row).EntireRow.Interior.Color = Excel.Constants.xlNone
-
-    'find answers
-    ' ****** Last row  *******
-     'Range("K6").Value = Range("A4").End(xlDown).Row
-     Range("K6").Value = Range("A" & Rows.Count).End(xlUp).Row 'Range("K6").Value = Cells(Rows.Count, 1).End(xlUp).Row
-    Range("K7").Value = Range("A" & Rows.Count).End(xlUp).Row + 1 'Cells(Rows.Count, 1).End(xlUp).Row + 1
-    
-     ' ****** Last column  *******
-     Range("K8").Value = Cells(4, Columns.Count).End(xlToLeft).Column  'Range("A4").End(xlToRight).Column
-     
-      ' ****** Current region  *******
-     'Debug.Print Range("B10").CurrentRegion.Address
-    Range("K9").Value = Range("B10").CurrentRegion.Address
-    Range("K10").Value = Range("B10").CurrentRegion.Rows.Count
-    
-     ' ****** Last used row on sheet *******
-    'to find last used cell use specialcells property
-    Range("K11").Value = Cells.SpecialCells(xlCellTypeLastCell).Row
-    
-    'usedrange is a property of the worksheet
-    Range("K12").Value = Application.ActiveSheet.UsedRange.Rows.Count
-    'to get intellisense, use the sheet code name - we learn this in the referencing worksheets lecture
-    Range("K12").Value = Sheet4.UsedRange.Rows.Count
-    
-    'set the color of the last row to red
-    Range("A" & Rows.Count).End(xlUp).EntireRow.Interior.Color = VBA.ColorConstants.vbRed
-
-
+Sub Range_LastRow()
+
+
+
+    'Color last row
+
+    'clear the answer area first and reset color of range area
+
+    Range("K6:K12").ClearContents
+
+    Range("A5", "A" & Cells(Rows.Count, 1).End(xlUp).Row).EntireRow.Interior.Color = Excel.Constants.xlNone
+
+
+
+    'find answers
+
+    ' ****** Last row  *******
+
+     'Range("K6").Value = Range("A4").End(xlDown).Row
+
+     Range("K6").Value = Range("A" & Rows.Count).End(xlUp).Row 'Range("K6").Value = Cells(Rows.Count, 1).End(xlUp).Row
+
+    Range("K7").Value = Range("A" & Rows.Count).End(xlUp).Row + 1 'Cells(Rows.Count, 1).End(xlUp).Row + 1
+
+    
+
+     ' ****** Last column  *******
+
+     Range("K8").Value = Cells(4, Columns.Count).End(xlToLeft).Column  'Range("A4").End(xlToRight).Column
+
+     
+
+      ' ****** Current region  *******
+
+     'Debug.Print Range("B10").CurrentRegion.Address
+
+    Range("K9").Value = Range("B10").CurrentRegion.Address
+
+    Range("K10").Value = Range("B10").CurrentRegion.Rows.Count
+
+    
+
+     ' ****** Last used row on sheet *******
+
+    'to find last used cell use specialcells property
+
+    Range("K11").Value = Cells.SpecialCells(xlCellTypeLastCell).Row
+
+    
+
+    'usedrange is a property of the worksheet
+
+    Range("K12").Value = Application.ActiveSheet.UsedRange.Rows.Count
+
+    'to get intellisense, use the sheet code name - we learn this in the referencing worksheets lecture
+
+    Range("K12").Value = Sheet4.UsedRange.Rows.Count
+
+    
+
+    'set the color of the last row to red
+
+    Range("A" & Rows.Count).End(xlUp).EntireRow.Interior.Color = VBA.ColorConstants.vbRed
+
+
+
+
+
 End Sub
 ```
 
@@ -109,7 +143,7 @@ End Sub
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
 - [[Section 04 - Referencing Ranges, Worksheets & Workbooks]]
 

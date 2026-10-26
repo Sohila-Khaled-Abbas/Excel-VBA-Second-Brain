@@ -1,7 +1,7 @@
 ---
 type: lecture
 course: Excel VBA & Macros
-section: "[[Section 19 - Creating Customized Functions / Formulas]]"
+section: "[[Section 19 - Creating Customized Functions Formulas]]"
 section_number: 19
 lecture_number: 4
 status: not-started
@@ -9,7 +9,7 @@ topics:
   - Creating Customized Functions / Formulas
 related_concepts:
   - '[[VBA Syntax]]'
-  - '[[Excel Object Model]]'
+  - '[[VBA Object Model]]'
 related_projects: []
 created: 2026-10-03
 updated: 2026-10-26
@@ -22,7 +22,7 @@ tags:
 # Lecture S19-04: Functions that Split Text and Numbers from Cell Value
 
 > [!important]
-> **Section Reference**: [[Section 19 - Creating Customized Functions / Formulas|Section 19: Creating Customized Functions / Formulas]]  
+> **Section Reference**: [[Section 19 - Creating Customized Functions Formulas|Section 19: Creating Customized Functions / Formulas]]  
 > **Status**: `⚪ Planned`  
 > **Lecture Title**: Functions that Split Text and Numbers from Cell Value
 
@@ -47,16 +47,26 @@ Focuses on practical spreadsheet automation for 'Functions that Split Text and N
 
 ## 💻 Code
 ```vba
-Function TextOnly(TextValue) As String
-    Dim i As Long
-    Dim t As String
-    TextValue = Trim(TextValue)
-    For i = 1 To Len(TextValue)
-        If Not IsNumeric(Mid(TextValue, i, 1)) Then
-            t = t & Mid(TextValue, i, 1)
-        End If
-    Next i
-    TextOnly = t
+Function TextOnly(TextValue) As String
+
+    Dim i As Long
+
+    Dim t As String
+
+    TextValue = Trim(TextValue)
+
+    For i = 1 To Len(TextValue)
+
+        If Not IsNumeric(Mid(TextValue, i, 1)) Then
+
+            t = t & Mid(TextValue, i, 1)
+
+        End If
+
+    Next i
+
+    TextOnly = t
+
 End Function
 ```
 
@@ -85,9 +95,9 @@ End Function
 
 ## 🔗 Related Concepts
 - [[VBA Syntax]]
-- [[Excel Object Model]]
+- [[VBA Object Model]]
 - [[Error Handling]]
-- [[Section 19 - Creating Customized Functions / Formulas]]
+- [[Section 19 - Creating Customized Functions Formulas]]
 
 ---
 

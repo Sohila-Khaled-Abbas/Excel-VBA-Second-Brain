@@ -1,0 +1,55 @@
+name: 🧠 Vault Integrity CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "**/*.md"
+      - "config/**"
+      - "scripts/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "**/*.md"
+      - "config/**"
+      - "scripts/**"
+
+jobs:
+  validate-vault:
+    name: Validate Wikilinks & Frontmatter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🐍 Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: 🔍 Run vault linter (wikilinks + frontmatter)
+        run: python scripts/validate_vault.py
+
+      - name: 📊 Report note statistics
+        if: always()
+        run: |
+          echo "=== 📁 Vault Note Count Report ==="
+          find . -name "*.md" \
+            ! -path "./.git/*" \
+            ! -path "./_private/*" \
+            ! -path "./node_modules/*" | wc -l | xargs echo "Total notes:"
+          echo ""
+          echo "Notes per folder:"
+          find . -name "*.md" \
+            ! -path "./.git/*" \
+            ! -path "./_private/*" \
+            -printf "%h\n" | sort | uniq -c | sort -rn | head -20
+
+      - name: ✅ Vault CI passed
+        run: echo "All wikilinks and frontmatter checks passed successfully."

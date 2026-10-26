@@ -234,6 +234,6 @@ End Sub
 ## 🔗 Connected Notes
 - **Individual Cells**: [[Cells]]
 - **Sheet Architecture**: [[Worksheet]], [[Worksheets]]
-- **In-Memory Arrays**: [[Arrays]], [[05 - Data & Automation/Arrays/Dynamic Arrays]]
+- **In-Memory Arrays**: [[Arrays]], [[Arrays]]
 - **Performance Tuning**: [[Performance Optimization]]
 - **Cookbook Patterns**: [[Code Cookbook/Patterns/Last Used Row and Column]]
