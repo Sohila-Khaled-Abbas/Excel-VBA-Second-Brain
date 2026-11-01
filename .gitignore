@@ -46,3 +46,8 @@ temp/
 *.tmp
 *.log
 *.bak
+
+# Python runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
